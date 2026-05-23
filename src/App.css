@@ -1944,7 +1944,6 @@ a {
   }
 }
 
-<<<<<<< HEAD
 /* About page handcrafted layout */
 .about-page {
   max-width: 1220px;
@@ -2351,7 +2350,9 @@ a {
 
   .about-page .schedule-goal {
     font-size: 18px;
-=======
+  }
+}
+
 /* Terms page document layout */
 .terms-page {
   max-width: none;
@@ -2559,7 +2560,6 @@ a {
 
   .terms-skill-grid p::before {
     left: 18px;
->>>>>>> 71e871f95f5ebd5a7c7e4a95c24695de8fb8b93f
   }
 }
 

@@ -1,5 +1,5 @@
-﻿import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const OPEN_ANIMATION_MS = 1700;
 const CLOSE_ANIMATION_MS = 1500;
@@ -23,7 +23,7 @@ function Header() {
     portalStateRef.current = portalState;
   }, [portalState]);
 
-  const startClosing = () => {
+  const startClosing = useCallback(() => {
     const state = portalStateRef.current;
 
     if (state === "closed" || state === "closing") {
@@ -46,9 +46,9 @@ function Header() {
       setPortalState("closed");
       closeTimerRef.current = null;
     }, CLOSE_ANIMATION_MS);
-  };
+  }, []);
 
-  const startOpening = () => {
+  const startOpening = useCallback(() => {
     const state = portalStateRef.current;
 
     if (state === "open" || state === "opening") {
@@ -71,37 +71,40 @@ function Header() {
         startClosing();
       }
     }, OPEN_ANIMATION_MS);
-  };
+  }, [startClosing]);
 
-  const scrollToRegistration = (delayMs = 60) => {
+  const scrollToRegistration = useCallback((delayMs = 60) => {
     setTimeout(() => {
       const el = document.querySelector("#registration");
       if (el) {
         el.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }, delayMs);
-  };
+  }, []);
 
-  const navigateToRegistration = (event) => {
-    event.preventDefault();
-    startOpening();
+  const navigateToRegistration = useCallback(
+    (event) => {
+      event.preventDefault();
+      startOpening();
 
-    if (navTimerRef.current) {
-      clearTimeout(navTimerRef.current);
-      navTimerRef.current = null;
-    }
+      if (navTimerRef.current) {
+        clearTimeout(navTimerRef.current);
+        navTimerRef.current = null;
+      }
 
-    if (isOnRegistration) {
-      scrollToRegistration(20);
-      return;
-    }
+      if (isOnRegistration) {
+        scrollToRegistration(20);
+        return;
+      }
 
-    navTimerRef.current = setTimeout(() => {
-      navigate({ pathname: "/", hash: "#registration" });
-      scrollToRegistration(80);
-      navTimerRef.current = null;
-    }, NAV_DELAY_MS);
-  };
+      navTimerRef.current = setTimeout(() => {
+        navigate({ pathname: "/", hash: "#registration" });
+        scrollToRegistration(80);
+        navTimerRef.current = null;
+      }, NAV_DELAY_MS);
+    },
+    [isOnRegistration, navigate, scrollToRegistration, startOpening],
+  );
 
   useEffect(() => {
     if (isOnRegistration) {
@@ -109,7 +112,7 @@ function Header() {
     } else {
       startClosing();
     }
-  }, [isOnRegistration]);
+  }, [isOnRegistration, startClosing, startOpening]);
 
   useEffect(() => {
     const onPortalNavigate = (event) => {
@@ -161,7 +164,7 @@ function Header() {
         clearTimeout(navTimerRef.current);
       }
     };
-  }, [isOnRegistration, navigate]);
+  }, [isOnRegistration, navigate, scrollToRegistration, startOpening]);
 
   const logoClass = `logo ${portalState === "closed" ? "" : `is-${portalState}`}`.trim();
 
