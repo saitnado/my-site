@@ -1,4 +1,4 @@
-* {
+﻿* {
   box-sizing: border-box;
 }
 
@@ -126,6 +126,52 @@ a {
   color: #aeb7c9;
 }
 
+.venue-block {
+  margin-top: 24px;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.venue-block h2 {
+  margin: 0 0 14px;
+  font-size: 34px;
+}
+
+.venue-addresses {
+  margin-top: 26px;
+  display: grid;
+  gap: 14px;
+}
+
+.venue-links {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.venue-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 190px;
+  padding: 14px 20px;
+  border: 1px solid #a970ff;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(169, 112, 255, 0.08);
+  transition: 0.2s ease;
+}
+
+.venue-link-btn:hover {
+  transform: translateY(-1px);
+  background: rgba(169, 112, 255, 0.2);
+}
+
 @media (max-width: 900px) {
   .header {
     height: auto;
@@ -147,5 +193,25 @@ a {
 
   .hero p {
     font-size: 20px;
+  }
+
+  .page {
+    padding: 64px 20px;
+  }
+
+  .page h1 {
+    font-size: 38px;
+  }
+
+  .page p {
+    font-size: 20px;
+  }
+
+  .venue-block h2 {
+    font-size: 28px;
+  }
+
+  .venue-link-btn {
+    width: 100%;
   }
 }
