@@ -172,6 +172,123 @@ a {
   background: rgba(169, 112, 255, 0.2);
 }
 
+.about-page {
+  max-width: 1100px;
+}
+
+.schedule-block {
+  margin-top: 8px;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  background:
+    linear-gradient(155deg, rgba(169, 112, 255, 0.2), rgba(255, 255, 255, 0.03) 40%),
+    rgba(255, 255, 255, 0.03);
+}
+
+.schedule-block h2 {
+  margin: 0 0 18px;
+  font-size: 36px;
+}
+
+.schedule-block p {
+  font-size: 22px;
+  color: #dbe2f0;
+}
+
+.schedule-days {
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.schedule-members {
+  margin-top: 22px;
+}
+
+.schedule-members ul {
+  margin: 8px 0 0;
+  padding-left: 24px;
+  display: grid;
+  gap: 8px;
+}
+
+.schedule-members li {
+  font-size: 22px;
+  line-height: 1.45;
+  color: #dbe2f0;
+}
+
+.about-intro {
+  display: grid;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.about-intro p {
+  font-size: 24px;
+  color: #d8deea;
+}
+
+.about-intro ul {
+  margin: 0;
+  padding-left: 28px;
+  display: grid;
+  gap: 8px;
+}
+
+.about-intro li {
+  font-size: 22px;
+  line-height: 1.5;
+  color: #d8deea;
+}
+
+.about-cards {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.about-card {
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background:
+    linear-gradient(160deg, rgba(164, 114, 255, 0.14), rgba(255, 255, 255, 0.03) 35%),
+    rgba(255, 255, 255, 0.02);
+}
+
+.about-card h2 {
+  margin: 0 0 14px;
+  font-size: 28px;
+}
+
+.about-card p {
+  margin: 0 0 12px;
+  font-size: 19px;
+  color: #d0d7e5;
+}
+
+.about-card ul {
+  margin: 0 0 12px;
+  padding-left: 22px;
+  display: grid;
+  gap: 6px;
+}
+
+.about-card li {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #c9d2e3;
+}
+
+.about-emoji-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
 @media (max-width: 900px) {
   .header {
     height: auto;
@@ -213,5 +330,30 @@ a {
 
   .venue-link-btn {
     width: 100%;
+  }
+
+  .about-intro p {
+    font-size: 20px;
+  }
+
+  .about-intro li {
+    font-size: 20px;
+  }
+
+  .about-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .about-card h2 {
+    font-size: 24px;
+  }
+
+  .schedule-block h2 {
+    font-size: 28px;
+  }
+
+  .schedule-block p,
+  .schedule-members li {
+    font-size: 19px;
   }
 }

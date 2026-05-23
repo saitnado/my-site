@@ -18,15 +18,12 @@
         <p>
           <strong>Адрес:</strong> Москва, Подольское ш., 8
         </p>
-        <p>
-          <strong>Адрес:</strong> Санкт-Петербург, Общественно-деловое пространство SENO
-        </p>
       </div>
 
       <div className="venue-links">
         <a
           className="venue-link-btn"
-          href="https://yandex.com/maps/213/moscow/house/podolskoye_shosse_8/Z04YcAVkSkQOQFtvfXtwdXhlYQ==/?ll=37.624319%2C55.714465&z=17.19"
+          href="https://yandex.com/maps/213/moscow/?ll=37.624749%2C55.714023&mode=poi&poi%5Bpoint%5D=37.623499%2C55.713930&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D1346764685&z=17.6"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -34,7 +31,7 @@
         </a>
         <a
           className="venue-link-btn"
-          href="https://2gis.ru/moscow/firm/4504128908656437/37.623341%2C55.713966?m=37.623788%2C55.714115%2F18.71"
+          href="https://2gis.ru/moscow/firm/70000001027607438/37.623499%2C55.713930?m=37.623499%2C55.713930%2F17.6"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -42,7 +39,7 @@
         </a>
         <a
           className="venue-link-btn"
-          href="https://yandex.com/maps/213/moscow/house/podolskoye_shosse_8/Z04YcAVkSkQOQFtvfXtwdXhlYQ==/?ll=37.624319%2C55.714465&z=17.19"
+          href="https://yandex.com/maps/213/moscow/?ll=37.624749%2C55.714023&mode=poi&poi%5Bpoint%5D=37.623499%2C55.713930&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D1346764685&z=17.6"
           target="_blank"
           rel="noopener noreferrer"
         >
