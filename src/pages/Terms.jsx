@@ -69,17 +69,10 @@
           </p>
         </div>
 
-        <div className="terms-section terms-registration">
-          <h2>Регистрация</h2>
-
-          <p>
-            Регистрация на хакатон откроется в июне 2026 года. Чтобы не пропустить
-            старт открытия, оставьте свой email в форме ниже.
-          </p>
-
+        <div className="terms-registration">
           <div className="terms-cta-row">
             <a className="register-button" href="/#registration">
-              Перейти к форме регистрации
+              Регистрация участников
             </a>
           </div>
         </div>
