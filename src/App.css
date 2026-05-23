@@ -401,7 +401,139 @@ a {
   max-width: 1100px;
 }
 
+.about-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-top: 8px;
+  padding: 58px 44px;
+  border: 1px solid rgba(125, 211, 252, 0.28);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 14% 24%, rgba(34, 211, 238, 0.24), transparent 38%),
+    radial-gradient(circle at 82% 72%, rgba(59, 130, 246, 0.22), transparent 42%),
+    linear-gradient(145deg, rgba(6, 14, 32, 0.95), rgba(5, 10, 24, 0.92));
+  box-shadow:
+    0 24px 54px rgba(2, 8, 24, 0.45),
+    inset 0 0 0 1px rgba(125, 211, 252, 0.08);
+}
+
+.about-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  background-image:
+    linear-gradient(rgba(125, 211, 252, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125, 211, 252, 0.16) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.about-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about-hero h1 {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  font-size: 64px;
+  line-height: 1.05;
+  color: #f1f5f9;
+}
+
+.about-hero p {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+  margin: 18px 0 0;
+  font-size: 28px;
+  line-height: 1.35;
+  color: #dbeafe;
+}
+
+.about-hero-glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(8px);
+}
+
+.about-hero-glow-one {
+  width: 420px;
+  height: 420px;
+  top: -170px;
+  right: -120px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.34), transparent 72%);
+}
+
+.about-hero-glow-two {
+  width: 380px;
+  height: 380px;
+  left: -120px;
+  bottom: -180px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent 74%);
+}
+
+.about-hero-dna {
+  position: absolute;
+  width: 170px;
+  height: 560px;
+  opacity: 0.72;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0 14px,
+      rgba(148, 233, 255, 0.34) 14px 18px,
+      transparent 18px 34px
+    );
+}
+
+.about-hero-dna::before,
+.about-hero-dna::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 64px;
+  height: 100%;
+  border: 2px solid rgba(148, 233, 255, 0.38);
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-radius: 50%;
+}
+
+.about-hero-dna::before {
+  left: 0;
+}
+
+.about-hero-dna::after {
+  right: 0;
+  transform: translateY(12px);
+}
+
+.about-hero-dna-one {
+  left: 8%;
+  top: -110px;
+  transform: rotate(-18deg);
+}
+
+.about-hero-dna-two {
+  right: 6%;
+  top: -80px;
+  transform: rotate(18deg);
+}
+
+.about-page .schedule-block {
+  margin-top: 28px;
+}
+
 .schedule-block {
+  position: relative;
+  overflow: hidden;
   margin-top: 8px;
   padding: 28px;
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -412,8 +544,10 @@ a {
 }
 
 .schedule-block h2 {
-  margin: 0 0 18px;
-  font-size: 36px;
+  margin: 0 0 20px;
+  font-size: 40px;
+  text-align: center;
+  letter-spacing: 0.02em;
 }
 
 .schedule-block p {
@@ -421,27 +555,105 @@ a {
   color: #dbe2f0;
 }
 
+.schedule-goal {
+  margin: 0 auto;
+  max-width: 980px;
+  text-align: center;
+}
+
 .schedule-days {
-  margin-top: 18px;
+  margin-top: 24px;
   display: grid;
-  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.schedule-day-card {
+  position: relative;
+  padding: 18px 18px 18px 54px;
+  border: 1px solid rgba(148, 233, 255, 0.28);
+  border-radius: 16px;
+  background:
+    linear-gradient(145deg, rgba(11, 20, 44, 0.72), rgba(7, 12, 27, 0.58)),
+    rgba(255, 255, 255, 0.02);
+  box-shadow:
+    inset 0 0 0 1px rgba(56, 189, 248, 0.07),
+    0 10px 28px rgba(2, 8, 24, 0.35);
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.65s ease;
+  transition-delay: var(--delay, 0ms);
+}
+
+.schedule-day-card::before {
+  content: "➜";
+  position: absolute;
+  left: 20px;
+  top: 18px;
+  font-size: 20px;
+  line-height: 1;
+  color: #7dd3fc;
+}
+
+.schedule-day-title {
+  margin: 0;
+  font-size: 25px;
+  color: #e2e8f0;
+}
+
+.schedule-day-text {
+  margin-top: 10px;
+  font-size: 19px;
+  line-height: 1.45;
+  color: #dbe3f4;
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.9s ease;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal.is-visible .schedule-day-card {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .schedule-members {
-  margin-top: 22px;
+  margin-top: 18px;
 }
 
 .schedule-members ul {
   margin: 8px 0 0;
-  padding-left: 24px;
+  padding-left: 0;
+  list-style: none;
   display: grid;
   gap: 8px;
 }
 
 .schedule-members li {
+  position: relative;
+  padding-left: 26px;
   font-size: 22px;
   line-height: 1.45;
   color: #dbe2f0;
+}
+
+.schedule-members li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: #7dd3fc;
 }
 
 .about-intro {
@@ -583,6 +795,24 @@ a {
     width: 100%;
   }
 
+  .about-hero {
+    padding: 34px 22px;
+    border-radius: 18px;
+  }
+
+  .about-hero h1 {
+    font-size: 42px;
+  }
+
+  .about-hero p {
+    margin-top: 14px;
+    font-size: 20px;
+  }
+
+  .about-hero-dna {
+    display: none;
+  }
+
   .about-intro p {
     font-size: 20px;
   }
@@ -603,9 +833,30 @@ a {
     font-size: 28px;
   }
 
+  .schedule-goal {
+    text-align: left;
+  }
+
   .schedule-block p,
   .schedule-members li {
     font-size: 19px;
+  }
+
+  .schedule-days {
+    grid-template-columns: 1fr;
+  }
+
+  .schedule-day-card {
+    padding: 16px 16px 16px 46px;
+  }
+
+  .schedule-day-title {
+    font-size: 22px;
+  }
+
+  .schedule-day-text {
+    margin-top: 8px;
+    font-size: 18px;
   }
 }
 
@@ -1690,6 +1941,415 @@ a {
 
   .page > ul {
     padding-left: 34px;
+  }
+}
+
+/* About page handcrafted layout */
+.about-page {
+  max-width: 1220px;
+  display: grid;
+  gap: 22px;
+}
+
+.about-page .scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.75s ease, transform 0.85s ease;
+}
+
+.about-page .scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-page .about-hero {
+  margin-top: 0;
+  padding: 56px 46px;
+  border-radius: 24px;
+}
+
+.about-page .about-hero h1 {
+  font-size: clamp(44px, 6vw, 72px);
+}
+
+.about-page .about-hero p {
+  max-width: 720px;
+  margin-top: 14px;
+  font-size: clamp(21px, 2.3vw, 36px);
+}
+
+.about-page .about-hero .about-hero-lead {
+  margin-top: 16px;
+  font-size: clamp(16px, 1.5vw, 23px);
+  color: #b8c6df;
+}
+
+.about-page .about-section {
+  border: 1px solid rgba(125, 211, 252, 0.2);
+  border-radius: 20px;
+  padding: 28px;
+  background:
+    linear-gradient(145deg, rgba(7, 14, 32, 0.88), rgba(5, 10, 24, 0.84)),
+    rgba(8, 13, 30, 0.72);
+  box-shadow:
+    0 18px 44px rgba(2, 8, 24, 0.4),
+    inset 0 0 0 1px rgba(125, 211, 252, 0.05);
+}
+
+.about-page .about-section h2 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(30px, 3vw, 42px);
+  color: #e5e7eb;
+}
+
+.about-page .about-section h2::before {
+  content: "";
+  width: 14px;
+  height: 2px;
+  background: #a855f7;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.55);
+}
+
+.about-page .about-section p {
+  color: #cbd5e1;
+}
+
+.about-page .precision-map {
+  overflow: hidden;
+}
+
+.about-page .precision-caption {
+  margin: 14px 0 0;
+  max-width: 760px;
+  font-size: 19px;
+}
+
+.about-page .precision-grid {
+  position: relative;
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.about-page .precision-grid::before {
+  content: "";
+  position: absolute;
+  top: 69px;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.08), rgba(167, 139, 250, 0.75), rgba(56, 189, 248, 0.08));
+}
+
+.about-page .precision-stage {
+  position: relative;
+  z-index: 1;
+  padding: 18px 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(167, 139, 250, 0.28);
+  background: rgba(7, 12, 27, 0.72);
+  text-align: center;
+}
+
+.about-page .precision-stage-title {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 14px;
+  color: #f1f5f9;
+}
+
+.about-page .precision-node {
+  width: 46px;
+  height: 46px;
+  margin: 14px auto 12px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  color: #e9d5ff;
+  border: 1px solid rgba(167, 139, 250, 0.45);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.52), rgba(30, 41, 59, 0.7));
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.34);
+}
+
+.about-page .precision-stage-level {
+  margin: 0;
+  font-size: 16px;
+  color: #dbe3f4;
+}
+
+.about-page .precision-stage-application {
+  margin: 12px 0 0;
+  font-size: 15px;
+  color: #94a3b8;
+}
+
+.about-page .about-facts p {
+  margin-top: 14px;
+  font-size: 20px;
+  line-height: 1.52;
+}
+
+.about-page .about-pill-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.about-page .about-pill-card {
+  min-height: 86px;
+  padding: 14px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(167, 139, 250, 0.26);
+  background: rgba(8, 13, 30, 0.72);
+  font-size: 16px;
+  color: #dbe3f4;
+  line-height: 1.42;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.about-page .audience-grid .about-cards {
+  margin-top: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.about-page .audience-grid .about-card {
+  padding: 20px;
+}
+
+.about-page .audience-grid .about-card h3 {
+  margin: 0;
+  font-size: 24px;
+  color: #e2e8f0;
+}
+
+.about-page .audience-grid .about-card p {
+  margin: 10px 0 0;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.about-page .impact-layout {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 16px;
+}
+
+.about-page .impact-layout ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.about-page .impact-layout li {
+  position: relative;
+  margin: 0;
+  padding: 12px 14px 12px 30px;
+  border-radius: 14px;
+  border: 1px solid rgba(125, 211, 252, 0.22);
+  background: rgba(8, 13, 30, 0.6);
+  font-size: 18px;
+  line-height: 1.45;
+  color: #dbe3f4;
+}
+
+.about-page .impact-layout li::before {
+  content: "•";
+  position: absolute;
+  left: 13px;
+  top: 9px;
+  color: #a855f7;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.about-page .impact-note {
+  border: 1px solid rgba(167, 139, 250, 0.24);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #dbe3f4;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(168, 85, 247, 0.12), transparent 50%),
+    rgba(8, 13, 30, 0.62);
+}
+
+.about-page .schedule-block {
+  margin-top: 0;
+  padding: 28px;
+}
+
+.about-page .schedule-block h2 {
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.about-page .schedule-goal {
+  margin: 0;
+  max-width: 920px;
+  text-align: left;
+  font-size: 20px;
+}
+
+.about-page .schedule-days {
+  position: relative;
+  margin-top: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.about-page .schedule-days::before {
+  content: "";
+  position: absolute;
+  top: 48px;
+  left: 6%;
+  right: 6%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(167, 139, 250, 0.12), rgba(167, 139, 250, 0.88), rgba(167, 139, 250, 0.12));
+}
+
+.about-page .schedule-day-card {
+  position: relative;
+  z-index: 1;
+  padding: 20px 16px 16px;
+  border-radius: 16px;
+}
+
+.about-page .schedule-day-card::before {
+  content: none;
+}
+
+.about-page .schedule-day-card::after {
+  content: "→";
+  position: absolute;
+  right: -18px;
+  top: 34px;
+  color: rgba(125, 211, 252, 0.75);
+  font-size: 18px;
+}
+
+.about-page .schedule-day-card:last-child::after {
+  content: none;
+}
+
+.about-page .schedule-index {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(125, 211, 252, 0.42);
+  color: #e9d5ff;
+  background: rgba(88, 28, 135, 0.45);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.about-page .schedule-day-label {
+  margin: 14px 0 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+}
+
+.about-page .schedule-day-title {
+  margin: 6px 0 0;
+  font-size: 22px;
+}
+
+.about-page .schedule-day-text {
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+.about-page .schedule-members {
+  margin-top: 16px;
+}
+
+.about-page .schedule-members p {
+  margin: 0;
+  font-size: 19px;
+}
+
+.about-page .schedule-members ul {
+  margin: 10px 0 0;
+}
+
+.about-page .schedule-members li {
+  font-size: 17px;
+}
+
+.about-page .benefits-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 1080px) {
+  .about-page .precision-grid,
+  .about-page .audience-grid .about-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-page .about-pill-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-page .schedule-days {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-page .schedule-day-card::after {
+    content: none;
+  }
+
+  .about-page .impact-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .about-page .about-hero {
+    padding: 30px 18px;
+  }
+
+  .about-page .about-section {
+    padding: 20px 16px;
+  }
+
+  .about-page .precision-grid,
+  .about-page .about-pill-grid,
+  .about-page .audience-grid .about-cards,
+  .about-page .schedule-days,
+  .about-page .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-page .precision-grid::before,
+  .about-page .schedule-days::before {
+    content: none;
+  }
+
+  .about-page .precision-stage-title {
+    font-size: 13px;
+  }
+
+  .about-page .schedule-goal {
+    font-size: 18px;
   }
 }
 

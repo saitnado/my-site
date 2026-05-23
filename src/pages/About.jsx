@@ -1,33 +1,217 @@
-﻿function About() {
-  return (
-    <section className="page about-page">
-      <h1>О хакатоне</h1>
+import { useEffect, useRef } from "react";
 
-      <div className="schedule-block">
-        <h2>Расписание</h2>
+const precisionStages = [
+  {
+    title: "Health",
+    level: "Гомогенная популяция клеток",
+    application: "Профилактические меры",
+  },
+  {
+    title: "Disease",
+    level: "Идентичность и состояние клетки",
+    application: "Раннее выявление и стратификация пациентов",
+  },
+  {
+    title: "Disease Progression",
+    level: "Тканевой уровень",
+    application: "Мониторинг и прогноз",
+  },
+  {
+    title: "Personalized Treatments",
+    level: "Системный уровень",
+    application: "Терапия следующего поколения",
+  },
+];
+
+const scheduleDays = [
+  {
+    day: "День 1",
+    title: "Открытие и знакомство",
+    text: "Вводные лекции, знакомство с модераторами, проектами и формирование команд.",
+  },
+  {
+    day: "День 2",
+    title: "Командная работа",
+    text: "Приглашённый доклад, работа над задачами, консультации с менторами.",
+  },
+  {
+    day: "День 3",
+    title: "Углублённая разработка",
+    text: "Доработка решений, подготовка материалов и репетиция защиты.",
+  },
+  {
+    day: "День 4",
+    title: "Финальная защита",
+    text: "Презентации проектов, выбор победителей, награждение и закрытие.",
+  },
+];
+
+const whatIsCards = [
+  "Реальные научные задачи",
+  "Команды единомышленников",
+  "Практика и новые навыки",
+  "Защита проектов и награды",
+];
+
+const audienceCards = [
+  {
+    title: "Биологи и медики",
+    text: "Для тех, кто работает с биомедицинскими данными и хочет усилить аналитический стек.",
+  },
+  {
+    title: "AI и Data Science",
+    text: "Для тех, кто умеет строить модели и хочет применять ML в медицине.",
+  },
+  {
+    title: "Исследователи",
+    text: "Для аспирантов и молодых учёных, которым важны новые коллаборации.",
+  },
+  {
+    title: "Студенты",
+    text: "Для студентов, которые хотят получить опыт командной проектной работы.",
+  },
+];
+
+const participantBenefits = [
+  "Работа с реальными биомедицинскими датасетами",
+  "Командная работа и поддержка менторов",
+  "Лекции и доклады приглашённых экспертов",
+  "Практический опыт в bioinformatics и AI",
+  "Финальная защита проектов и ценные призы",
+  "Новые знакомства и профессиональное сообщество",
+];
+
+function About() {
+  const pageRef = useRef(null);
+
+  useEffect(() => {
+    const pageNode = pageRef.current;
+    if (!pageNode) {
+      return undefined;
+    }
+
+    const revealNodes = Array.from(pageNode.querySelectorAll(".scroll-reveal"));
+    if (revealNodes.length === 0) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.22 },
+    );
+
+    revealNodes.forEach((node) => observer.observe(node));
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section ref={pageRef} className="page about-page">
+      <div className="about-hero scroll-reveal">
+        <div className="about-hero-bg" aria-hidden="true">
+          <span className="about-hero-glow about-hero-glow-one" />
+          <span className="about-hero-glow about-hero-glow-two" />
+          <span className="about-hero-dna about-hero-dna-one" />
+          <span className="about-hero-dna about-hero-dna-two" />
+        </div>
+
+        <h1>О хакатоне</h1>
         <p>
+          Междисциплинарный хакатон по биоинформатике, single-cell omics и
+          искусственному интеллекту.
+        </p>
+        <p className="about-hero-lead">
+          Объединяем биологов, исследователей, аналитиков данных и AI-специалистов
+          для решения реальных задач медицины будущего.
+        </p>
+      </div>
+
+      <section className="about-section precision-map scroll-reveal">
+        <h2>Карта Precision Medicine</h2>
+        <p className="precision-caption">
+          Схема показывает путь от анализа отдельных клеток к персонализированным
+          стратегиям лечения.
+        </p>
+        <div className="precision-grid">
+          {precisionStages.map((stage, index) => (
+            <article key={stage.title} className="precision-stage">
+              <p className="precision-stage-title">{stage.title}</p>
+              <div className="precision-node">
+                <span>{index + 1}</span>
+              </div>
+              <p className="precision-stage-level">{stage.level}</p>
+              <p className="precision-stage-application">{stage.application}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="about-section about-facts scroll-reveal">
+        <h2>Что такое хакатон</h2>
+        <p>
+          Хакатон «Омики единичных клеток и искусственный интеллект для прецизионной
+          медицины» — это 4-дневный интенсив, где команды работают над реальными
+          научными кейсами на стыке биологии, медицины и машинного обучения.
+        </p>
+        <div className="about-pill-grid">
+          {whatIsCards.map((item) => (
+            <div key={item} className="about-pill-card">
+              {item}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="about-section audience-grid scroll-reveal">
+        <h2>Для кого хакатон</h2>
+        <div className="about-cards">
+          {audienceCards.map((card) => (
+            <article key={card.title} className="about-card">
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="about-section impact-section scroll-reveal">
+        <h2>Почему это важно</h2>
+        <div className="impact-layout">
+          <ul>
+            <li>Single-cell omics позволяет видеть гетерогенность тканей на уровне клеток.</li>
+            <li>AI помогает находить скрытые закономерности и потенциальные биомаркеры.</li>
+            <li>Прецизионная медицина ведёт к более точной диагностике и терапии.</li>
+          </ul>
+          <div className="impact-note">
+            Комбинация омиксных данных и AI формирует новую инфраструктуру
+            биомедицинских исследований и клинических решений.
+          </div>
+        </div>
+      </section>
+
+      <section className="about-section schedule-block scroll-reveal">
+        <h2>Расписание</h2>
+        <p className="schedule-goal">
           <strong>Цель хакатона:</strong> разработка подходов прецизионной медицины с
-          использованием омик единичных клеток и искусственного интеллекта.
+          использованием single-cell omics и искусственного интеллекта.
         </p>
 
         <div className="schedule-days">
-          <p>
-            <strong>День 1:</strong> открытие, две вводные лекции, приглашённый
-            доклад, знакомство с модераторами и проектами, формирование команд,
-            командная работа
-          </p>
-          <p>
-            <strong>День 2:</strong> приглашённый доклад, продолжение командной
-            работы
-          </p>
-          <p>
-            <strong>День 3:</strong> приглашённый доклад, продолжение командной
-            работы
-          </p>
-          <p>
-            <strong>День 4:</strong> защита проектов, определение победителей,
-            награждение, закрытие
-          </p>
+          {scheduleDays.map((day, index) => (
+            <article key={day.day} className="schedule-day-card">
+              <span className="schedule-index">{index + 1}</span>
+              <p className="schedule-day-label">{day.day}</p>
+              <h3 className="schedule-day-title">{day.title}</h3>
+              <p className="schedule-day-text">{day.text}</p>
+            </article>
+          ))}
         </div>
 
         <div className="schedule-members">
@@ -35,134 +219,22 @@
             <strong>Участники:</strong>
           </p>
           <ul>
-            <li>студенты, аспиранты и сотрудники образовательных и научных учреждений</li>
-            <li>7 команд по 5 человек, итого 35 человек</li>
+            <li>Студенты, аспиранты и сотрудники научных и образовательных учреждений.</li>
+            <li>7 команд по 5 человек, всего 35 участников.</li>
           </ul>
         </div>
-      </div>
+      </section>
 
-      <div className="about-intro">
-        <p>
-          Хакатон «Омики единичных клеток и искусственный интеллект для прецизионной
-          медицины» — это интенсив для студентов, исследователей и специалистов,
-          работающих на стыке биологии, медицины, анализа данных и AI.
-        </p>
-
-        <p>
-          Участники объединятся в команды и в течение четырёх дней будут решать
-          реальные научные задачи, связанные с анализом омиксных данных единичных
-          клеток, поиском биомаркеров заболеваний, персонализацией терапии и
-          применением алгоритмов искусственного интеллекта в медицине.
-        </p>
-
-        <p>
-          Современные single-cell технологии позволяют изучать геном, транскриптом и
-          другие молекулярные процессы на уровне отдельных клеток. В сочетании с
-          методами машинного обучения это открывает новые возможности для:
-        </p>
-
-        <ul>
-          <li>диагностики заболеваний,</li>
-          <li>поиска терапевтических мишеней,</li>
-          <li>прогнозирования ответа на лечение,</li>
-          <li>разработки подходов прецизионной медицины.</li>
-        </ul>
-
-        <p>В программе хакатона:</p>
-
-        <ul>
-          <li>вводные лекции от ведущих исследователей,</li>
-          <li>работа над кейсами под руководством модераторов,</li>
-          <li>командная разработка решений,</li>
-          <li>приглашённые доклады международных специалистов,</li>
-          <li>финальная защита проектов.</li>
-        </ul>
-
-        <p>
-          Участников ждёт работа с актуальными биомедицинскими задачами,
-          междисциплинарное взаимодействие и возможность получить практический опыт в
-          одной из самых быстроразвивающихся областей современной науки.
-        </p>
-      </div>
-
-      <div className="about-cards">
-        <article className="about-card">
-          <h2>1. Что такое хакатон</h2>
-          <p>
-            Хакатон «Омики единичных клеток и искусственный интеллект для прецизионной
-            медицины» — это междисциплинарное мероприятие для студентов,
-            исследователей и специалистов, работающих на стыке биологии, медицины,
-            анализа данных и AI.
-          </p>
-          <p>
-            В течение четырёх дней участники объединятся в команды и будут работать
-            над реальными научными задачами, связанными с анализом single-cell omics
-            данных, поиском биомаркеров и разработкой подходов прецизионной
-            медицины.
-          </p>
-          <p>
-            Программа включает лекции приглашённых экспертов, работу с менторами,
-            командную разработку решений и финальную защиту проектов.
-          </p>
-        </article>
-
-        <article className="about-card">
-          <h2>2. Для кого хакатон</h2>
-          <p>Хакатон подойдёт тем, кто:</p>
-          <ul>
-            <li>интересуется биоинформатикой, AI и современной медициной,</li>
-            <li>работает с биологическими или медицинскими данными,</li>
-            <li>хочет получить опыт командной проектной работы,</li>
-            <li>изучает machine learning, data science или computational biology,</li>
-            <li>
-              хочет познакомиться с исследователями и специалистами из разных
-              областей,
-            </li>
-            <li>ищет возможность применить свои знания на практике.</li>
-          </ul>
-          <p>
-            Мы приглашаем студентов, аспирантов, молодых исследователей и
-            специалистов из научных и образовательных учреждений.
-          </p>
-        </article>
-
-        <article className="about-card">
-          <h2>3. Почему это важно</h2>
-          <p>
-            Современные single-cell технологии позволяют изучать клетки на
-            принципиально новом уровне точности, анализируя геном, транскриптом и
-            другие молекулярные процессы отдельно для каждой клетки.
-          </p>
-          <p>
-            В сочетании с алгоритмами искусственного интеллекта это открывает новые
-            возможности для:
-          </p>
-          <ul>
-            <li>ранней диагностики заболеваний,</li>
-            <li>поиска терапевтических мишеней,</li>
-            <li>персонализации лечения,</li>
-            <li>прогнозирования ответа на терапию,</li>
-            <li>разработки новых подходов в прецизионной медицине.</li>
-          </ul>
-          <p>
-            Сегодня AI и омиксные технологии становятся одними из ключевых
-            инструментов биомедицины, а работа с такими данными требует
-            междисциплинарного подхода и новых исследовательских решений.
-          </p>
-        </article>
-
-        <article className="about-card">
-          <h2>4. Что ждёт участников</h2>
-          <ul className="about-emoji-list">
-            <li>🧬 Работа с реальными biomedical datasets</li>
-            <li>🤝 Командная работа и поддержка менторов</li>
-            <li>🎤 Лекции и доклады приглашённых экспертов</li>
-            <li>💻 Практический опыт в bioinformatics и AI</li>
-            <li>🏆 Финальная защита проектов</li>
-            <li>🌐 Новые знакомства и профессиональное сообщество</li>
-          </ul>
-        </article>
-      </div>
+      <section className="about-section benefits-section scroll-reveal">
+        <h2>Что ждёт участников</h2>
+        <div className="about-pill-grid benefits-grid">
+          {participantBenefits.map((item) => (
+            <div key={item} className="about-pill-card">
+              {item}
+            </div>
+          ))}
+        </div>
+      </section>
     </section>
   );
 }
