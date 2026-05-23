@@ -1,4 +1,9 @@
 ﻿function Home() {
+  const portalNavigate = (event, target, hash) => {
+    event.preventDefault();
+    window.dispatchEvent(new CustomEvent("portal:navigate", { detail: { target, hash } }));
+  };
+
   return (
     <div className="home-page">
       <section className="hero home-hero">
@@ -24,8 +29,20 @@
               для решения реальных задач медицины будущего.
             </p>
             <div className="home-hero-actions">
-              <a href="#registration" className="home-btn home-btn-primary">Подать заявку</a>
-              <a href="/about" className="home-btn home-btn-ghost">Узнать больше</a>
+              <a
+                href="/#registration"
+                className="home-btn home-btn-primary"
+                onClick={(e) => portalNavigate(e, "/", "#registration")}
+              >
+                Подать заявку
+              </a>
+              <a
+                href="/about"
+                className="home-btn home-btn-ghost"
+                onClick={(e) => portalNavigate(e, "/about")}
+              >
+                Узнать больше
+              </a>
             </div>
           </div>
 
@@ -101,13 +118,13 @@
         <h2>Наши партнеры</h2>
         <div className="partners-grid">
           <article className="partner-card">
-            <img src="/partners/biomedhub-rudn.svg" alt="НИИ молекулярной и клеточной медицины biomedhub / RUDN" />
+            <img src="/partners/biomedhub-rudn.png" alt="НИИ молекулярной и клеточной медицины biomedhub / RUDN" />
           </article>
           <article className="partner-card">
-            <img src="/partners/rudn-ai-faculty.svg" alt="РУДН Факультет искусственного интеллекта" />
+            <img src="/partners/rudn-ai-faculty.png" alt="РУДН Факультет искусственного интеллекта" />
           </article>
           <article className="partner-card">
-            <img src="/partners/asca.svg" alt="Association for Single Cell Analysis" />
+            <img src="/partners/asca.png" alt="Association for Single Cell Analysis" />
           </article>
         </div>
       </section>
@@ -135,4 +152,3 @@
 }
 
 export default Home;
-

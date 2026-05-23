@@ -1119,3 +1119,221 @@ a {
     justify-content: center;
   }
 }
+.partner-card {
+  border: 1px solid rgba(167, 139, 250, 0.24);
+  border-radius: 16px;
+  background: rgba(8, 13, 30, 0.72);
+  padding: 14px;
+  min-height: 190px;
+  display: grid;
+  place-items: center;
+}
+
+.partner-card img {
+  width: 100%;
+  max-width: 360px;
+  height: 130px;
+  object-fit: contain;
+  background: #f4f6fb;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* Interactive portal icon */
+.logo-square {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(12, 20, 42, 0.88), rgba(7, 12, 28, 0.95)),
+    #070d1f;
+}
+
+.logo-square::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 6px;
+  border: 1px solid rgba(167, 139, 250, 0.34);
+  opacity: 0.8;
+}
+
+.portal-ring,
+.portal-node,
+.portal-mesh,
+.portal-core,
+.portal-universe {
+  position: absolute;
+}
+
+.portal-ring {
+  border: 1px solid rgba(167, 139, 250, 0.4);
+  border-radius: 999px;
+}
+
+.portal-ring-1 {
+  width: 36px;
+  height: 36px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 7px;
+  animation: portalBreath 4.8s ease-in-out infinite;
+}
+
+.portal-ring-2 {
+  width: 24px;
+  height: 24px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 13px;
+  border-color: rgba(56, 189, 248, 0.36);
+  animation: portalBreath 4.8s ease-in-out infinite reverse;
+}
+
+.portal-node {
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: #a78bfa;
+  box-shadow: 0 0 8px rgba(167, 139, 250, 0.8);
+}
+
+.portal-node-1 {
+  top: 15px;
+  left: 7px;
+}
+
+.portal-node-2 {
+  top: 25px;
+  right: 8px;
+  background: #38bdf8;
+}
+
+.portal-node-3 {
+  bottom: 10px;
+  left: 50%;
+  margin-left: -2px;
+}
+
+.portal-mesh {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.5), transparent);
+}
+
+.portal-mesh-1 {
+  width: 24px;
+  top: 22px;
+  left: 6px;
+  transform: rotate(-24deg);
+}
+
+.portal-mesh-2 {
+  width: 22px;
+  bottom: 15px;
+  right: 4px;
+  transform: rotate(18deg);
+}
+
+.portal-core {
+  width: 10px;
+  height: 30px;
+  border-radius: 999px;
+  left: 50%;
+  margin-left: -5px;
+  top: 12px;
+  background: linear-gradient(180deg, rgba(167, 139, 250, 0.86), rgba(56, 189, 248, 0.7));
+  box-shadow:
+    0 0 14px rgba(167, 139, 250, 0.75),
+    0 0 24px rgba(56, 189, 248, 0.35);
+  animation: corePulse 3.6s ease-in-out infinite;
+}
+
+.portal-universe {
+  inset: 7px;
+  border-radius: 6px;
+  opacity: 0;
+  transform: scaleY(0.15);
+  transform-origin: 50% 50%;
+  background:
+    radial-gradient(circle at 35% 36%, rgba(167, 139, 250, 0.45) 0 12%, transparent 38%),
+    radial-gradient(circle at 65% 63%, rgba(56, 189, 248, 0.35) 0 10%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(8, 24, 45, 0.96), rgba(2, 8, 22, 0.95));
+  box-shadow: inset 0 0 20px rgba(167, 139, 250, 0.2);
+}
+
+.logo.is-opening .portal-core {
+  animation: portalCoreOpen 0.75s ease forwards;
+}
+
+.logo.is-opening .portal-ring,
+.logo.is-opening .portal-node,
+.logo.is-opening .portal-mesh {
+  animation: portalFadeOut 0.6s ease forwards;
+}
+
+.logo.is-opening .portal-universe {
+  animation: portalReveal 0.75s ease forwards;
+}
+
+@keyframes portalBreath {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.07);
+    opacity: 1;
+  }
+}
+
+@keyframes corePulse {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.1);
+  }
+}
+
+@keyframes portalCoreOpen {
+  0% {
+    transform: scaleX(1) scaleY(1);
+    opacity: 1;
+  }
+  60% {
+    transform: scaleX(1.45) scaleY(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1.85) scaleY(1.14);
+    opacity: 0;
+  }
+}
+
+@keyframes portalFadeOut {
+  to {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes portalReveal {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.18) scaleX(0.8);
+    filter: blur(2px);
+  }
+  60% {
+    opacity: 1;
+    transform: scaleY(1.05) scaleX(1.02);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1) scaleX(1);
+  }
+}
