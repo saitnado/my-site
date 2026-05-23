@@ -1998,6 +1998,49 @@ a {
   animation: aboutBlobDriftC 20s ease-in-out infinite;
 }
 
+.about-page .about-ambient-dna {
+  position: absolute;
+  top: 64px;
+  width: 150px;
+  height: min(78%, 760px);
+  opacity: 0.34;
+  filter: drop-shadow(0 0 16px rgba(139, 92, 246, 0.2));
+  transform-origin: center;
+}
+
+.about-page .about-ambient-dna svg {
+  width: 100%;
+  height: 100%;
+}
+
+.about-page .about-ambient-dna-left {
+  left: 8px;
+  animation: aboutDnaFloatLeft 24s ease-in-out infinite;
+}
+
+.about-page .about-ambient-dna-right {
+  right: 8px;
+  transform: scaleX(-1);
+  animation: aboutDnaFloatRight 26s ease-in-out infinite;
+}
+
+.about-page .about-ambient-dna-strand {
+  fill: none;
+  stroke: rgba(167, 139, 250, 0.62);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+
+.about-page .about-ambient-dna-rung {
+  stroke: rgba(125, 211, 252, 0.34);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.about-page .about-ambient-dna-node {
+  fill: rgba(196, 181, 253, 0.82);
+}
+
 @keyframes aboutBlobDriftA {
   0%,
   100% {
@@ -2025,6 +2068,26 @@ a {
   }
   50% {
     transform: translate3d(24px, -20px, 0) scale(1.05);
+  }
+}
+
+@keyframes aboutDnaFloatLeft {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(2deg);
+  }
+}
+
+@keyframes aboutDnaFloatRight {
+  0%,
+  100% {
+    transform: scaleX(-1) translateY(0) rotate(-3deg);
+  }
+  50% {
+    transform: scaleX(-1) translateY(14px) rotate(3deg);
   }
 }
 
@@ -2130,7 +2193,7 @@ a {
 .about-page .precision-org-diagram {
   position: relative;
   margin-top: 12px;
-  min-height: 158px;
+  min-height: 170px;
 }
 
 .about-page .precision-org-node {
@@ -2148,45 +2211,31 @@ a {
 
 .about-page .precision-org-node-cell {
   left: 50%;
-  top: 6px;
+  top: 8px;
   transform: translateX(-50%);
 }
 
 .about-page .precision-org-node-tissue {
   right: 8px;
-  bottom: 18px;
+  bottom: 22px;
 }
 
 .about-page .precision-org-node-organism {
   left: 8px;
-  bottom: 18px;
+  bottom: 22px;
 }
 
-.about-page .precision-org-link {
+.about-page .precision-org-lines {
   position: absolute;
-  height: 1.5px;
-  transform-origin: left center;
-  background: linear-gradient(90deg, rgba(125, 211, 252, 0.25), rgba(167, 139, 250, 0.78));
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.about-page .precision-org-link-one {
-  width: 76px;
-  left: 58px;
-  top: 50px;
-  transform: rotate(35deg);
-}
-
-.about-page .precision-org-link-two {
-  width: 76px;
-  left: 88px;
-  top: 48px;
-  transform: rotate(145deg);
-}
-
-.about-page .precision-org-link-three {
-  width: 84px;
-  left: 62px;
-  top: 112px;
+.about-page .precision-org-lines line {
+  stroke: rgba(167, 139, 250, 0.82);
+  stroke-width: 2;
+  stroke-linecap: round;
 }
 
 .about-page .precision-grid {
@@ -2303,10 +2352,192 @@ a {
   color: #94a3b8;
 }
 
-.about-page .about-facts p {
+.about-page .about-facts-head {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.about-page .about-facts-copy p {
   margin-top: 14px;
+  max-width: 720px;
   font-size: 20px;
-  line-height: 1.52;
+  line-height: 1.55;
+}
+
+.about-page .about-facts-metrics {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.about-page .about-facts-metric {
+  min-height: 72px;
+  padding: 10px 10px 10px 14px;
+  border-left: 1px solid rgba(167, 139, 250, 0.4);
+}
+
+.about-page .about-facts-metric strong {
+  display: block;
+  font-size: 31px;
+  color: #e2e8f0;
+  line-height: 1;
+}
+
+.about-page .about-facts-metric span {
+  display: block;
+  margin-top: 6px;
+  font-size: 16px;
+  color: #b7c4de;
+}
+
+.about-page .about-facts-visual {
+  position: relative;
+  min-height: 270px;
+  border: 1px solid rgba(167, 139, 250, 0.24);
+  border-radius: 18px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 35%, rgba(167, 139, 250, 0.3), transparent 55%),
+    radial-gradient(circle at 70% 62%, rgba(99, 102, 241, 0.28), transparent 56%),
+    rgba(8, 13, 30, 0.72);
+}
+
+.about-page .about-facts-orb {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background:
+    radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.2), transparent 42%),
+    radial-gradient(circle, rgba(139, 92, 246, 0.45), rgba(30, 41, 59, 0.2));
+  box-shadow:
+    inset 0 0 28px rgba(255, 255, 255, 0.08),
+    0 0 24px rgba(139, 92, 246, 0.18);
+}
+
+.about-page .about-facts-orb-main {
+  width: 196px;
+  height: 196px;
+  right: 66px;
+  top: 40px;
+}
+
+.about-page .about-facts-orb-small-one {
+  width: 78px;
+  height: 78px;
+  right: 20px;
+  top: 24px;
+}
+
+.about-page .about-facts-orb-small-two {
+  width: 62px;
+  height: 62px;
+  left: 34px;
+  bottom: 30px;
+}
+
+.about-page .about-facts-crosshair {
+  position: absolute;
+  inset: 0;
+}
+
+.about-page .about-facts-crosshair::before,
+.about-page .about-facts-crosshair::after {
+  content: "";
+  position: absolute;
+  background: rgba(148, 163, 184, 0.24);
+}
+
+.about-page .about-facts-crosshair::before {
+  width: 1px;
+  height: 100%;
+  left: 64%;
+  top: 0;
+}
+
+.about-page .about-facts-crosshair::after {
+  width: 100%;
+  height: 1px;
+  top: 56%;
+  left: 0;
+}
+
+.about-page .about-facts-feature-grid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  border: 1px solid rgba(167, 139, 250, 0.24);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.about-page .about-facts-feature-card {
+  min-height: 246px;
+  padding: 18px 18px 16px;
+  border-right: 1px solid rgba(167, 139, 250, 0.18);
+  background:
+    radial-gradient(circle at 10% 12%, rgba(139, 92, 246, 0.14), transparent 40%),
+    rgba(8, 13, 30, 0.72);
+}
+
+.about-page .about-facts-feature-card:last-child {
+  border-right: 0;
+}
+
+.about-page .about-facts-feature-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.about-page .about-facts-feature-icon {
+  width: 62px;
+  height: 62px;
+  border-radius: 10px;
+  border: 1px solid rgba(167, 139, 250, 0.28);
+  background: rgba(8, 13, 30, 0.7);
+  display: grid;
+  place-items: center;
+}
+
+.about-page .about-facts-feature-icon svg {
+  width: 42px;
+  height: 42px;
+}
+
+.about-page .facts-svg-stroke {
+  fill: none;
+  stroke: rgba(216, 180, 254, 0.95);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.about-page .facts-svg-dot {
+  fill: rgba(125, 211, 252, 0.95);
+}
+
+.about-page .about-facts-feature-index {
+  font-size: 30px;
+  line-height: 1;
+  color: rgba(148, 163, 184, 0.58);
+}
+
+.about-page .about-facts-feature-card h3 {
+  margin: 14px 0 0;
+  font-size: clamp(24px, 2vw, 40px);
+  line-height: 1.2;
+  color: #e2e8f0;
+}
+
+.about-page .about-facts-feature-card p {
+  margin: 10px 0 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #b6c2dc;
 }
 
 .about-page .about-pill-grid {
@@ -2338,6 +2569,36 @@ a {
 
 .about-page .audience-grid .about-card {
   padding: 20px;
+}
+
+.about-page .audience-grid .audience-icon {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(168, 85, 247, 0.18), transparent 60%),
+    rgba(8, 13, 30, 0.68);
+  display: grid;
+  place-items: center;
+}
+
+.about-page .audience-grid .audience-icon svg {
+  width: 38px;
+  height: 38px;
+}
+
+.about-page .audience-grid .audience-svg-stroke {
+  fill: none;
+  stroke: rgba(216, 180, 254, 0.95);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.about-page .audience-grid .audience-svg-dot {
+  fill: rgba(125, 211, 252, 0.95);
 }
 
 .about-page .audience-grid .about-card h3 {
@@ -2514,6 +2775,31 @@ a {
 }
 
 @media (max-width: 1080px) {
+  .about-page .about-facts-head {
+    grid-template-columns: 1fr;
+  }
+
+  .about-page .about-facts-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-page .about-facts-feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-page .about-facts-feature-card {
+    border-right: 1px solid rgba(167, 139, 250, 0.18);
+    border-bottom: 1px solid rgba(167, 139, 250, 0.18);
+  }
+
+  .about-page .about-facts-feature-card:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .about-page .about-facts-feature-card:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+
   .about-page .precision-layout {
     grid-template-columns: 1fr;
   }
@@ -2564,6 +2850,37 @@ a {
   .about-page .about-ambient-blob {
     filter: blur(26px);
     opacity: 0.35;
+  }
+
+  .about-page .about-ambient-dna {
+    width: 118px;
+    opacity: 0.24;
+  }
+
+  .about-page .about-facts-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .about-page .about-facts-metric {
+    min-height: auto;
+  }
+
+  .about-page .about-facts-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-page .about-facts-feature-card {
+    min-height: 220px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(167, 139, 250, 0.18);
+  }
+
+  .about-page .about-facts-feature-card:last-child {
+    border-bottom: 0;
+  }
+
+  .about-page .about-facts-visual {
+    min-height: 210px;
   }
 
   .about-page .precision-grid,
