@@ -5,20 +5,20 @@ function Header() {
     <header className="header">
       <Link to="/" className="logo">
         <div className="logo-square"></div>
-        <span>(РїРѕС‚РѕРј РїСЂРёРґСѓРјР°С‚СЊ РґРёР·Р°Р№РЅ РЅР°Р·РІР°РЅРёРµ)</span>
+        <span>(потом придумать дизайн и название)</span>
       </Link>
 
       <nav className="nav">
-        <Link to="/news">РќРѕРІРѕСЃС‚Рё</Link>
-        <Link to="/venue">РњРµСЃС‚Рѕ РїСЂРѕРІРµРґРµРЅРёСЏ</Link>
-        <Link to="/organizers">РћСЂРіР°РЅРёР·Р°С‚РѕСЂС‹</Link>
-        <Link to="/about">Рћ С…Р°РєР°С‚РѕРЅРµ</Link>
+        <Link to="/news">Новости</Link>
+        <Link to="/venue">Место проведения</Link>
+        <Link to="/organizers">Организаторы</Link>
+        <Link to="/about">О хакатоне</Link>
         <Link to="/projects">Проекты</Link>
         <Link to="/terms">Условия проведения</Link>
       </nav>
 
       <a className="telegram" href="#" aria-label="Telegram">
-        вњ€
+        ✈
       </a>
     </header>
   );

@@ -1,4 +1,4 @@
-function Organizers() {
+﻿function Organizers() {
   return (
     <section className="page">
       <h1>Организаторы</h1>

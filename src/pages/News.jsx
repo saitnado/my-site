@@ -1,4 +1,4 @@
-function News() {
+﻿function News() {
   return (
     <section className="page">
       <h1>Новости</h1>

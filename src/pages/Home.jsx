@@ -1,4 +1,4 @@
-function Home() {
+﻿function Home() {
   return (
     <section className="hero">
       <h1>Главная страница</h1>

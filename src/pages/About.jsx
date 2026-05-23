@@ -1,4 +1,4 @@
-function About() {
+﻿function About() {
   return (
     <section className="page">
       <h1>О хакатоне</h1>

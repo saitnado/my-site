@@ -1,9 +1,9 @@
-function Courses() {
+﻿function Courses() {
   return (
     <main className="page">
       <h1>Курсы</h1>
     </main>
-  )
+  );
 }
 
-export default Courses
+export default Courses;
