@@ -2,25 +2,25 @@ import { useEffect, useRef } from "react";
 
 const precisionStages = [
   {
-    title: "Health",
+    title: "Здоровье",
     icon: "cells",
     level: "Гомогенная популяция клеток",
     application: "Профилактические меры",
   },
   {
-    title: "Disease",
+    title: "Заболевание",
     icon: "disease",
     level: "Идентичность и состояние клетки",
     application: "Раннее выявление и стратификация пациентов",
   },
   {
-    title: "Disease Progression",
+    title: "Прогрессирование",
     icon: "organs",
     level: "Тканевой уровень",
     application: "Мониторинг и прогноз",
   },
   {
-    title: "Personalized Treatments",
+    title: "Персонализированное лечение",
     icon: "patients",
     level: "Системный уровень",
     application: "Терапия следующего поколения",
@@ -192,10 +192,12 @@ function AudienceIllustration({ type }) {
   if (type === "bio") {
     return (
       <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
-        <path className="audience-svg-stroke" d="M22 14 C36 16,48 28,44 42 C40 54,26 52,18 44 C10 36,10 20,22 14 Z" />
-        <path className="audience-svg-stroke" d="M20 24 C28 28,34 34,38 42" />
-        <circle className="audience-svg-dot" cx="22" cy="30" r="2.8" />
-        <circle className="audience-svg-dot" cx="29" cy="36" r="2.8" />
+        <path className="audience-svg-stroke" d="M22 12 L34 24" />
+        <rect className="audience-svg-stroke" x="30" y="20" width="8" height="22" rx="2" />
+        <path className="audience-svg-stroke" d="M24 50 H42" />
+        <path className="audience-svg-stroke" d="M29 46 H37" />
+        <circle className="audience-svg-dot" cx="23" cy="31" r="7" />
+        <circle className="audience-svg-dot" cx="23" cy="31" r="3.2" />
       </svg>
     );
   }
@@ -397,12 +399,41 @@ function About() {
               ))}
             </div>
           </div>
-          <div className="about-facts-visual" aria-hidden="true">
-            <span className="about-facts-orb about-facts-orb-main" />
-            <span className="about-facts-orb about-facts-orb-small-one" />
-            <span className="about-facts-orb about-facts-orb-small-two" />
-            <span className="about-facts-crosshair" />
-          </div>
+          <section className="about-facts-visual cell-visual" aria-hidden="true">
+            <div className="cell-cluster">
+              <span className="cell cell-1" />
+              <span className="cell cell-2" />
+              <span className="cell cell-3" />
+              <span className="cell cell-4" />
+              <span className="cell cell-5" />
+              <span className="cell cell-6" />
+            </div>
+
+            <div className="hud-corner top-left" />
+            <div className="hud-corner top-right" />
+
+            <div className="hud-cross horizontal" />
+            <div className="hud-cross vertical" />
+
+            <div className="hud-text">
+              SINGLE-CELL VIEW
+              <br />
+              RESOLUTION 0.8μm
+              <br />
+              CH 1 / 2 / 3
+            </div>
+
+            <div className="magnifier">
+              <div className="magnifier-inner" />
+            </div>
+
+            <div className="scale">
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+          </section>
         </div>
 
         <div className="about-facts-feature-grid">
@@ -423,8 +454,37 @@ function About() {
         </div>
       </section>
 
+      <section className="about-section schedule-block scroll-reveal">
+        <h2>Расписание</h2>
+        <p className="schedule-goal">
+          <strong>Цель хакатона:</strong> разработка подходов прецизионной медицины с
+          использованием single-cell omics и искусственного интеллекта.
+        </p>
+
+        <div className="schedule-days">
+          {scheduleDays.map((day, index) => (
+            <article key={day.day} className="schedule-day-card">
+              <span className="schedule-index">{index + 1}</span>
+              <p className="schedule-day-label">{day.day}</p>
+              <h3 className="schedule-day-title">{day.title}</h3>
+              <p className="schedule-day-text">{day.text}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="schedule-members">
+          <p>
+            <strong>Участники:</strong>
+          </p>
+          <ul>
+            <li>Студенты, аспиранты и сотрудники научных и образовательных учреждений.</li>
+            <li>7 команд по 5 человек, всего 35 участников.</li>
+          </ul>
+        </div>
+      </section>
+
       <section className="about-section precision-map scroll-reveal">
-        <h2>Карта Precision Medicine</h2>
+        <h2>Карта прецизионной медицины</h2>
         <p className="precision-caption">
           Схема показывает путь от анализа отдельных клеток к персонализированным
           стратегиям лечения.
@@ -432,7 +492,7 @@ function About() {
 
         <div className="precision-layout">
           <aside className="precision-organization" aria-label="Уровни организации">
-            <p className="precision-organization-title">Level of organization</p>
+            <p className="precision-organization-title">Уровень организации</p>
             <div className="precision-org-diagram">
               <svg
                 className="precision-org-lines"
@@ -444,9 +504,9 @@ function About() {
                 <line x1="100" y1="38" x2="154" y2="104" />
                 <line x1="46" y1="104" x2="154" y2="104" />
               </svg>
-              <span className="precision-org-node precision-org-node-cell">Cell</span>
-              <span className="precision-org-node precision-org-node-tissue">Tissue</span>
-              <span className="precision-org-node precision-org-node-organism">Organism</span>
+              <span className="precision-org-node precision-org-node-cell">Клетка</span>
+              <span className="precision-org-node precision-org-node-tissue">Ткань</span>
+              <span className="precision-org-node precision-org-node-organism">Организм</span>
             </div>
           </aside>
 
@@ -497,36 +557,6 @@ function About() {
           </div>
         </div>
       </section>
-
-      <section className="about-section schedule-block scroll-reveal">
-        <h2>Расписание</h2>
-        <p className="schedule-goal">
-          <strong>Цель хакатона:</strong> разработка подходов прецизионной медицины с
-          использованием single-cell omics и искусственного интеллекта.
-        </p>
-
-        <div className="schedule-days">
-          {scheduleDays.map((day, index) => (
-            <article key={day.day} className="schedule-day-card">
-              <span className="schedule-index">{index + 1}</span>
-              <p className="schedule-day-label">{day.day}</p>
-              <h3 className="schedule-day-title">{day.title}</h3>
-              <p className="schedule-day-text">{day.text}</p>
-            </article>
-          ))}
-        </div>
-
-        <div className="schedule-members">
-          <p>
-            <strong>Участники:</strong>
-          </p>
-          <ul>
-            <li>Студенты, аспиранты и сотрудники научных и образовательных учреждений.</li>
-            <li>7 команд по 5 человек, всего 35 участников.</li>
-          </ul>
-        </div>
-      </section>
-
       <section className="about-section benefits-section scroll-reveal">
         <h2>Что ждёт участников</h2>
         <div className="about-pill-grid benefits-grid">

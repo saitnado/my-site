@@ -1952,60 +1952,62 @@ a {
   overflow: hidden;
 }
 
-.about-page > * {
+.about-page > :not(.about-ambient) {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .about-page .about-ambient {
-  position: absolute;
-  inset: -120px -140px -220px -140px;
-  z-index: 0;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
   pointer-events: none;
 }
 
 .about-page .about-ambient-blob {
   position: absolute;
   border-radius: 999px;
-  filter: blur(34px);
-  opacity: 0.5;
+  filter: blur(46px);
+  opacity: 0.34;
 }
 
 .about-page .about-ambient-blob-one {
-  width: 460px;
-  height: 460px;
-  top: 8%;
-  left: -120px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.28), transparent 68%);
+  width: 520px;
+  height: 520px;
+  top: 16%;
+  left: -180px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.26), transparent 72%);
   animation: aboutBlobDriftA 18s ease-in-out infinite;
 }
 
 .about-page .about-ambient-blob-two {
-  width: 520px;
-  height: 520px;
-  right: -170px;
-  top: 26%;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.34), transparent 70%);
+  width: 620px;
+  height: 620px;
+  right: -220px;
+  top: 32%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.3), transparent 72%);
   animation: aboutBlobDriftB 22s ease-in-out infinite;
 }
 
 .about-page .about-ambient-blob-three {
-  width: 430px;
-  height: 430px;
-  left: 28%;
-  bottom: 6%;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.2), transparent 72%);
+  width: 560px;
+  height: 560px;
+  left: 34%;
+  bottom: -140px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.24), transparent 74%);
   animation: aboutBlobDriftC 20s ease-in-out infinite;
 }
 
 .about-page .about-ambient-dna {
-  position: absolute;
-  top: 64px;
-  width: 150px;
-  height: min(78%, 760px);
-  opacity: 0.34;
-  filter: drop-shadow(0 0 16px rgba(139, 92, 246, 0.2));
+  position: fixed;
+  top: 118px;
+  bottom: 36px;
+  width: 164px;
+  opacity: 0.46;
+  filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.34));
+  mix-blend-mode: screen;
   transform-origin: center;
+  z-index: 1;
 }
 
 .about-page .about-ambient-dna svg {
@@ -2014,31 +2016,31 @@ a {
 }
 
 .about-page .about-ambient-dna-left {
-  left: 8px;
+  left: 2px;
   animation: aboutDnaFloatLeft 24s ease-in-out infinite;
 }
 
 .about-page .about-ambient-dna-right {
-  right: 8px;
+  right: 2px;
   transform: scaleX(-1);
   animation: aboutDnaFloatRight 26s ease-in-out infinite;
 }
 
 .about-page .about-ambient-dna-strand {
   fill: none;
-  stroke: rgba(167, 139, 250, 0.62);
-  stroke-width: 2.2;
+  stroke: rgba(196, 181, 253, 0.7);
+  stroke-width: 2.4;
   stroke-linecap: round;
 }
 
 .about-page .about-ambient-dna-rung {
-  stroke: rgba(125, 211, 252, 0.34);
+  stroke: rgba(125, 211, 252, 0.44);
   stroke-width: 1.5;
   stroke-linecap: round;
 }
 
 .about-page .about-ambient-dna-node {
-  fill: rgba(196, 181, 253, 0.82);
+  fill: rgba(216, 180, 254, 0.88);
 }
 
 @keyframes aboutBlobDriftA {
@@ -2088,6 +2090,38 @@ a {
   }
   50% {
     transform: scaleX(-1) translateY(14px) rotate(3deg);
+  }
+}
+
+@keyframes aboutCellClusterFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(14px, -10px, 0) scale(1.025);
+  }
+}
+
+@keyframes aboutCellPulse {
+  0%,
+  100% {
+    opacity: 0.82;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.035);
+  }
+}
+
+@keyframes aboutCellScanMove {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-24px, 12px);
   }
 }
 
@@ -2258,6 +2292,9 @@ a {
 .about-page .precision-stage {
   position: relative;
   z-index: 1;
+  display: grid;
+  grid-template-rows: 72px 84px 46px 54px 1fr;
+  align-items: start;
   padding: 18px 14px 16px;
   border-radius: 16px;
   border: 1px solid rgba(167, 139, 250, 0.28);
@@ -2267,9 +2304,14 @@ a {
 
 .about-page .precision-stage-title {
   margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
+  line-height: 1.2;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  font-size: 14px;
+  font-size: 13px;
   color: #f1f5f9;
 }
 
@@ -2329,7 +2371,7 @@ a {
 .about-page .precision-node {
   width: 46px;
   height: 46px;
-  margin: 12px auto 12px;
+  margin: 0 auto;
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -2341,13 +2383,13 @@ a {
 }
 
 .about-page .precision-stage-level {
-  margin: 0;
+  margin: 10px 0 0;
   font-size: 16px;
   color: #dbe3f4;
 }
 
 .about-page .precision-stage-application {
-  margin: 12px 0 0;
+  margin: 8px 0 0;
   font-size: 15px;
   color: #94a3b8;
 }
@@ -2369,7 +2411,7 @@ a {
 .about-page .about-facts-metrics {
   margin-top: 18px;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(110px, 1fr));
   gap: 10px;
 }
 
@@ -2381,15 +2423,15 @@ a {
 
 .about-page .about-facts-metric strong {
   display: block;
-  font-size: 31px;
+  font-size: clamp(24px, 2.3vw, 34px);
   color: #e2e8f0;
-  line-height: 1;
+  line-height: 1.08;
 }
 
 .about-page .about-facts-metric span {
   display: block;
   margin-top: 6px;
-  font-size: 16px;
+  font-size: 14px;
   color: #b7c4de;
 }
 
@@ -2400,68 +2442,155 @@ a {
   border-radius: 18px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 30% 35%, rgba(167, 139, 250, 0.3), transparent 55%),
-    radial-gradient(circle at 70% 62%, rgba(99, 102, 241, 0.28), transparent 56%),
-    rgba(8, 13, 30, 0.72);
+    radial-gradient(circle at 35% 45%, rgba(124, 58, 237, 0.18), transparent 35%),
+    radial-gradient(circle at 70% 55%, rgba(59, 130, 246, 0.12), transparent 30%),
+    #050816;
 }
 
-.about-page .about-facts-orb {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(148, 163, 184, 0.22);
-  background:
-    radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.2), transparent 42%),
-    radial-gradient(circle, rgba(139, 92, 246, 0.45), rgba(30, 41, 59, 0.2));
-  box-shadow:
-    inset 0 0 28px rgba(255, 255, 255, 0.08),
-    0 0 24px rgba(139, 92, 246, 0.18);
-}
-
-.about-page .about-facts-orb-main {
-  width: 196px;
-  height: 196px;
-  right: 66px;
-  top: 40px;
-}
-
-.about-page .about-facts-orb-small-one {
-  width: 78px;
-  height: 78px;
-  right: 20px;
-  top: 24px;
-}
-
-.about-page .about-facts-orb-small-two {
-  width: 62px;
-  height: 62px;
-  left: 34px;
-  bottom: 30px;
-}
-
-.about-page .about-facts-crosshair {
-  position: absolute;
-  inset: 0;
-}
-
-.about-page .about-facts-crosshair::before,
-.about-page .about-facts-crosshair::after {
+.about-page .about-facts-visual::before {
   content: "";
   position: absolute;
-  background: rgba(148, 163, 184, 0.24);
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 12% 22%, rgba(148, 163, 184, 0.35) 0 1px, transparent 1px),
+    radial-gradient(circle at 82% 68%, rgba(148, 163, 184, 0.22) 0 1px, transparent 1px);
+  background-size: 48px 48px, 62px 62px;
+  opacity: 0.22;
 }
 
-.about-page .about-facts-crosshair::before {
-  width: 1px;
-  height: 100%;
-  left: 64%;
-  top: 0;
+.about-page .cell-cluster {
+  position: absolute;
+  inset: 0;
+  animation: aboutCellClusterFloat 9s ease-in-out infinite;
 }
 
-.about-page .about-facts-crosshair::after {
-  width: 100%;
+.about-page .cell-visual .cell {
+  position: absolute;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.45), transparent 10%),
+    radial-gradient(circle, rgba(168, 85, 247, 0.8), rgba(59, 130, 246, 0.25) 45%, rgba(15, 23, 42, 0.05) 75%);
+  box-shadow:
+    0 0 35px rgba(168, 85, 247, 0.45),
+    inset 0 0 32px rgba(255, 255, 255, 0.08);
+  filter: blur(0.2px);
+  animation: aboutCellPulse 4s ease-in-out infinite;
+}
+
+.about-page .cell-visual .cell::before,
+.about-page .cell-visual .cell::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(196, 181, 253, 0.7);
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.8);
+}
+
+.about-page .cell-visual .cell::before {
+  width: 16%;
+  height: 16%;
+  left: 32%;
+  top: 28%;
+}
+
+.about-page .cell-visual .cell::after {
+  width: 10%;
+  height: 10%;
+  right: 28%;
+  bottom: 30%;
+}
+
+.about-page .cell-visual .cell-1 { width: 150px; height: 150px; left: 22%; top: 22%; }
+.about-page .cell-visual .cell-2 { width: 120px; height: 120px; left: 40%; top: 14%; animation-delay: .4s; }
+.about-page .cell-visual .cell-3 { width: 170px; height: 170px; left: 43%; top: 38%; animation-delay: .8s; }
+.about-page .cell-visual .cell-4 { width: 110px; height: 110px; left: 18%; top: 48%; animation-delay: 1.2s; }
+.about-page .cell-visual .cell-5 { width: 95px; height: 95px; left: 58%; top: 26%; animation-delay: 1.6s; }
+.about-page .cell-visual .cell-6 { width: 70px; height: 70px; left: 33%; top: 55%; animation-delay: 2s; }
+
+.about-page .cell-visual .hud-cross {
+  position: absolute;
+  background: rgba(226, 232, 240, 0.38);
+}
+
+.about-page .cell-visual .hud-cross.horizontal {
+  width: 68%;
   height: 1px;
+  left: 16%;
   top: 56%;
-  left: 0;
+}
+
+.about-page .cell-visual .hud-cross.vertical {
+  width: 1px;
+  height: 72%;
+  left: 62%;
+  top: 14%;
+}
+
+.about-page .cell-visual .magnifier {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  right: 15%;
+  top: 34%;
+  border: 1px solid rgba(226, 232, 240, 0.65);
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(2px);
+  animation: aboutCellScanMove 7s ease-in-out infinite;
+}
+
+.about-page .cell-visual .magnifier-inner {
+  position: absolute;
+  inset: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.25), transparent 60%);
+}
+
+.about-page .cell-visual .hud-text {
+  position: absolute;
+  right: 13%;
+  top: 22%;
+  color: rgba(203, 213, 225, 0.58);
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: 0.14em;
+}
+
+.about-page .cell-visual .hud-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: rgba(226, 232, 240, 0.75);
+}
+
+.about-page .cell-visual .top-left {
+  left: 6%;
+  top: 8%;
+  border-left: 2px solid;
+  border-top: 2px solid;
+}
+
+.about-page .cell-visual .top-right {
+  right: 6%;
+  top: 8%;
+  border-right: 2px solid;
+  border-top: 2px solid;
+}
+
+.about-page .cell-visual .scale {
+  position: absolute;
+  right: 7%;
+  top: 43%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.about-page .cell-visual .scale span {
+  width: 6px;
+  height: 6px;
+  background: #8b5cf6;
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.8);
 }
 
 .about-page .about-facts-feature-grid {
@@ -2528,7 +2657,7 @@ a {
 
 .about-page .about-facts-feature-card h3 {
   margin: 14px 0 0;
-  font-size: clamp(24px, 2vw, 40px);
+  font-size: clamp(22px, 1.8vw, 32px);
   line-height: 1.2;
   color: #e2e8f0;
 }
@@ -2775,6 +2904,24 @@ a {
 }
 
 @media (max-width: 1080px) {
+  .about-page .about-facts-visual {
+    min-height: 240px;
+  }
+
+  .about-page .cell-visual .cell-1 { width: 128px; height: 128px; left: 20%; top: 20%; }
+  .about-page .cell-visual .cell-2 { width: 106px; height: 106px; left: 39%; top: 12%; }
+  .about-page .cell-visual .cell-3 { width: 144px; height: 144px; left: 45%; top: 36%; }
+  .about-page .cell-visual .cell-4 { width: 96px; height: 96px; left: 16%; top: 48%; }
+  .about-page .cell-visual .cell-5 { width: 82px; height: 82px; left: 60%; top: 24%; }
+  .about-page .cell-visual .cell-6 { width: 62px; height: 62px; left: 33%; top: 54%; }
+
+  .about-page .cell-visual .magnifier {
+    width: 156px;
+    height: 156px;
+    right: 12%;
+    top: 34%;
+  }
+
   .about-page .about-facts-head {
     grid-template-columns: 1fr;
   }
@@ -2844,7 +2991,7 @@ a {
   }
 
   .about-page .about-ambient {
-    inset: -80px -120px -120px -120px;
+    inset: 0;
   }
 
   .about-page .about-ambient-blob {
@@ -2853,8 +3000,8 @@ a {
   }
 
   .about-page .about-ambient-dna {
-    width: 118px;
-    opacity: 0.24;
+    width: 112px;
+    opacity: 0.28;
   }
 
   .about-page .about-facts-metrics {
@@ -2881,6 +3028,34 @@ a {
 
   .about-page .about-facts-visual {
     min-height: 210px;
+  }
+
+  .about-page .cell-visual .hud-text,
+  .about-page .cell-visual .scale,
+  .about-page .cell-visual .top-right {
+    display: none;
+  }
+
+  .about-page .cell-visual .magnifier {
+    width: 128px;
+    height: 128px;
+    right: 12%;
+    top: 38%;
+  }
+
+  .about-page .cell-visual .cell-1 { width: 104px; height: 104px; left: 22%; top: 24%; }
+  .about-page .cell-visual .cell-2 { width: 92px; height: 92px; left: 42%; top: 15%; }
+  .about-page .cell-visual .cell-3 { width: 118px; height: 118px; left: 45%; top: 40%; }
+  .about-page .cell-visual .cell-4 { width: 82px; height: 82px; left: 16%; top: 50%; }
+  .about-page .cell-visual .cell-5 { width: 74px; height: 74px; left: 62%; top: 27%; }
+  .about-page .cell-visual .cell-6 { width: 56px; height: 56px; left: 34%; top: 56%; }
+
+  .about-page .precision-stage {
+    grid-template-rows: auto 84px 46px auto 1fr;
+  }
+
+  .about-page .precision-stage-title {
+    min-height: 0;
   }
 
   .about-page .precision-grid,

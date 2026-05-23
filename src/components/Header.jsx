@@ -73,11 +73,15 @@ function Header() {
     }, OPEN_ANIMATION_MS);
   }, [startClosing]);
 
-  const scrollToRegistration = useCallback((delayMs = 60) => {
+  const scrollToRegistration = useCallback((delayMs = 0) => {
     setTimeout(() => {
-      const el = document.querySelector("#registration");
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      const target =
+        document.querySelector("#registration .registration-card") ??
+        document.querySelector("#registration");
+
+      if (target) {
+        const top = target.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top, behavior: "smooth" });
       }
     }, delayMs);
   }, []);
@@ -93,13 +97,13 @@ function Header() {
       }
 
       if (isOnRegistration) {
-        scrollToRegistration(20);
+        scrollToRegistration(0);
         return;
       }
 
       navTimerRef.current = setTimeout(() => {
         navigate({ pathname: "/", hash: "#registration" });
-        scrollToRegistration(80);
+        scrollToRegistration(0);
         navTimerRef.current = null;
       }, NAV_DELAY_MS);
     },
@@ -109,10 +113,11 @@ function Header() {
   useEffect(() => {
     if (isOnRegistration) {
       startOpening();
+      scrollToRegistration(0);
     } else {
       startClosing();
     }
-  }, [isOnRegistration, startClosing, startOpening]);
+  }, [isOnRegistration, scrollToRegistration, startClosing, startOpening]);
 
   useEffect(() => {
     const onPortalNavigate = (event) => {
@@ -127,13 +132,13 @@ function Header() {
         }
 
         if (isOnRegistration) {
-          scrollToRegistration(20);
+          scrollToRegistration(0);
           return;
         }
 
         navTimerRef.current = setTimeout(() => {
           navigate({ pathname: "/", hash: "#registration" });
-          scrollToRegistration(80);
+          scrollToRegistration(0);
           navTimerRef.current = null;
         }, NAV_DELAY_MS);
 
