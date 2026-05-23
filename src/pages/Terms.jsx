@@ -65,7 +65,7 @@
         старт открытия, оставьте свой email в форме ниже.
       </p>
 
-      <a className="register-button" href="/registration">
+      <a className="register-button" href="/#registration">
         Перейти к форме регистрации
       </a>
     </section>
@@ -73,3 +73,4 @@
 }
 
 export default Terms;
+

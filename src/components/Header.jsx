@@ -3,9 +3,8 @@
 function Header() {
   return (
     <header className="header">
-      <Link to="/" className="logo">
+      <Link to="/" className="logo" aria-label="На главную">
         <div className="logo-square"></div>
-        <span>(потом придумать дизайн и название)</span>
       </Link>
 
       <nav className="nav">
@@ -17,8 +16,8 @@ function Header() {
         <Link to="/terms">Условия проведения</Link>
       </nav>
 
-      <a className="telegram" href="#" aria-label="Telegram">
-        ✈
+      <a className="header-cta" href="/#registration">
+        Подать заявку
       </a>
     </header>
   );
