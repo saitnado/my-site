@@ -1,27 +1,30 @@
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
 
-import Header from "./components/Header"
+import Home from "./pages/Home";
+import News from "./pages/News";
+import Venue from "./pages/Venue";
+import Organizers from "./pages/Organizers";
+import About from "./pages/About";
 
-import Home from "./pages/Home"
-import About from "./pages/About"
-import Courses from "./pages/Courses"
-import Contacts from "./pages/Contacts"
-
-import "./App.css"
+import "./App.css";
 
 function App() {
   return (
-    <>
+    <div className="app">
       <Header />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/courses" element={<Courses />} />
-        <Route path="/contacts" element={<Contacts />} />
-      </Routes>
-    </>
-  )
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/venue" element={<Venue />} />
+          <Route path="/organizers" element={<Organizers />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;

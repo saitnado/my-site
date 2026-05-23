@@ -1,24 +1,25 @@
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <header className="header">
-      <NavLink to="/" className="logo">
-        KUB Academy
-      </NavLink>
+      <Link to="/" className="logo">
+        <div className="logo-square"></div>
+        <span>(потом придумать дизайн название)</span>
+      </Link>
 
       <nav className="nav">
-        <NavLink to="/">Главная</NavLink>
-        <NavLink to="/about">О проекте</NavLink>
-        <NavLink to="/courses">Курсы</NavLink>
-        <NavLink to="/contacts">Контакты</NavLink>
+        <Link to="/news">Новости</Link>
+        <Link to="/venue">Место проведения</Link>
+        <Link to="/organizers">Организаторы</Link>
+        <Link to="/about">О хакатоне</Link>
       </nav>
 
-      <button className="headerButton">
-        Записаться
-      </button>
+      <a className="telegram" href="#" aria-label="Telegram">
+        ✈
+      </a>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;

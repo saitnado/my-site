@@ -1,10 +1,10 @@
 function Home() {
   return (
-    <main className="page">
+    <section className="hero">
       <h1>Главная страница</h1>
       <p>Тут будет hero section.</p>
-    </main>
-  )
+    </section>
+  );
 }
 
-export default Home
+export default Home;
