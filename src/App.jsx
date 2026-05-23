@@ -8,6 +8,7 @@ import Organizers from "./pages/Organizers";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Terms from "./pages/Terms";
+import Registration from "./pages/Registration";
 
 import "./App.css";
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/registration" element={<Registration />} />
         </Routes>
       </main>
     </div>
