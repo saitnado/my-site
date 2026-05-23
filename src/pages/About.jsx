@@ -3,21 +3,25 @@ import { useEffect, useRef } from "react";
 const precisionStages = [
   {
     title: "Health",
+    icon: "cells",
     level: "Гомогенная популяция клеток",
     application: "Профилактические меры",
   },
   {
     title: "Disease",
+    icon: "disease",
     level: "Идентичность и состояние клетки",
     application: "Раннее выявление и стратификация пациентов",
   },
   {
     title: "Disease Progression",
+    icon: "organs",
     level: "Тканевой уровень",
     application: "Мониторинг и прогноз",
   },
   {
     title: "Personalized Treatments",
+    icon: "patients",
     level: "Системный уровень",
     application: "Терапия следующего поколения",
   },
@@ -81,6 +85,82 @@ const participantBenefits = [
   "Новые знакомства и профессиональное сообщество",
 ];
 
+function PrecisionIllustration({ type }) {
+  if (type === "cells") {
+    return (
+      <svg viewBox="0 0 140 80" role="img" aria-hidden="true">
+        {[
+          [28, 22],
+          [54, 20],
+          [80, 22],
+          [106, 20],
+          [36, 48],
+          [62, 46],
+          [88, 48],
+        ].map(([x, y]) => (
+          <g key={`${x}-${y}`}>
+            <circle cx={x} cy={y} r="11" className="precision-svg-cell" />
+            <circle cx={x + 1.5} cy={y + 0.5} r="3.8" className="precision-svg-cell-core" />
+          </g>
+        ))}
+      </svg>
+    );
+  }
+
+  if (type === "disease") {
+    return (
+      <svg viewBox="0 0 140 80" role="img" aria-hidden="true">
+        {[
+          [30, 23],
+          [55, 20],
+          [82, 24],
+          [108, 22],
+          [38, 48],
+          [64, 46],
+          [92, 50],
+        ].map(([x, y]) => (
+          <g key={`${x}-${y}`}>
+            <circle cx={x} cy={y} r="11" className="precision-svg-cell" />
+            <circle cx={x + 1.5} cy={y + 0.5} r="3.8" className="precision-svg-cell-core" />
+          </g>
+        ))}
+        <path d="M24 56 L115 15" className="precision-svg-warning" />
+        <path d="M28 16 L110 58" className="precision-svg-warning" />
+      </svg>
+    );
+  }
+
+  if (type === "organs") {
+    return (
+      <svg viewBox="0 0 140 80" role="img" aria-hidden="true">
+        <path
+          className="precision-svg-organ"
+          d="M24 47 C20 33,32 20,49 22 C63 23,71 35,67 48 C62 62,34 61,24 47 Z"
+        />
+        <path
+          className="precision-svg-organ"
+          d="M77 26 C88 18,106 20,114 32 C120 41,114 54,102 58 C88 63,73 52,74 39 C74 33,75 29,77 26 Z"
+        />
+        <path
+          className="precision-svg-organ-alt"
+          d="M56 58 C58 50,66 46,74 49 C81 52,84 61,78 66 C70 73,55 68,56 58 Z"
+        />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 140 80" role="img" aria-hidden="true">
+      {[32, 70, 108].map((x) => (
+        <g key={x}>
+          <circle cx={x} cy="25" r="8" className="precision-svg-person" />
+          <rect x={x - 9} y="36" width="18" height="24" rx="7" className="precision-svg-person" />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
 function About() {
   const pageRef = useRef(null);
 
@@ -114,6 +194,12 @@ function About() {
 
   return (
     <section ref={pageRef} className="page about-page">
+      <div className="about-ambient" aria-hidden="true">
+        <span className="about-ambient-blob about-ambient-blob-one" />
+        <span className="about-ambient-blob about-ambient-blob-two" />
+        <span className="about-ambient-blob about-ambient-blob-three" />
+      </div>
+
       <div className="about-hero scroll-reveal">
         <div className="about-hero-bg" aria-hidden="true">
           <span className="about-hero-glow about-hero-glow-one" />
@@ -139,17 +225,35 @@ function About() {
           Схема показывает путь от анализа отдельных клеток к персонализированным
           стратегиям лечения.
         </p>
-        <div className="precision-grid">
-          {precisionStages.map((stage, index) => (
-            <article key={stage.title} className="precision-stage">
-              <p className="precision-stage-title">{stage.title}</p>
-              <div className="precision-node">
-                <span>{index + 1}</span>
-              </div>
-              <p className="precision-stage-level">{stage.level}</p>
-              <p className="precision-stage-application">{stage.application}</p>
-            </article>
-          ))}
+
+        <div className="precision-layout">
+          <aside className="precision-organization" aria-label="Уровни организации">
+            <p className="precision-organization-title">Level of organization</p>
+            <div className="precision-org-diagram">
+              <span className="precision-org-link precision-org-link-one" />
+              <span className="precision-org-link precision-org-link-two" />
+              <span className="precision-org-link precision-org-link-three" />
+              <span className="precision-org-node precision-org-node-cell">Cell</span>
+              <span className="precision-org-node precision-org-node-tissue">Tissue</span>
+              <span className="precision-org-node precision-org-node-organism">Organism</span>
+            </div>
+          </aside>
+
+          <div className="precision-grid">
+            {precisionStages.map((stage, index) => (
+              <article key={stage.title} className="precision-stage">
+                <p className="precision-stage-title">{stage.title}</p>
+                <div className={`precision-illustration precision-illustration-${stage.icon}`}>
+                  <PrecisionIllustration type={stage.icon} />
+                </div>
+                <div className="precision-node">
+                  <span>{index + 1}</span>
+                </div>
+                <p className="precision-stage-level">{stage.level}</p>
+                <p className="precision-stage-application">{stage.application}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
