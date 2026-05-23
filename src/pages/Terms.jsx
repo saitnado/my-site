@@ -1,4 +1,13 @@
-﻿function Terms() {
+function Terms() {
+  const portalNavigate = (event) => {
+    event.preventDefault();
+    window.dispatchEvent(
+      new CustomEvent("portal:navigate", {
+        detail: { target: "/", hash: "#registration" },
+      })
+    );
+  };
+
   return (
     <section className="page terms-page">
       <div className="terms-document">
@@ -71,7 +80,7 @@
 
         <div className="terms-registration">
           <div className="terms-cta-row">
-            <a className="register-button" href="/#registration">
+            <a className="register-button" href="/#registration" onClick={portalNavigate}>
               Регистрация участников
             </a>
           </div>
