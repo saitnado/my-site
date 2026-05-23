@@ -1697,26 +1697,7 @@ a {
 .terms-page {
   max-width: none;
   padding: 44px 24px 96px;
-  background:
-    linear-gradient(90deg, rgba(167, 139, 250, 0.05) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(167, 139, 250, 0.04) 1px, transparent 1px);
-  background-size: 34px 34px;
-}
-
-.terms-page::before {
-  width: 520px;
-  height: 520px;
-  top: 70px;
-  left: -180px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.18), transparent 70%);
-}
-
-.terms-page::after {
-  width: 480px;
-  height: 480px;
-  top: 320px;
-  right: -180px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.13), transparent 72%);
+  background: transparent;
 }
 
 .terms-document {
@@ -1875,17 +1856,20 @@ a {
 }
 
 .terms-registration {
-  padding-bottom: 4px;
+  max-width: 1060px;
+  margin-top: 34px;
+  padding-left: clamp(0px, 2.4vw, 32px);
 }
 
 .terms-cta-row {
-  margin-top: 24px;
+  margin-top: 0;
 }
 
 .terms-registration .register-button {
   margin-top: 0;
-  min-width: min(100%, 320px);
+  min-width: min(100%, 300px);
   border-radius: 8px;
+  text-transform: none;
 }
 
 @media (max-width: 900px) {
