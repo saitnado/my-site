@@ -2,25 +2,57 @@
 import { useEffect, useRef, useState } from "react";
 
 function Header() {
-  const [isOpening, setIsOpening] = useState(false);
-  const timerRef = useRef(null);
+  const [isPortalOpen, setIsPortalOpen] = useState(false);
+  const openTimerRef = useRef(null);
   const navigate = useNavigate();
 
+  const openPortalOnce = () => {
+    setIsPortalOpen((prev) => {
+      if (prev) return prev;
+      return true;
+    });
+  };
+
   const runPortalAndNavigate = (target, hash) => {
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
+    if (!isPortalOpen) {
+      openPortalOnce();
+
+      if (openTimerRef.current) {
+        clearTimeout(openTimerRef.current);
+      }
+
+      openTimerRef.current = setTimeout(() => {
+        if (hash) {
+          navigate({ pathname: target, hash });
+          if (hash === "#registration") {
+            setTimeout(() => {
+              const el = document.querySelector(hash);
+              if (el) {
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
+              }
+            }, 80);
+          }
+        } else {
+          navigate(target);
+        }
+      }, 2100);
+
+      return;
     }
 
-    setIsOpening(true);
-
-    timerRef.current = setTimeout(() => {
-      if (hash) {
-        navigate({ pathname: target, hash });
-      } else {
-        navigate(target);
+    if (hash) {
+      navigate({ pathname: target, hash });
+      if (hash === "#registration") {
+        setTimeout(() => {
+          const el = document.querySelector(hash);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 40);
       }
-      setIsOpening(false);
-    }, 760);
+    } else {
+      navigate(target);
+    }
   };
 
   const triggerPortalAndNavigate = (event, target, hash) => {
@@ -35,19 +67,32 @@ function Header() {
       runPortalAndNavigate(detail.target, detail.hash);
     };
 
+    const onAnyInteraction = () => {
+      openPortalOnce();
+    };
+
     window.addEventListener("portal:navigate", onPortalNavigate);
+    window.addEventListener("pointerdown", onAnyInteraction, { passive: true });
+    window.addEventListener("keydown", onAnyInteraction);
+    window.addEventListener("wheel", onAnyInteraction, { passive: true });
+    window.addEventListener("touchstart", onAnyInteraction, { passive: true });
 
     return () => {
       window.removeEventListener("portal:navigate", onPortalNavigate);
-      if (timerRef.current) {
-        clearTimeout(timerRef.current);
+      window.removeEventListener("pointerdown", onAnyInteraction);
+      window.removeEventListener("keydown", onAnyInteraction);
+      window.removeEventListener("wheel", onAnyInteraction);
+      window.removeEventListener("touchstart", onAnyInteraction);
+
+      if (openTimerRef.current) {
+        clearTimeout(openTimerRef.current);
       }
     };
-  }, []);
+  }, [isPortalOpen, navigate]);
 
   return (
     <header className="header">
-      <Link to="/" className={`logo ${isOpening ? "is-opening" : ""}`} aria-label="На главную">
+      <Link to="/" className={`logo ${isPortalOpen ? "is-open" : ""}`} aria-label="На главную">
         <span className="logo-square" aria-hidden="true">
           <span className="portal-ring portal-ring-1"></span>
           <span className="portal-ring portal-ring-2"></span>
@@ -86,3 +131,4 @@ function Header() {
 }
 
 export default Header;
+

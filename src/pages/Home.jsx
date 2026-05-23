@@ -102,11 +102,6 @@
               <textarea name="experience" rows="4" placeholder="Расскажите о себе и вашем опыте..."></textarea>
             </label>
 
-            <label>
-              Прикрепить резюме или портфолио (опционально)
-              <input type="file" name="resume" />
-            </label>
-
             <div className="registration-submit-wrap">
               <button type="submit">Отправить заявку</button>
             </div>
@@ -118,13 +113,31 @@
         <h2>Наши партнеры</h2>
         <div className="partners-grid">
           <article className="partner-card">
-            <img src="/partners/biomedhub-rudn.png" alt="НИИ молекулярной и клеточной медицины biomedhub / RUDN" />
+            <div className="partner-media">
+              <img
+                className="partner-logo partner-logo-biomedhub"
+                src="/partners/biomedhub-rudn.png"
+                alt="НИИ молекулярной и клеточной медицины biomedhub / RUDN"
+              />
+            </div>
           </article>
           <article className="partner-card">
-            <img src="/partners/rudn-ai-faculty.png" alt="РУДН Факультет искусственного интеллекта" />
+            <div className="partner-media">
+              <img
+                className="partner-logo partner-logo-rudn"
+                src="/partners/rudn-ai-faculty.png"
+                alt="РУДН Факультет искусственного интеллекта"
+              />
+            </div>
           </article>
           <article className="partner-card">
-            <img src="/partners/asca.png" alt="Association for Single Cell Analysis" />
+            <div className="partner-media">
+              <img
+                className="partner-logo partner-logo-asca"
+                src="/partners/asca.png"
+                alt="Association for Single Cell Analysis"
+              />
+            </div>
           </article>
         </div>
       </section>
@@ -152,3 +165,4 @@
 }
 
 export default Home;
+
