@@ -3,6 +3,10 @@ function Registration() {
     <section className="page">
       <h1>Форма регистрации</h1>
 
+      <p>
+        Заполните короткую форму, и мы свяжемся с вами после проверки заявки.
+      </p>
+
       <form className="registration-form">
         <label>
           Имя

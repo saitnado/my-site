@@ -39,7 +39,6 @@
               <a
                 href="/about"
                 className="home-btn home-btn-ghost"
-                onClick={(e) => portalNavigate(e, "/about")}
               >
                 Узнать больше
               </a>

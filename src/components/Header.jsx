@@ -1,98 +1,173 @@
-﻿import { Link, useNavigate } from "react-router-dom";
+﻿import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
+const OPEN_ANIMATION_MS = 1700;
+const CLOSE_ANIMATION_MS = 1500;
+const NAV_DELAY_MS = 1000;
+
 function Header() {
-  const [isPortalOpen, setIsPortalOpen] = useState(false);
+  const [portalState, setPortalState] = useState("closed");
+  const portalStateRef = useRef("closed");
+  const pendingCloseRef = useRef(false);
+
   const openTimerRef = useRef(null);
+  const closeTimerRef = useRef(null);
+  const navTimerRef = useRef(null);
+
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const openPortalOnce = () => {
-    setIsPortalOpen((prev) => {
-      if (prev) return prev;
-      return true;
-    });
-  };
+  const isOnRegistration = location.pathname === "/" && location.hash === "#registration";
 
-  const runPortalAndNavigate = (target, hash) => {
-    if (!isPortalOpen) {
-      openPortalOnce();
+  useEffect(() => {
+    portalStateRef.current = portalState;
+  }, [portalState]);
 
-      if (openTimerRef.current) {
-        clearTimeout(openTimerRef.current);
-      }
+  const startClosing = () => {
+    const state = portalStateRef.current;
 
-      openTimerRef.current = setTimeout(() => {
-        if (hash) {
-          navigate({ pathname: target, hash });
-          if (hash === "#registration") {
-            setTimeout(() => {
-              const el = document.querySelector(hash);
-              if (el) {
-                el.scrollIntoView({ behavior: "smooth", block: "start" });
-              }
-            }, 80);
-          }
-        } else {
-          navigate(target);
-        }
-      }, 2100);
-
+    if (state === "closed" || state === "closing") {
       return;
     }
 
-    if (hash) {
-      navigate({ pathname: target, hash });
-      if (hash === "#registration") {
-        setTimeout(() => {
-          const el = document.querySelector(hash);
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        }, 40);
-      }
-    } else {
-      navigate(target);
+    if (state === "opening") {
+      pendingCloseRef.current = true;
+      return;
     }
+
+    if (openTimerRef.current) {
+      clearTimeout(openTimerRef.current);
+      openTimerRef.current = null;
+    }
+
+    setPortalState("closing");
+
+    closeTimerRef.current = setTimeout(() => {
+      setPortalState("closed");
+      closeTimerRef.current = null;
+    }, CLOSE_ANIMATION_MS);
   };
 
-  const triggerPortalAndNavigate = (event, target, hash) => {
-    event.preventDefault();
-    runPortalAndNavigate(target, hash);
+  const startOpening = () => {
+    const state = portalStateRef.current;
+
+    if (state === "open" || state === "opening") {
+      return;
+    }
+
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+
+    setPortalState("opening");
+
+    openTimerRef.current = setTimeout(() => {
+      setPortalState("open");
+      openTimerRef.current = null;
+
+      if (pendingCloseRef.current) {
+        pendingCloseRef.current = false;
+        startClosing();
+      }
+    }, OPEN_ANIMATION_MS);
   };
+
+  const scrollToRegistration = (delayMs = 60) => {
+    setTimeout(() => {
+      const el = document.querySelector("#registration");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, delayMs);
+  };
+
+  const navigateToRegistration = (event) => {
+    event.preventDefault();
+    startOpening();
+
+    if (navTimerRef.current) {
+      clearTimeout(navTimerRef.current);
+      navTimerRef.current = null;
+    }
+
+    if (isOnRegistration) {
+      scrollToRegistration(20);
+      return;
+    }
+
+    navTimerRef.current = setTimeout(() => {
+      navigate({ pathname: "/", hash: "#registration" });
+      scrollToRegistration(80);
+      navTimerRef.current = null;
+    }, NAV_DELAY_MS);
+  };
+
+  useEffect(() => {
+    if (isOnRegistration) {
+      startOpening();
+    } else {
+      startClosing();
+    }
+  }, [isOnRegistration]);
 
   useEffect(() => {
     const onPortalNavigate = (event) => {
       const detail = event?.detail ?? {};
-      if (!detail.target) return;
-      runPortalAndNavigate(detail.target, detail.hash);
-    };
 
-    const onAnyInteraction = () => {
-      openPortalOnce();
+      if (detail.target === "/" && detail.hash === "#registration") {
+        startOpening();
+
+        if (navTimerRef.current) {
+          clearTimeout(navTimerRef.current);
+          navTimerRef.current = null;
+        }
+
+        if (isOnRegistration) {
+          scrollToRegistration(20);
+          return;
+        }
+
+        navTimerRef.current = setTimeout(() => {
+          navigate({ pathname: "/", hash: "#registration" });
+          scrollToRegistration(80);
+          navTimerRef.current = null;
+        }, NAV_DELAY_MS);
+
+        return;
+      }
+
+      if (!detail.target) return;
+
+      if (detail.hash) {
+        navigate({ pathname: detail.target, hash: detail.hash });
+      } else {
+        navigate(detail.target);
+      }
     };
 
     window.addEventListener("portal:navigate", onPortalNavigate);
-    window.addEventListener("pointerdown", onAnyInteraction, { passive: true });
-    window.addEventListener("keydown", onAnyInteraction);
-    window.addEventListener("wheel", onAnyInteraction, { passive: true });
-    window.addEventListener("touchstart", onAnyInteraction, { passive: true });
 
     return () => {
       window.removeEventListener("portal:navigate", onPortalNavigate);
-      window.removeEventListener("pointerdown", onAnyInteraction);
-      window.removeEventListener("keydown", onAnyInteraction);
-      window.removeEventListener("wheel", onAnyInteraction);
-      window.removeEventListener("touchstart", onAnyInteraction);
 
       if (openTimerRef.current) {
         clearTimeout(openTimerRef.current);
       }
+      if (closeTimerRef.current) {
+        clearTimeout(closeTimerRef.current);
+      }
+      if (navTimerRef.current) {
+        clearTimeout(navTimerRef.current);
+      }
     };
-  }, [isPortalOpen, navigate]);
+  }, [isOnRegistration, navigate]);
+
+  const logoClass = `logo ${portalState === "closed" ? "" : `is-${portalState}`}`.trim();
 
   return (
     <header className="header">
-      <Link to="/" className={`logo ${isPortalOpen ? "is-open" : ""}`} aria-label="На главную">
+      <Link to="/" className={logoClass} aria-label="На главную">
         <span className="logo-square" aria-hidden="true">
           <span className="portal-ring portal-ring-1"></span>
           <span className="portal-ring portal-ring-2"></span>
@@ -110,20 +185,12 @@ function Header() {
         <Link to="/news">Новости</Link>
         <Link to="/venue">Место проведения</Link>
         <Link to="/organizers">Организаторы</Link>
-        <Link to="/about" onClick={(e) => triggerPortalAndNavigate(e, "/about")}>
-          О хакатоне
-        </Link>
-        <Link to="/projects" onClick={(e) => triggerPortalAndNavigate(e, "/projects")}>
-          Проекты
-        </Link>
+        <Link to="/about">О хакатоне</Link>
+        <Link to="/projects">Проекты</Link>
         <Link to="/terms">Условия проведения</Link>
       </nav>
 
-      <a
-        className="header-cta"
-        href="/#registration"
-        onClick={(e) => triggerPortalAndNavigate(e, "/", "#registration")}
-      >
+      <a className="header-cta" href="/#registration" onClick={navigateToRegistration}>
         Подать заявку
       </a>
     </header>
@@ -131,4 +198,3 @@ function Header() {
 }
 
 export default Header;
-
