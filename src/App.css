@@ -602,6 +602,463 @@ a {
   line-height: 1.6;
 }
 
+.about-reference {
+  padding: clamp(1.75rem, 3vw, 2.65rem) clamp(1.2rem, 3vw, 2.65rem);
+  background:
+    radial-gradient(circle at 8% 16%, rgba(187, 236, 205, 0.34), transparent 24rem),
+    radial-gradient(circle at 78% 8%, rgba(235, 243, 225, 0.72), transparent 28rem),
+    #f6f8ef;
+  color: #10241d;
+  border: 0;
+}
+
+.about-reference-top {
+  display: grid;
+  grid-template-columns: minmax(24rem, 0.92fr) minmax(39rem, 1.08fr);
+  gap: clamp(1.25rem, 3vw, 3.15rem);
+  align-items: start;
+}
+
+.about-reference-copy h2 {
+  margin: 0;
+  color: #0b241b;
+  font-size: clamp(2.9rem, 4.3vw, 4.35rem);
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.about-reference-copy p {
+  max-width: 50rem;
+  margin: 1.7rem 0 0;
+  color: #68746d;
+  font-size: clamp(1.06rem, 1.35vw, 1.34rem);
+  line-height: 1.68;
+  font-weight: 500;
+}
+
+.about-reference-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.8rem, 1.3vw, 1.35rem);
+}
+
+.about-stat-card,
+.about-info-card {
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(14, 42, 31, 0.12);
+  border-radius: 0.9rem;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.58),
+    0 16px 38px rgba(9, 33, 23, 0.06);
+}
+
+.about-stat-card {
+  min-height: 14.7rem;
+  padding: 1.65rem 0.95rem 1.45rem;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  text-align: center;
+}
+
+.about-stat-card strong {
+  margin-top: 1rem;
+  color: #00602f;
+  font-size: clamp(2.8rem, 4vw, 4rem);
+  line-height: 0.95;
+  font-weight: 800;
+}
+
+.about-stat-card > span:last-child {
+  display: grid;
+  gap: 0.22rem;
+  margin-top: 0.75rem;
+  color: #26322f;
+  font-size: clamp(0.95rem, 1.05vw, 1.12rem);
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.about-stat-icon,
+.about-card-icon {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  color: #168143;
+}
+
+.about-stat-icon {
+  width: 3.9rem;
+  height: 3.9rem;
+}
+
+.about-stat-icon::before,
+.about-stat-icon::after,
+.about-card-icon::before,
+.about-card-icon::after {
+  content: "";
+  position: absolute;
+}
+
+.about-stat-icon-time {
+  border: 0.22rem solid #157d3d;
+  border-right-color: transparent;
+  border-radius: 50%;
+}
+
+.about-stat-icon-time::before {
+  width: 1rem;
+  height: 1.25rem;
+  border-right: 0.22rem solid #157d3d;
+  border-bottom: 0.22rem solid #157d3d;
+  left: 1.6rem;
+  top: 0.92rem;
+}
+
+.about-stat-icon-time::after {
+  right: 0.1rem;
+  bottom: 0.08rem;
+  width: 0.34rem;
+  height: 0.34rem;
+  border-radius: 50%;
+  background: #58b64d;
+  box-shadow: -0.78rem 0.62rem 0 #168143;
+}
+
+.about-stat-icon-team::before {
+  inset: 1.65rem 0.7rem 0.45rem;
+  border: 0.22rem solid #168143;
+  border-bottom: 0;
+  border-radius: 2rem 2rem 0 0;
+}
+
+.about-stat-icon-team::after {
+  top: 0.42rem;
+  left: 1.3rem;
+  width: 1.16rem;
+  height: 1.16rem;
+  border: 0.22rem solid #168143;
+  border-radius: 50%;
+  box-shadow:
+    -1.12rem 0.8rem 0 -0.18rem #f6fbf1,
+    -1.12rem 0.8rem 0 0 #80d95a,
+    1.12rem 0.8rem 0 -0.18rem #f6fbf1,
+    1.12rem 0.8rem 0 0 #80d95a;
+}
+
+.about-stat-icon-cap::before {
+  left: 0.65rem;
+  top: 1.05rem;
+  width: 2.75rem;
+  height: 1.65rem;
+  border: 0.22rem solid #168143;
+  transform: skewY(-18deg) rotate(4deg);
+}
+
+.about-stat-icon-cap::after {
+  left: 1.35rem;
+  top: 2.35rem;
+  width: 1.55rem;
+  height: 0.65rem;
+  border: 0.22rem solid #168143;
+  border-top: 0;
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: 1.85rem 0.28rem 0 -0.21rem #168143;
+}
+
+.about-stat-icon-compass::before {
+  inset: 0.45rem;
+  border: 0.22rem solid #99e75f;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+}
+
+.about-stat-icon-compass::after {
+  left: 1.45rem;
+  top: 1.18rem;
+  width: 1.1rem;
+  height: 1.55rem;
+  border: 0.22rem solid #168143;
+  transform: rotate(43deg);
+  clip-path: polygon(50% 0, 100% 100%, 0 78%);
+}
+
+.about-reference-grid {
+  margin-top: clamp(1.55rem, 2.3vw, 2.2rem);
+  display: grid;
+  grid-template-columns: 1.05fr 0.82fr 1.28fr;
+  gap: clamp(1rem, 1.4vw, 1.35rem);
+}
+
+.about-info-card {
+  min-height: 25.7rem;
+  padding: clamp(1.45rem, 2vw, 2rem);
+  overflow: hidden;
+}
+
+.about-card-title {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.about-card-title h3 {
+  margin: 0;
+  color: #111b19;
+  font-size: clamp(1.45rem, 2vw, 1.78rem);
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.about-card-icon {
+  flex: 0 0 auto;
+  width: 3.9rem;
+  height: 3.9rem;
+  border-radius: 50%;
+  background: #e9f7de;
+}
+
+.about-card-icon-target::before,
+.about-card-icon-target::after {
+  border-radius: 50%;
+  border: 0.22rem solid #168143;
+}
+
+.about-card-icon-target::before {
+  inset: 0.75rem;
+}
+
+.about-card-icon-target::after {
+  inset: 1.28rem;
+  box-shadow: 0 0 0 0.52rem rgba(45, 180, 75, 0.16);
+}
+
+.about-card-icon-flag::before {
+  left: 1.15rem;
+  top: 0.82rem;
+  width: 0.2rem;
+  height: 2.45rem;
+  background: #168143;
+}
+
+.about-card-icon-flag::after {
+  left: 1.35rem;
+  top: 0.85rem;
+  width: 1.55rem;
+  height: 1rem;
+  border: 0.2rem solid #168143;
+  border-left: 0;
+  transform: skewY(-10deg);
+}
+
+.about-card-icon-calendar::before {
+  inset: 0.92rem 0.85rem 0.78rem;
+  border: 0.22rem solid #168143;
+  border-radius: 0.18rem;
+  box-shadow: inset 0 0.56rem 0 rgba(28, 155, 63, 0.18);
+}
+
+.about-card-icon-calendar::after {
+  left: 1.25rem;
+  top: 1.65rem;
+  width: 0.32rem;
+  height: 0.32rem;
+  background: #168143;
+  box-shadow:
+    0.72rem 0 0 #168143,
+    1.44rem 0 0 #168143,
+    0 0.64rem 0 #168143,
+    0.72rem 0.64rem 0 #168143,
+    1.44rem 0.64rem 0 #168143;
+}
+
+.about-info-card p,
+.about-info-card li {
+  color: #27302e;
+  font-size: clamp(1rem, 1.15vw, 1.17rem);
+  line-height: 1.55;
+}
+
+.about-info-card p {
+  margin: 1.55rem 0 0;
+}
+
+.about-info-card .about-bold {
+  margin-top: 1.95rem;
+  font-weight: 800;
+}
+
+.about-info-card ul {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-info-card li {
+  position: relative;
+  padding-left: 1.65rem;
+  margin-top: 0.82rem;
+}
+
+.about-info-card li::before {
+  content: "";
+  position: absolute;
+  left: 0.2rem;
+  top: 0.78rem;
+  width: 0.34rem;
+  height: 0.34rem;
+  border-radius: 50%;
+  background: #5fbd57;
+}
+
+.about-goal {
+  position: relative;
+}
+
+.about-goal p {
+  position: relative;
+  z-index: 1;
+  max-width: 29rem;
+}
+
+.about-cells {
+  position: absolute;
+  left: 27%;
+  right: 8%;
+  bottom: 1.2rem;
+  height: 11.6rem;
+  opacity: 0.92;
+}
+
+.about-cells span {
+  position: absolute;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.86), transparent 19%),
+    radial-gradient(circle at 48% 52%, rgba(39, 187, 135, 0.72), rgba(126, 224, 194, 0.18) 58%, rgba(255, 255, 255, 0.7) 61%, transparent 65%);
+  box-shadow:
+    inset 0 0 1rem rgba(255, 255, 255, 0.75),
+    0 0 1.3rem rgba(60, 183, 139, 0.28);
+}
+
+.about-cells span:nth-child(1) {
+  width: 7rem;
+  height: 7rem;
+  left: 27%;
+  top: 3.2rem;
+}
+
+.about-cells span:nth-child(2) {
+  width: 6.4rem;
+  height: 6.4rem;
+  left: 48%;
+  top: 3.6rem;
+}
+
+.about-cells span:nth-child(3) {
+  width: 4.3rem;
+  height: 4.3rem;
+  left: 14%;
+  top: 5.2rem;
+}
+
+.about-cells span:nth-child(4) {
+  width: 3.1rem;
+  height: 3.1rem;
+  left: 67%;
+  top: 0.8rem;
+  opacity: 0.48;
+}
+
+.about-cells span:nth-child(5) {
+  width: 2rem;
+  height: 2rem;
+  left: 2%;
+  top: 4.4rem;
+  opacity: 0.5;
+}
+
+.about-cells span:nth-child(6) {
+  width: 2.55rem;
+  height: 2.55rem;
+  right: 2%;
+  top: 6.4rem;
+  opacity: 0.5;
+}
+
+.about-cells span:nth-child(7) {
+  width: 1.25rem;
+  height: 1.25rem;
+  left: 8%;
+  top: 0.8rem;
+  opacity: 0.42;
+}
+
+.about-days {
+  padding-right: clamp(1.55rem, 2.5vw, 2.35rem);
+}
+
+.about-days-list {
+  position: relative;
+  display: grid;
+  gap: 1.55rem;
+  margin-top: 1.55rem;
+  padding-left: 0.35rem;
+}
+
+.about-days-list::before {
+  content: "";
+  position: absolute;
+  left: 9.5rem;
+  top: 1.85rem;
+  bottom: 2.05rem;
+  width: 0.12rem;
+  background: #a8deb0;
+}
+
+.about-day-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: 2.25rem;
+  align-items: center;
+}
+
+.about-day-row::before {
+  content: "";
+  position: absolute;
+  left: 9.15rem;
+  top: 50%;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: #39a951;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.about-day-label {
+  min-height: 3.5rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(105, 160, 96, 0.24);
+  border-radius: 0.55rem;
+  background: rgba(246, 248, 239, 0.92);
+  color: #0b6a35;
+  font-size: 1.14rem;
+  font-weight: 800;
+  box-shadow: inset 0 0 1.1rem rgba(117, 189, 100, 0.06);
+}
+
+.about-day-row p {
+  margin: 0;
+  max-width: 36rem;
+  color: #333b39;
+  font-size: clamp(0.96rem, 1vw, 1.08rem);
+  line-height: 1.48;
+}
+
 .section-head.compact {
   margin-bottom: 1.35rem;
 }
@@ -1065,6 +1522,27 @@ a {
     min-height: auto;
   }
 
+  .about-reference-top,
+  .about-reference-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-reference-stats {
+    grid-template-columns: repeat(4, minmax(8rem, 1fr));
+  }
+
+  .about-info-card {
+    min-height: auto;
+  }
+
+  .about-cells {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin-top: 0.5rem;
+  }
+
   .hero-visual {
     min-height: 22rem;
   }
@@ -1129,6 +1607,70 @@ a {
   .section-light {
     padding: 1.25rem;
     border-radius: 1rem;
+  }
+
+  .about-reference {
+    width: 100%;
+    padding: 1.4rem 1rem;
+    border-radius: 0;
+  }
+
+  .about-reference-copy h2 {
+    font-size: clamp(2.3rem, 12vw, 3.2rem);
+  }
+
+  .about-reference-copy p {
+    margin-top: 1.1rem;
+  }
+
+  .about-reference-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-stat-card {
+    min-height: 12.4rem;
+    padding: 1.2rem 0.7rem;
+  }
+
+  .about-info-card {
+    padding: 1.15rem;
+    border-radius: 0.75rem;
+  }
+
+  .about-card-title {
+    gap: 0.8rem;
+  }
+
+  .about-card-icon {
+    width: 3.3rem;
+    height: 3.3rem;
+  }
+
+  .about-days-list {
+    gap: 1rem;
+    padding-left: 0;
+  }
+
+  .about-days-list::before {
+    left: 0.45rem;
+    top: 4rem;
+    bottom: 4rem;
+  }
+
+  .about-day-row {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    padding-left: 1.6rem;
+  }
+
+  .about-day-row::before {
+    left: 0.1rem;
+    top: 1.7rem;
+  }
+
+  .about-day-label {
+    width: 8rem;
+    min-height: 3rem;
   }
 
   .hero {

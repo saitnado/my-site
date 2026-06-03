@@ -57,10 +57,29 @@ const networkNodes = [
 ];
 
 const stats = [
-  { value: "48", caption: "часов нон-стоп разработки" },
-  { value: "3-5", caption: "человек в команде" },
-  { value: "25+", caption: "экспертов и менторов" },
-  { value: "6", caption: "проектных направлений" },
+  { value: "48", caption: "часов\nнон-стоп разработки", icon: "time" },
+  { value: "3-5", caption: "человек\nв команде", icon: "team" },
+  { value: "25+", caption: "экспертов\nи менторов", icon: "cap" },
+  { value: "6", caption: "проектных\nнаправлений", icon: "compass" },
+];
+
+const hackathonDays = [
+  {
+    day: "День 1",
+    text: "открытие, две вводные лекции, приглашённый доклад, знакомство с модераторами и проектами, формирование команд, командная работа",
+  },
+  {
+    day: "День 2",
+    text: "приглашённый доклад, продолжение командной работы",
+  },
+  {
+    day: "День 3",
+    text: "приглашённый доклад, продолжение командной работы",
+  },
+  {
+    day: "День 4",
+    text: "защита проектов, определение победителей, награждение, закрытие",
+  },
 ];
 
 const lecturers = [
@@ -257,22 +276,84 @@ function App() {
           </div>
         </section>
 
-        <section id="about" className="section-light about">
-          <div className="section-head">
-            <h2>О хакатоне</h2>
-            <p>
-              BioHakaton 2026 - это интенсивные 48 часов, где участники объединяются для решения
-              задач биоинформатики, single-cell данных, искусственного интеллекта и прецизионной
-              медицины.
-            </p>
+        <section id="about" className="section-light about about-reference">
+          <div className="about-reference-top">
+            <div className="about-reference-copy">
+              <h2>О хакатоне</h2>
+              <p>
+                Омиксные технологии на уровне единичных клеток (single-cell) вместе с искусственным
+                интеллектом открывают новые возможности для изучения молекулярного ландшафта тканей
+                и органов. Хакатон объединяет специалистов для поиска инновационных решений в
+                прецизионной медицине.
+              </p>
+            </div>
+            <div className="about-reference-stats">
+              {stats.map((item) => (
+                <article key={item.value} className="about-stat-card">
+                  <span className={`about-stat-icon about-stat-icon-${item.icon}`} aria-hidden="true" />
+                  <strong>{item.value}</strong>
+                  <span>
+                    {item.caption.split("\n").map((line) => (
+                      <span key={line}>{line}</span>
+                    ))}
+                  </span>
+                </article>
+              ))}
+            </div>
           </div>
-          <div className="stats-grid">
-            {stats.map((item) => (
-              <article key={item.caption} className="stat-card">
-                <strong>{item.value}</strong>
-                <span>{item.caption}</span>
-              </article>
-            ))}
+
+          <div className="about-reference-grid">
+            <article className="about-info-card about-relevance">
+              <div className="about-card-title">
+                <span className="about-card-icon about-card-icon-target" aria-hidden="true" />
+                <h3>Актуальность</h3>
+              </div>
+              <p>
+                Омиксные технологии на уровне single-cell позволяют исследовать геном, транскриптом,
+                протеом и метаболом каждой клетки с высокой точностью.
+              </p>
+              <p className="about-bold">Применение ИИ для анализа этих данных помогает выявлять:</p>
+              <ul>
+                <li>молекулярные механизмы развития патологий;</li>
+                <li>новые подтипы заболеваний;</li>
+                <li>перспективные диагностические и терапевтические мишени.</li>
+              </ul>
+            </article>
+
+            <article className="about-info-card about-goal">
+              <div className="about-card-title">
+                <span className="about-card-icon about-card-icon-flag" aria-hidden="true" />
+                <h3>Цель</h3>
+              </div>
+              <p>
+                Объединить усилия исследователей, биоинформатиков и специалистов ИИ для создания
+                инновационных подходов в прецизионной медицине на основе данных single-cell.
+              </p>
+              <div className="about-cells" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+                <span />
+              </div>
+            </article>
+
+            <article className="about-info-card about-days">
+              <div className="about-card-title">
+                <span className="about-card-icon about-card-icon-calendar" aria-hidden="true" />
+                <h3>3. дни хакатона</h3>
+              </div>
+              <div className="about-days-list">
+                {hackathonDays.map((item) => (
+                  <div className="about-day-row" key={item.day}>
+                    <span className="about-day-label">{item.day}</span>
+                    <p>{item.text}</p>
+                  </div>
+                ))}
+              </div>
+            </article>
           </div>
         </section>
 
