@@ -31,82 +31,36 @@ const organizerPartners = [
 
 const chips = ["Биоинформатика", "Single-cell данные", "AI и ML", "Прецизионная медицина"];
 
+const dnaDots = Array.from({ length: 28 }, (_, index) => {
+  const progress = index / 27;
+  const wave = Math.sin(progress * Math.PI * 4);
+  const size = 0.55 + Math.cos(progress * Math.PI * 4) * 0.12;
+
+  return {
+    id: index,
+    top: `${5 + progress * 90}%`,
+    left: `${50 + wave * 15}%`,
+    right: `${50 - wave * 15}%`,
+    size: `${size}rem`,
+    opacity: 0.62 + Math.abs(wave) * 0.26,
+  };
+});
+
+const networkNodes = [
+  ["8%", "22%"],
+  ["15%", "70%"],
+  ["27%", "58%"],
+  ["39%", "82%"],
+  ["63%", "30%"],
+  ["78%", "73%"],
+  ["90%", "42%"],
+];
+
 const stats = [
   { value: "48", caption: "часов нон-стоп разработки" },
   { value: "3-5", caption: "человек в команде" },
   { value: "25+", caption: "экспертов и менторов" },
   { value: "6", caption: "проектных направлений" },
-];
-
-const audience = [
-  {
-    title: "Аналитики данных",
-    text: "Работайте с биомедицинскими данными и создавайте надежные модели.",
-  },
-  {
-    title: "Биоинформатики",
-    text: "Применяйте свои знания для решения реальных биомедицинских задач.",
-  },
-  {
-    title: "Студенты и исследователи",
-    text: "Получайте новый опыт, находите единомышленников и развивайте проекты.",
-  },
-  {
-    title: "Разработчики и инженеры",
-    text: "Создавайте инструменты и сервисы для медицины будущего.",
-  },
-];
-
-const tracks = [
-  {
-    id: "01",
-    title: "Анализ single-cell данных",
-    text: "Выделение типов клеток, траекторий и маркеров.",
-  },
-  {
-    id: "02",
-    title: "Биомаркеры",
-    text: "Выявление и валидация новых молекулярных маркеров.",
-  },
-  {
-    id: "03",
-    title: "Прогнозирование и модели",
-    text: "Прогнозирование ответов на терапию и исходов.",
-  },
-  {
-    id: "04",
-    title: "Диагностика и скрининг",
-    text: "Разработка алгоритмов для ранней диагностики и скрининга.",
-  },
-  {
-    id: "05",
-    title: "Мультимодальные данные",
-    text: "Интеграция геномных, транскриптомных и клинических данных.",
-  },
-  {
-    id: "06",
-    title: "Инструменты и платформы",
-    text: "Создание утилит, пайплайнов и визуализаций для биомедицины.",
-  },
-];
-
-const timeline = [
-  {
-    title: "Регистрация",
-    text: "Соберите команду и подайте заявку на участие.",
-  },
-  {
-    title: "Открытие и брифинг",
-    text: "Знакомство, представление задач и формирование команд.",
-  },
-  {
-    title: "48 часов разработки",
-    text: "Работа над проектами с поддержкой экспертов и менторов.",
-  },
-  {
-    title: "Финал и награждение",
-    text: "Презентации проектов и объявление победителей.",
-  },
 ];
 
 const lecturers = [
@@ -260,14 +214,46 @@ function App() {
           </div>
 
           <div className="hero-visual" aria-hidden="true">
-            <div className="cell cell-a" />
-            <div className="cell cell-b" />
-            <div className="cell cell-c" />
-            <div className="network-line line-a" />
-            <div className="network-line line-b" />
-            <div className="network-line line-c" />
-            <div className="dot-cluster" />
-            <div className="grid-overlay" />
+            <div className="bio-grid" />
+            <div className="bio-network">
+              {networkNodes.map(([left, top]) => (
+                <span key={`${left}-${top}`} style={{ left, top }} />
+              ))}
+            </div>
+            <div className="bio-cell bio-cell-large">
+              <span />
+            </div>
+            <div className="bio-cell bio-cell-small">
+              <span />
+            </div>
+            <div className="dna-helix">
+              {dnaDots.map((dot) => (
+                <span
+                  className="dna-dot dna-dot-a"
+                  key={`dna-a-${dot.id}`}
+                  style={{
+                    top: dot.top,
+                    left: dot.left,
+                    width: dot.size,
+                    height: dot.size,
+                    opacity: dot.opacity,
+                  }}
+                />
+              ))}
+              {dnaDots.map((dot) => (
+                <span
+                  className="dna-dot dna-dot-b"
+                  key={`dna-b-${dot.id}`}
+                  style={{
+                    top: dot.top,
+                    left: dot.right,
+                    width: dot.size,
+                    height: dot.size,
+                    opacity: dot.opacity,
+                  }}
+                />
+              ))}
+            </div>
           </div>
         </section>
 
@@ -290,79 +276,40 @@ function App() {
           </div>
         </section>
 
-        <section id="audience" className="section-light">
-          <div className="section-head compact">
-            <h2>Для кого</h2>
-          </div>
-          <div className="audience-grid">
-            {audience.map((item) => (
-              <article key={item.title} className="audience-card">
-                <div className="mini-icon" aria-hidden="true" />
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="projects" className="section-dark">
-          <div className="section-head compact on-dark">
-            <h2>Направления проектов</h2>
-          </div>
-          <div className="tracks-grid">
-            {tracks.map((item) => (
-              <article key={item.id} className="track-card">
-                <span className="track-id">{item.id}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="program" className="section-light timeline-section">
-          <div className="section-head compact">
-            <h2>Как все пройдет</h2>
-          </div>
-          <div className="timeline">
-            {timeline.map((item, index) => (
-              <article key={item.title} className="timeline-card">
-                <span>{index + 1}</span>
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <section id="organizers" className="section-dark">
           <div className="section-head compact on-dark">
             <h2>Организаторы</h2>
           </div>
-          <div className="lecturers-grid">
-            {lecturers.map((person, index) => (
-              <article key={person.name} className="lecturer-card">
-                <div className="avatar" aria-hidden="true">
-                  <span>{index + 1}</span>
-                </div>
-                <h3>{person.name}</h3>
-                <p>{person.role}</p>
-              </article>
-            ))}
+          <div className="organizer-group">
+            <h3 className="organizer-subhead">Лекторы</h3>
+            <div className="lecturers-grid">
+              {lecturers.map((person, index) => (
+                <article key={person.name} className="lecturer-card">
+                  <div className="avatar" aria-hidden="true">
+                    <span>{index + 1}</span>
+                  </div>
+                  <h3>{person.name}</h3>
+                  <p>{person.role}</p>
+                </article>
+              ))}
+            </div>
+            <p className="muted-note">Список лекторов будет дополняться.</p>
           </div>
-          <p className="muted-note">Список лекторов будет дополняться.</p>
+          <div className="organizer-group">
+            <h3 className="organizer-subhead">Менторы</h3>
+            <div className="moderators-grid">
+              {moderators.map((moderator) => (
+                <article key={moderator} className="moderator-card">
+                  {moderator}
+                </article>
+              ))}
+            </div>
+          </div>
         </section>
 
-        <section className="section-light">
-          <div className="section-head compact">
-            <h2>Менторы</h2>
-          </div>
-          <div className="moderators-grid">
-            {moderators.map((moderator) => (
-              <article key={moderator} className="moderator-card">
-                {moderator}
-              </article>
-            ))}
+        <section id="projects" className="section-dark projects-section">
+          <div className="section-head compact on-dark">
+            <h2>Проекты</h2>
           </div>
         </section>
 
@@ -425,18 +372,6 @@ function App() {
           </div>
         </section>
 
-        <section id="registration" className="section-dark cta">
-          <div>
-            <h2>Хотите участвовать?</h2>
-            <p>
-              Соберите команду и подайте заявку прямо сейчас. Количество мест ограничено.
-            </p>
-            <a className="btn btn-primary" href="#">
-              Зарегистрироваться →
-            </a>
-          </div>
-          <div className="cta-decor" aria-hidden="true" />
-        </section>
       </main>
 
       <footer id="contacts" className="site-footer section-dark">
@@ -448,6 +383,9 @@ function App() {
             <a href="#">VK</a>
             <a href="#">GitHub</a>
           </div>
+          <a id="registration" className="btn btn-primary footer-registration" href="#">
+            Зарегистрироваться →
+          </a>
         </div>
         <div className="footer-bottom">
           <span>© BioHakaton 2026</span>
