@@ -1,14 +1,32 @@
 ﻿import { useState } from "react";
+import logo from "./assets/logo.png";
 import "./App.css";
 
 const navItems = [
   { id: "about", label: "О хакатоне" },
-  { id: "audience", label: "Для кого" },
-  { id: "tracks", label: "Направления" },
-  { id: "program", label: "Программа" },
-  { id: "lecturers", label: "Лекторы" },
-  { id: "venue", label: "Место" },
-  { id: "faq", label: "FAQ" },
+  { id: "projects", label: "Проекты" },
+  { id: "terms", label: "Условия проведения" },
+  { id: "venue", label: "Место проведения" },
+  { id: "news", label: "Новости" },
+  { id: "contacts", label: "Контактная информация" },
+];
+
+const organizerPartners = [
+  {
+    name: "АСКА",
+    text: "Ассоциация специалистов по вычислительной биологии",
+    image: "/partners/asca.png",
+  },
+  {
+    name: "РУДН",
+    text: "Российский университет дружбы народов",
+    image: "/partners/biomedhub-rudn.png",
+  },
+  {
+    name: "Партнер",
+    text: "Научные технологии во благо будущего",
+    image: logo,
+  },
 ];
 
 const chips = ["Биоинформатика", "Single-cell данные", "AI и ML", "Прецизионная медицина"];
@@ -127,15 +145,10 @@ function App() {
   return (
     <div className="landing">
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="BioHakaton 2026">
-          <span className="brand-mark" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-            <span />
-          </span>
-          <span>
-            BioHakaton
+        <a className="brand" href="#top" aria-label="Хакатомикс 2026">
+          <img className="brand-logo" src={logo} alt="" />
+          <span className="brand-copy">
+            Хакатомикс
             <b>2026</b>
           </span>
         </a>
@@ -153,7 +166,58 @@ function App() {
         </button>
 
         <nav className={`menu ${menuOpen ? "is-open" : ""}`}>
-          {navItems.map((item) => (
+          <a href="#about" onClick={() => setMenuOpen(false)}>
+            О хакатоне
+          </a>
+
+          <div className="menu-item has-dropdown">
+            <a className="menu-link" href="#organizers" onClick={() => setMenuOpen(false)}>
+              Организаторы
+              <span className="dropdown-caret" aria-hidden="true" />
+            </a>
+            <div className="organizers-dropdown" aria-label="Организаторы и партнеры">
+              <div className="dropdown-roles">
+                <a href="#organizers" onClick={() => setMenuOpen(false)}>
+                  <span className="role-icon" aria-hidden="true">
+                    Л
+                  </span>
+                  <span>
+                    <strong>Лекторы</strong>
+                    <small>Ведущие эксперты в области биоинформатики и ИИ</small>
+                  </span>
+                </a>
+                <a href="#organizers" onClick={() => setMenuOpen(false)}>
+                  <span className="role-icon" aria-hidden="true">
+                    М
+                  </span>
+                  <span>
+                    <strong>Менторы</strong>
+                    <small>Практики и исследователи, готовые помочь командам</small>
+                  </span>
+                </a>
+              </div>
+
+              <div className="dropdown-partners">
+                <p>Организаторы и партнеры</p>
+                <div className="partner-menu-grid">
+                  {organizerPartners.map((partner) => (
+                    <a
+                      className="partner-menu-card"
+                      href="#organizers"
+                      key={partner.name}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      <img src={partner.image} alt="" />
+                      <strong>{partner.name}</strong>
+                      <small>{partner.text}</small>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {navItems.slice(1).map((item) => (
             <a key={item.id} href={`#${item.id}`} onClick={() => setMenuOpen(false)}>
               {item.label}
             </a>
@@ -161,7 +225,8 @@ function App() {
         </nav>
 
         <a className="btn btn-header" href="#registration">
-          Участвовать →
+          Регистрация
+          <span aria-hidden="true">→</span>
         </a>
       </header>
 
@@ -240,7 +305,7 @@ function App() {
           </div>
         </section>
 
-        <section id="tracks" className="section-dark">
+        <section id="projects" className="section-dark">
           <div className="section-head compact on-dark">
             <h2>Направления проектов</h2>
           </div>
@@ -270,9 +335,9 @@ function App() {
           </div>
         </section>
 
-        <section id="lecturers" className="section-dark">
+        <section id="organizers" className="section-dark">
           <div className="section-head compact on-dark">
-            <h2>Приглашенные лекторы</h2>
+            <h2>Организаторы</h2>
           </div>
           <div className="lecturers-grid">
             {lecturers.map((person, index) => (
@@ -290,7 +355,7 @@ function App() {
 
         <section className="section-light">
           <div className="section-head compact">
-            <h2>Модераторы</h2>
+            <h2>Менторы</h2>
           </div>
           <div className="moderators-grid">
             {moderators.map((moderator) => (
@@ -301,9 +366,9 @@ function App() {
           </div>
         </section>
 
-        <section id="faq" className="section-light terms-section">
+        <section id="terms" className="section-light terms-section">
           <div className="section-head compact">
-            <h2>Условия участия</h2>
+            <h2>Условия проведения</h2>
           </div>
           <div className="terms-grid">
             <article className="terms-card">
@@ -354,6 +419,12 @@ function App() {
           </div>
         </section>
 
+        <section id="news" className="section-light news-section">
+          <div className="section-head compact">
+            <h2>Новости</h2>
+          </div>
+        </section>
+
         <section id="registration" className="section-dark cta">
           <div>
             <h2>Хотите участвовать?</h2>
@@ -368,7 +439,7 @@ function App() {
         </section>
       </main>
 
-      <footer className="site-footer section-dark">
+      <footer id="contacts" className="site-footer section-dark">
         <div className="footer-top">
           <p className="footer-brand">BioHakaton 2026</p>
           <p>48 часов для идей, которые меняют медицину.</p>
