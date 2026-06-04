@@ -152,6 +152,30 @@ const moderators = [
     role: "PhD, Assistant Professor, Европейский университет Санкт-Петербурга / University of Helsinki",
     location: "Санкт-Петербург",
   },
+  {
+    name: "Вера Субракова",
+    image: "/partners/moderators/Vera_Subrakova.jpg",
+    role: "специалист в области биоинформатики лаборатории биологии опухолевой прогрессии НИИ онкологии Томского НИМЦ",
+    location: "Томск",
+  },
+  {
+    name: "Полина Козлова",
+    image: "/partners/moderators/Polina_Kozlova.jpg",
+    role: "специалист в области биоинформатики лаборатории биологии опухолевой прогрессии НИИ онкологии Томского НИМЦ",
+    location: "Томск",
+  },
+  {
+    name: "Кирилл Кириленко",
+    image: "/partners/moderators/Kirill_Kirilenko.jpg",
+    role: "специалист в области биоинформатики лаборатории биологии опухолевой прогрессии НИИ онкологии Томского НИМЦ",
+    location: "Томск",
+  },
+  {
+    name: "Семён Куприянов",
+    image: "/partners/moderators/Semyon_Kupriyanov.jpg",
+    role: "специалист в области биоинформатики лаборатории биологии опухолевой прогрессии НИИ онкологии Томского НИМЦ",
+    location: "Томск",
+  },
 ];
 
 const requirementCards = [
