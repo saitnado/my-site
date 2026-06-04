@@ -111,6 +111,20 @@ const lecturers = [
     location: "Санкт-Петербург",
     tags: ["Computational Biology", "PhD", "SPbU"],
   },
+  {
+    name: "Johnny Yu",
+    image: "/partners/lectors/Johnny_Yu.png",
+    role: "PhD, Chief Scientific Officer & сооснователь, Tahoe Therapeutics",
+    location: "San Francisco, USA",
+    tags: ["Precision Medicine", "Biotech", "PhD"],
+  },
+  {
+    name: "Weidi Xie",
+    image: "/partners/lectors/Weidi Xie.jpg",
+    role: "Associate Professor, Shanghai Jiao Tong University; visitor researcher, University of Oxford",
+    location: "Shanghai, China",
+    tags: ["AI Research", "Computational Biology", "Oxford"],
+  },
 ];
 
 const moderators = [
