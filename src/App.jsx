@@ -107,7 +107,7 @@ const lecturers = [
   {
     name: "Александр Яневски",
     image: "/partners/lectors/Alexander_Yanevsky.png",
-    role: "PhD, Assistant Professor, Европейский университет в Санкт-Петербурге",
+    role: "PhD, Assistant Professor, Европейский университет Санкт-Петербурга / University of Helsinki",
     location: "Санкт-Петербург",
     tags: ["Computational Biology", "PhD", "SPbU"],
   },
@@ -128,10 +128,30 @@ const lecturers = [
 ];
 
 const moderators = [
-  "Олег Кузнецов - Биоинформатик, ментор проектов",
-  "Андрей Морозов - ML-инженер, эксперт по данным",
-  "Анна Воронина - Исследователь в области геномики",
-  "Павел Чебышев - Разработчик, ментор команд",
+  {
+    name: "Александр Иконников",
+    role: "младший научный сотрудник лаборатории биологии единичных клеток НИИ молекулярной и клеточной медицины РУДН",
+    location: "Москва",
+    initials: "АИ",
+  },
+  {
+    name: "Артем Торопов",
+    image: "/partners/moderators/Artem_Tropov.jpg",
+    role: "стажёр-исследователь лаборатории биологии единичных клеток НИИ молекулярной и клеточной медицины РУДН",
+    location: "Москва",
+  },
+  {
+    name: "Павел Ямщиков",
+    image: "/partners/moderators/Pavel_Yamshchikov.png",
+    role: "специалист в области биоинформатики лаборатории биологии опухолевой прогрессии НИИ онкологии Томского НИМЦ",
+    location: "Томск",
+  },
+  {
+    name: "Александр Яневски",
+    image: "/partners/moderators/Alexander_Yanevsky.png",
+    role: "PhD, Assistant Professor, Европейский университет Санкт-Петербурга / University of Helsinki",
+    location: "Санкт-Петербург",
+  },
 ];
 
 const requirementCards = [
@@ -521,8 +541,22 @@ function App() {
             <h3 className="organizer-subhead">Менторы</h3>
             <div className="moderators-grid">
               {moderators.map((moderator) => (
-                <article key={moderator} className="moderator-card">
-                  {moderator}
+                <article key={moderator.name} className="moderator-card">
+                  {moderator.image ? (
+                    <img className="moderator-photo" src={moderator.image} alt={moderator.name} />
+                  ) : (
+                    <div className="moderator-photo-placeholder" aria-hidden="true">
+                      {moderator.initials}
+                    </div>
+                  )}
+                  <div className="moderator-copy">
+                    <h3>{moderator.name}</h3>
+                    <p>{moderator.role}</p>
+                    <span className="lecturer-location">
+                      <span className="location-pin" aria-hidden="true" />
+                      {moderator.location}
+                    </span>
+                  </div>
                 </article>
               ))}
             </div>
