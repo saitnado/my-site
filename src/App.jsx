@@ -90,6 +90,27 @@ const lecturers = [
     location: "Томск, Москва",
     tags: ["Онкология", "Single-cell", "Геномика"],
   },
+  {
+    name: "Антон Поддубский",
+    image: "/partners/lectors/Anton_Poddubsky.png",
+    role: "Кандидат технических наук, директор Факультета искусственного интеллекта РУДН",
+    location: "Москва",
+    tags: ["Искусственный интеллект", "Data Science", "Руководитель AI-направления"],
+  },
+  {
+    name: "Иван Тюкин",
+    image: "/partners/lectors/Ivan_Tyukin.png",
+    role: "Доктор технических наук, Сколковский институт науки и технологий (Сколтех), РУДН",
+    location: "Москва",
+    tags: ["Искусственный интеллект", "Data Science", "Сколтех"],
+  },
+  {
+    name: "Александр Яневски",
+    image: "/partners/lectors/Alexander_Yanevsky.png",
+    role: "PhD, Assistant Professor, Европейский университет в Санкт-Петербурге",
+    location: "Санкт-Петербург",
+    tags: ["Computational Biology", "PhD", "SPbU"],
+  },
 ];
 
 const moderators = [
