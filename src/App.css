@@ -1240,9 +1240,9 @@ a {
 
 .organizer-subhead {
   margin: 0 0 0.9rem;
-  color: var(--green-bright);
-  font-size: 1.45rem;
-  text-shadow: 0 0 14px rgba(102, 255, 143, 0.35);
+  color: #55e982;
+  font-size: 1.75rem;
+  text-shadow: none;
 }
 
 .lecturers-grid {
@@ -1300,7 +1300,7 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.42rem;
-  color: var(--green-bright);
+  color: #55e982;
   font-size: 0.84rem;
 }
 
@@ -1308,7 +1308,7 @@ a {
   position: relative;
   width: 0.8rem;
   height: 0.8rem;
-  border: 0.12rem solid var(--green-bright);
+  border: 0.12rem solid #55e982;
   border-radius: 50% 50% 50% 0;
   transform: rotate(-45deg);
 }
@@ -1321,7 +1321,7 @@ a {
   width: 0.18rem;
   height: 0.18rem;
   border-radius: 50%;
-  background: var(--green-bright);
+  background: #55e982;
   transform: translate(-50%, -50%);
 }
 
@@ -1336,8 +1336,8 @@ a {
 .lecturer-tags span {
   padding: 0.28rem 0.58rem;
   border-radius: 999px;
-  background: rgba(34, 197, 94, 0.17);
-  color: var(--green-bright);
+  background: rgba(85, 233, 130, 0.16);
+  color: #55e982;
   font-size: 0.72rem;
   line-height: 1;
   font-weight: 600;
