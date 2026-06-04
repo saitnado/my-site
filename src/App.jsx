@@ -489,14 +489,14 @@ function App() {
           </div>
         </section>
 
-        <section id="terms" className="section-dark terms-section">
+        <section id="terms" className="section-light terms-section">
           <div className="terms-orbit" aria-hidden="true" />
           <div className="terms-helix" aria-hidden="true">
             {dnaDots.slice(0, 18).map((dot) => (
               <span key={dot.id} style={{ top: dot.top, left: dot.left, right: dot.right }} />
             ))}
           </div>
-          <div className="section-head compact on-dark terms-head">
+          <div className="section-head compact terms-head">
             <h2>Условия проведения</h2>
             <p>
               Участникам предстоит работать на стыке <span>биологии</span>,{" "}
@@ -582,22 +582,64 @@ function App() {
           </div>
         </section>
 
-        <section id="venue" className="section-dark venue">
+        <section id="registration" className="section-dark registration-section">
+          <div className="registration-copy">
+            <span className="registration-icon" aria-hidden="true">
+              <TermIcon name="mail" />
+            </span>
+            <div>
+              <h2>Не пропустите старт регистрации</h2>
+              <p>
+                Оставьте email, и мы напомним, когда откроется регистрация на хакатон в июне 2026
+                года.
+              </p>
+            </div>
+          </div>
+          <form className="registration-form" onSubmit={(event) => event.preventDefault()}>
+            <label className="sr-only" htmlFor="registration-email">
+              Email
+            </label>
+            <input id="registration-email" type="email" placeholder="Ваш email" required />
+            <button type="submit">Оставить email</button>
+          </form>
+        </section>
+
+        <section id="venue" className="section-light venue">
           <div className="venue-copy">
             <h2>Место проведения</h2>
             <h3>НИИ МКМ и ФИИ РУДН</h3>
-            <p>Москва, Подольское ш., 8</p>
+            <p className="venue-address">Москва, Подольское шоссе, 8</p>
             <p>
               Современное пространство для работы, нетворкинга и презентации решений в сфере
               биомедицины и ИИ.
             </p>
           </div>
-          <div className="map-card" aria-hidden="true">
-            <div className="map-grid" />
-            <span className="map-pin" />
-            <a className="btn btn-ghost map-btn" href="#">
-              Показать на карте →
-            </a>
+          <div className="map-card">
+            <iframe
+              className="map-frame"
+              src="https://yandex.ru/map-widget/v1/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%9F%D0%BE%D0%B4%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B5%20%D1%88%D0%BE%D1%81%D1%81%D0%B5%2C%208&z=16"
+              title="Место проведения на Яндекс.Картах"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+            <div className="map-actions">
+              <a
+                className="map-btn map-btn-primary"
+                href="https://2gis.ru/moscow/search/%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%9F%D0%BE%D0%B4%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B5%20%D1%88%D0%BE%D1%81%D1%81%D0%B5%2C%208"
+                target="_blank"
+                rel="noreferrer"
+              >
+                2ГИС
+              </a>
+              <a
+                className="map-btn map-btn-primary"
+                href="https://yandex.ru/maps/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%9F%D0%BE%D0%B4%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B5%20%D1%88%D0%BE%D1%81%D1%81%D0%B5%2C%208"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Я.Карты
+              </a>
+            </div>
           </div>
         </section>
 
@@ -618,7 +660,7 @@ function App() {
             <a href="#">VK</a>
             <a href="#">GitHub</a>
           </div>
-          <a id="registration" className="btn btn-primary footer-registration" href="#">
+          <a className="btn btn-primary footer-registration" href="#registration">
             Зарегистрироваться →
           </a>
         </div>
