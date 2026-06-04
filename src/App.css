@@ -1252,7 +1252,7 @@ a {
 .organizer-subhead {
   margin: 0 0 0.9rem;
   color: var(--green-bright);
-  font-size: 1.25rem;
+  font-size: 1.45rem;
   text-shadow: 0 0 14px rgba(102, 255, 143, 0.35);
 }
 
@@ -1275,12 +1275,14 @@ a {
 
 .lecturer-photo {
   width: 100%;
-  height: 100%;
-  min-height: 16.2rem;
-  border-radius: 0.65rem;
-  object-fit: contain;
-  object-position: center;
-  background: rgba(255, 255, 255, 0.04);
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 1;
+  align-self: start;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  object-position: center top;
+  background: transparent;
 }
 
 .lecturer-copy {
@@ -1391,15 +1393,17 @@ a {
 .moderator-photo,
 .moderator-photo-placeholder {
   width: 100%;
-  height: 100%;
-  min-height: 11.4rem;
-  border-radius: 0.65rem;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 1;
+  align-self: start;
+  border-radius: 0.75rem;
 }
 
 .moderator-photo {
-  object-fit: contain;
-  object-position: center;
-  background: rgba(255, 255, 255, 0.04);
+  object-fit: cover;
+  object-position: center top;
+  background: transparent;
 }
 
 .moderator-photo-placeholder {
@@ -2286,12 +2290,17 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .lecturer-photo,
   .moderator-photo,
   .moderator-photo-placeholder {
     height: auto;
     min-height: 0;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1;
+  }
+
+  .lecturer-photo {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 1;
   }
 
   .hero {
