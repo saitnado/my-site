@@ -97,20 +97,117 @@ const moderators = [
   "Павел Чебышев - Разработчик, ментор команд",
 ];
 
-const faq = [
+const requirementCards = [
   {
-    q: "Кто может участвовать?",
-    a: "Студенты, исследователи, разработчики, аналитики и команды из 3-5 человек.",
+    icon: "python",
+    title: "Python или R",
+    text: "Уверенное чтение кода, работа с базовыми библиотеками для анализа биологических данных.",
   },
   {
-    q: "Сколько стоит участие?",
-    a: "Участие бесплатное, регистрация обязательна.",
+    icon: "database",
+    title: "Работа с базами данных",
+    text: "Умение находить записи в NCBI (Entrez), UniProt по ID; поиск датасетов в GEO, Zenodo. Знание веб-инструментов для анализа биомедицинских данных.",
   },
   {
-    q: "Нужна ли готовая идея?",
-    a: "Нет, можно прийти с идеей или выбрать задачу после брифинга.",
+    icon: "chart",
+    title: "Анализ данных",
+    text: "Опыт статистического анализа биомедицинских данных (геномных, транскриптомных, больших клинических данных).",
+  },
+  {
+    icon: "dna",
+    title: "Биологическая интерпретация",
+    text: "Умение интерпретировать результаты анализа (биологическое образование или опыт участия в биологических исследованиях).",
+  },
+  {
+    icon: "brain",
+    title: "Машинное обучение",
+    text: "Знание базовых инструментов ML.",
   },
 ];
+
+function TermIcon({ name }) {
+  switch (name) {
+    case "python":
+      return (
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M24 6h7.5a5.5 5.5 0 0 1 5.5 5.5V20H19a7 7 0 0 0-7 7v3.5" />
+          <path d="M24 42h-7.5a5.5 5.5 0 0 1-5.5-5.5V28h18a7 7 0 0 0 7-7v-3.5" />
+          <path d="M18 14h.1M30 34h.1" />
+          <path d="M18 20h18M12 30h18" />
+        </svg>
+      );
+    case "database":
+      return (
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <ellipse cx="24" cy="12" rx="13" ry="6" />
+          <path d="M11 12v24c0 3.3 5.8 6 13 6s13-2.7 13-6V12" />
+          <path d="M11 24c0 3.3 5.8 6 13 6s13-2.7 13-6" />
+          <path d="M11 18c0 3.3 5.8 6 13 6s13-2.7 13-6" />
+        </svg>
+      );
+    case "chart":
+      return (
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M9 39h31" />
+          <path d="M14 34V24" />
+          <path d="M24 34V17" />
+          <path d="M34 34V10" />
+        </svg>
+      );
+    case "dna":
+      return (
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M16 6c16 8 16 28 0 36" />
+          <path d="M32 6c-16 8-16 28 0 36" />
+          <path d="M17 14h14M15 24h18M17 34h14" />
+        </svg>
+      );
+    case "brain":
+      return (
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M20 38a8 8 0 0 1-8-8 7.5 7.5 0 0 1 2-5.1A8 8 0 0 1 22 12a7 7 0 0 1 13 3.5 7.5 7.5 0 0 1 1 14.4A8 8 0 0 1 28 38" />
+          <path d="M24 13v28M18 23h6M24 29h8M29 18v7" />
+        </svg>
+      );
+    case "star":
+      return (
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="m24 7 5 10.1 11.2 1.6-8.1 7.9 1.9 11.1-10-5.2-10 5.2 1.9-11.1-8.1-7.9L19 17.1 24 7Z" />
+        </svg>
+      );
+    case "shield":
+      return (
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M24 5 9 11v11c0 10.5 6.3 17.6 15 21 8.7-3.4 15-10.5 15-21V11L24 5Z" />
+          <path d="M24 17v11M24 34h.1" />
+        </svg>
+      );
+    case "trophy":
+      return (
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M16 8h16v10a8 8 0 0 1-16 0V8Z" />
+          <path d="M16 12H8v5a7 7 0 0 0 8 7M32 12h8v5a7 7 0 0 1-8 7" />
+          <path d="M24 26v9M17 40h14M20 35h8" />
+        </svg>
+      );
+    case "clipboard":
+      return (
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M17 10h-4a4 4 0 0 0-4 4v25a4 4 0 0 0 4 4h22a4 4 0 0 0 4-4V14a4 4 0 0 0-4-4h-4" />
+          <path d="M18 6h12v8H18V6ZM17 23h14M17 31h10" />
+        </svg>
+      );
+    case "mail":
+      return (
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M8 14h32v22H8V14Z" />
+          <path d="m9 15 15 13 15-13" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -394,37 +491,96 @@ function App() {
           </div>
         </section>
 
-        <section id="terms" className="section-light terms-section">
-          <div className="section-head compact">
+        <section id="terms" className="section-dark terms-section">
+          <div className="terms-orbit" aria-hidden="true" />
+          <div className="terms-helix" aria-hidden="true">
+            {dnaDots.slice(0, 18).map((dot) => (
+              <span key={dot.id} style={{ top: dot.top, left: dot.left, right: dot.right }} />
+            ))}
+          </div>
+          <div className="section-head compact on-dark terms-head">
             <h2>Условия проведения</h2>
+            <p>
+              Участникам предстоит работать на стыке <span>биологии</span>,{" "}
+              <span>анализа данных</span> и <span>машинного обучения</span>.
+            </p>
           </div>
+
+          <div className="terms-subhead">
+            <span className="terms-subhead-icon" aria-hidden="true">
+              <TermIcon name="clipboard" />
+            </span>
+            <h3>Требования для участников</h3>
+          </div>
+
+          <p className="terms-kicker">Обязательные компетенции:</p>
           <div className="terms-grid">
-            <article className="terms-card">
-              <h3>Что вам нужно</h3>
-              <ul>
-                <li>Уметь анализировать данные</li>
-                <li>Иметь базовые навыки программирования</li>
-                <li>Быть готовым к 48 часам интенсивной работы</li>
-                <li>Быть в команде 3-5 человек</li>
-              </ul>
-            </article>
-            <article className="terms-card">
-              <h3>Организационное</h3>
-              <ul>
-                <li>Регистрация обязательна</li>
-                <li>Участие бесплатное</li>
-                <li>Организаторы предоставляют данные и инфраструктуру</li>
-                <li>Победителей ждут призы и возможности для роста</li>
-              </ul>
-            </article>
-          </div>
-          <div className="faq-grid">
-            {faq.map((item) => (
-              <article key={item.q} className="faq-card">
-                <h3>{item.q}</h3>
-                <p>{item.a}</p>
+            {requirementCards.map((card, index) => (
+              <article className="terms-card" key={card.title}>
+                <span className="terms-icon" aria-hidden="true">
+                  <TermIcon name={card.icon} />
+                </span>
+                <h3>
+                  {index + 1}. {card.title}
+                </h3>
+                <span className="terms-card-line" aria-hidden="true" />
+                <p>{card.text}</p>
               </article>
             ))}
+
+            <article className="terms-card terms-card-accent">
+              <span className="terms-icon" aria-hidden="true">
+                <TermIcon name="star" />
+              </span>
+              <h3>Будет преимуществом:</h3>
+              <span className="terms-card-line" aria-hidden="true" />
+              <p>
+                Опыт анализа данных single-cell RNA-seq. Продвинутые знания в ML/AI: опыт
+                создания и обучения deep learning моделей (autoencoders, VAEs, transformers) для
+                работы с биологическими данными.
+              </p>
+            </article>
+          </div>
+
+          <div className="terms-alert">
+            <span className="terms-alert-icon" aria-hidden="true">
+              <TermIcon name="shield" />
+            </span>
+            <strong>ВАЖНО</strong>
+            <p>
+              Мы не ожидаем от вас экспертного уровня во всём сразу. Главное — желание разбираться
+              в задачах на стыке биологии и анализа данных.
+            </p>
+          </div>
+
+          <div className="terms-info-grid">
+            <article className="terms-info-card">
+              <span className="terms-icon" aria-hidden="true">
+                <TermIcon name="trophy" />
+              </span>
+              <h3>Информация о призах</h3>
+              <span className="terms-card-line" aria-hidden="true" />
+              <p>
+                Команды-победители будут отмечены денежными призами. Каждый участник получит
+                сертификат и памятный подарок.
+              </p>
+            </article>
+
+            <article className="terms-info-card">
+              <span className="terms-icon" aria-hidden="true">
+                <TermIcon name="clipboard" />
+              </span>
+              <h3>Регистрация</h3>
+              <span className="terms-card-line" aria-hidden="true" />
+              <p>
+                Регистрация на хакатон откроется в июне 2026 года. Чтобы не пропустить старт
+                открытия, оставьте свой email в форме ниже.
+              </p>
+              <a className="terms-email-btn" href="#registration">
+                <TermIcon name="mail" />
+                Оставить email
+              </a>
+            </article>
           </div>
         </section>
 
