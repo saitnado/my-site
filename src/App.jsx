@@ -83,11 +83,13 @@ const hackathonDays = [
 ];
 
 const lecturers = [
-  { name: "Иван Соколов", role: "Руководитель группы биоинформатики" },
-  { name: "Мария Титова", role: "Старший исследователь" },
-  { name: "Дмитрий Смирнов", role: "Data Science Lead" },
-  { name: "Екатерина Петрова", role: "Профессор биоинформатики" },
-  { name: "Роман Волков", role: "CTO платформы для анализа данных" },
+  {
+    name: "Евгений Денисов",
+    image: "/partners/lectors/Evgeny_Denisov.png",
+    role: "Доктор биологических наук, профессор РАН, заместитель директора по научной работе НИИ онкологии Томского НИМЦ, зав. лабораторией биологии опухолевой прогрессии НИИ онкологии Томского НИМЦ, зав. лабораторией биологии единичных клеток НИИ молекулярной и клеточной медицины Медицинского института РУДН",
+    location: "Томск, Москва",
+    tags: ["Онкология", "Single-cell", "Геномика"],
+  },
 ];
 
 const moderators = [
@@ -459,13 +461,22 @@ function App() {
           <div className="organizer-group">
             <h3 className="organizer-subhead">Лекторы</h3>
             <div className="lecturers-grid">
-              {lecturers.map((person, index) => (
+              {lecturers.map((person) => (
                 <article key={person.name} className="lecturer-card">
-                  <div className="avatar" aria-hidden="true">
-                    <span>{index + 1}</span>
+                  <img className="lecturer-photo" src={person.image} alt={person.name} />
+                  <div className="lecturer-copy">
+                    <h3>{person.name}</h3>
+                    <p>{person.role}</p>
+                    <span className="lecturer-location">
+                      <span className="location-pin" aria-hidden="true" />
+                      {person.location}
+                    </span>
+                    <div className="lecturer-tags">
+                      {person.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </div>
                   </div>
-                  <h3>{person.name}</h3>
-                  <p>{person.role}</p>
                 </article>
               ))}
             </div>
