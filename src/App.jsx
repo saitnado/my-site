@@ -343,7 +343,7 @@ function App() {
             <article className="about-info-card about-days">
               <div className="about-card-title">
                 <span className="about-card-icon about-card-icon-calendar" aria-hidden="true" />
-                <h3>3. дни хакатона</h3>
+                <h3>Дни хакатона</h3>
               </div>
               <div className="about-days-list">
                 {hackathonDays.map((item) => (
