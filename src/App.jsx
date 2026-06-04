@@ -25,7 +25,7 @@ const organizerPartners = [
   {
     name: "Партнер",
     text: "Научные технологии во благо будущего",
-    image: logo,
+    image: "/partners/rudn-ai-faculty.png",
   },
 ];
 
@@ -245,7 +245,7 @@ function App() {
               Организаторы
               <span className="dropdown-caret" aria-hidden="true" />
             </a>
-            <div className="organizers-dropdown" aria-label="Организаторы и партнеры">
+            <div className="organizers-dropdown" aria-label="Организаторы">
               <div className="dropdown-roles">
                 <a href="#organizers" onClick={() => setMenuOpen(false)}>
                   <span className="role-icon" aria-hidden="true">
@@ -268,7 +268,7 @@ function App() {
               </div>
 
               <div className="dropdown-partners">
-                <p>Организаторы и партнеры</p>
+                <p>Организаторы</p>
                 <div className="partner-menu-grid">
                   {organizerPartners.map((partner) => (
                     <a
@@ -278,8 +278,6 @@ function App() {
                       onClick={() => setMenuOpen(false)}
                     >
                       <img src={partner.image} alt="" />
-                      <strong>{partner.name}</strong>
-                      <small>{partner.text}</small>
                     </a>
                   ))}
                 </div>

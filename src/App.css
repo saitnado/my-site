@@ -222,10 +222,9 @@ a {
 
 .partner-menu-card {
   min-height: 12rem;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  padding: 0.65rem;
+  display: grid;
+  place-items: center;
   color: var(--white);
   border: 1px solid rgba(102, 255, 143, 0.35);
   border-radius: 0.7rem;
@@ -235,8 +234,9 @@ a {
 
 .partner-menu-card img {
   width: 100%;
-  height: 5.3rem;
-  margin-bottom: 0.9rem;
+  height: 100%;
+  max-height: 10.7rem;
+  margin: 0;
   object-fit: contain;
   filter: drop-shadow(0 0 12px rgba(102, 255, 143, 0.35));
 }
