@@ -1,5 +1,32 @@
 ﻿import { useState } from "react";
 import logo from "./assets/logo.png";
+import { useEffect, useRef } from "react";
+import {
+  IconArrowRight,
+  IconBrain,
+  IconBrandPython,
+  IconCalendarEvent,
+  IconChartBar,
+  IconChevronDown,
+  IconClipboardList,
+  IconClockHour4,
+  IconCompass,
+  IconDatabase,
+  IconDna2,
+  IconFlag,
+  IconMail,
+  IconMapPin,
+  IconMenu2,
+  IconPresentation,
+  IconSchool,
+  IconShield,
+  IconStar,
+  IconTargetArrow,
+  IconTrophy,
+  IconUsersGroup,
+  IconUserStar,
+} from "@tabler/icons-react";
+import heroGifVideo from "./assets/gif.MP4";
 import "./App.css";
 
 const navItems = [
@@ -45,16 +72,6 @@ const dnaDots = Array.from({ length: 28 }, (_, index) => {
     opacity: 0.62 + Math.abs(wave) * 0.26,
   };
 });
-
-const networkNodes = [
-  ["8%", "22%"],
-  ["15%", "70%"],
-  ["27%", "58%"],
-  ["39%", "82%"],
-  ["63%", "30%"],
-  ["78%", "73%"],
-  ["90%", "42%"],
-];
 
 const stats = [
   { value: "48", caption: "часов\nнон-стоп разработки", icon: "time" },
@@ -206,92 +223,65 @@ const requirementCards = [
   },
 ];
 
+const iconMap = {
+  brain: IconBrain,
+  calendar: IconCalendarEvent,
+  cap: IconSchool,
+  chart: IconChartBar,
+  clipboard: IconClipboardList,
+  compass: IconCompass,
+  database: IconDatabase,
+  dna: IconDna2,
+  flag: IconFlag,
+  mail: IconMail,
+  python: IconBrandPython,
+  shield: IconShield,
+  star: IconStar,
+  target: IconTargetArrow,
+  team: IconUsersGroup,
+  time: IconClockHour4,
+  trophy: IconTrophy,
+};
+
 function TermIcon({ name }) {
-  switch (name) {
-    case "python":
-      return (
-        <svg viewBox="0 0 48 48" aria-hidden="true">
-          <path d="M24 6h7.5a5.5 5.5 0 0 1 5.5 5.5V20H19a7 7 0 0 0-7 7v3.5" />
-          <path d="M24 42h-7.5a5.5 5.5 0 0 1-5.5-5.5V28h18a7 7 0 0 0 7-7v-3.5" />
-          <path d="M18 14h.1M30 34h.1" />
-          <path d="M18 20h18M12 30h18" />
-        </svg>
-      );
-    case "database":
-      return (
-        <svg viewBox="0 0 48 48" aria-hidden="true">
-          <ellipse cx="24" cy="12" rx="13" ry="6" />
-          <path d="M11 12v24c0 3.3 5.8 6 13 6s13-2.7 13-6V12" />
-          <path d="M11 24c0 3.3 5.8 6 13 6s13-2.7 13-6" />
-          <path d="M11 18c0 3.3 5.8 6 13 6s13-2.7 13-6" />
-        </svg>
-      );
-    case "chart":
-      return (
-        <svg viewBox="0 0 48 48" aria-hidden="true">
-          <path d="M9 39h31" />
-          <path d="M14 34V24" />
-          <path d="M24 34V17" />
-          <path d="M34 34V10" />
-        </svg>
-      );
-    case "dna":
-      return (
-        <svg viewBox="0 0 48 48" aria-hidden="true">
-          <path d="M16 6c16 8 16 28 0 36" />
-          <path d="M32 6c-16 8-16 28 0 36" />
-          <path d="M17 14h14M15 24h18M17 34h14" />
-        </svg>
-      );
-    case "brain":
-      return (
-        <svg viewBox="0 0 48 48" aria-hidden="true">
-          <path d="M20 38a8 8 0 0 1-8-8 7.5 7.5 0 0 1 2-5.1A8 8 0 0 1 22 12a7 7 0 0 1 13 3.5 7.5 7.5 0 0 1 1 14.4A8 8 0 0 1 28 38" />
-          <path d="M24 13v28M18 23h6M24 29h8M29 18v7" />
-        </svg>
-      );
-    case "star":
-      return (
-        <svg viewBox="0 0 48 48" aria-hidden="true">
-          <path d="m24 7 5 10.1 11.2 1.6-8.1 7.9 1.9 11.1-10-5.2-10 5.2 1.9-11.1-8.1-7.9L19 17.1 24 7Z" />
-        </svg>
-      );
-    case "shield":
-      return (
-        <svg viewBox="0 0 48 48" aria-hidden="true">
-          <path d="M24 5 9 11v11c0 10.5 6.3 17.6 15 21 8.7-3.4 15-10.5 15-21V11L24 5Z" />
-          <path d="M24 17v11M24 34h.1" />
-        </svg>
-      );
-    case "trophy":
-      return (
-        <svg viewBox="0 0 48 48" aria-hidden="true">
-          <path d="M16 8h16v10a8 8 0 0 1-16 0V8Z" />
-          <path d="M16 12H8v5a7 7 0 0 0 8 7M32 12h8v5a7 7 0 0 1-8 7" />
-          <path d="M24 26v9M17 40h14M20 35h8" />
-        </svg>
-      );
-    case "clipboard":
-      return (
-        <svg viewBox="0 0 48 48" aria-hidden="true">
-          <path d="M17 10h-4a4 4 0 0 0-4 4v25a4 4 0 0 0 4 4h22a4 4 0 0 0 4-4V14a4 4 0 0 0-4-4h-4" />
-          <path d="M18 6h12v8H18V6ZM17 23h14M17 31h10" />
-        </svg>
-      );
-    case "mail":
-      return (
-        <svg viewBox="0 0 48 48" aria-hidden="true">
-          <path d="M8 14h32v22H8V14Z" />
-          <path d="m9 15 15 13 15-13" />
-        </svg>
-      );
-    default:
-      return null;
-  }
+  const Icon = iconMap[name];
+
+  return Icon ? <Icon aria-hidden="true" /> : null;
 }
 
 function App() {
+  const heroRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero) return undefined;
+
+    let frame = 0;
+
+    const updateParallax = () => {
+      frame = 0;
+      const rect = hero.getBoundingClientRect();
+      const offset = rect.top * -0.18;
+
+      hero.style.setProperty("--hero-parallax", `${offset}px`);
+    };
+
+    const requestUpdate = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(updateParallax);
+    };
+
+    updateParallax();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+    };
+  }, []);
 
   return (
     <div className="landing">
@@ -311,9 +301,7 @@ function App() {
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((prev) => !prev)}
         >
-          <span />
-          <span />
-          <span />
+          <IconMenu2 aria-hidden="true" />
         </button>
 
         <nav className={`menu ${menuOpen ? "is-open" : ""}`}>
@@ -324,13 +312,13 @@ function App() {
           <div className="menu-item has-dropdown">
             <a className="menu-link" href="#organizers" onClick={() => setMenuOpen(false)}>
               Организаторы
-              <span className="dropdown-caret" aria-hidden="true" />
+              <IconChevronDown className="dropdown-caret" aria-hidden="true" />
             </a>
             <div className="organizers-dropdown" aria-label="Организаторы">
               <div className="dropdown-roles">
                 <a href="#organizers" onClick={() => setMenuOpen(false)}>
                   <span className="role-icon" aria-hidden="true">
-                    Л
+                    <IconPresentation />
                   </span>
                   <span>
                     <strong>Лекторы</strong>
@@ -339,7 +327,7 @@ function App() {
                 </a>
                 <a href="#organizers" onClick={() => setMenuOpen(false)}>
                   <span className="role-icon" aria-hidden="true">
-                    М
+                    <IconUserStar />
                   </span>
                   <span>
                     <strong>Менторы</strong>
@@ -375,12 +363,21 @@ function App() {
 
         <a className="btn btn-header" href="#registration">
           Регистрация
-          <span aria-hidden="true">→</span>
+          <IconArrowRight aria-hidden="true" />
         </a>
       </header>
 
       <main id="top">
-        <section className="hero section-dark">
+        <section className="hero section-dark" ref={heroRef}>
+          <video
+            className="hero-video-bg"
+            src={heroGifVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            aria-hidden="true"
+          />
           <div className="hero-copy">
             <p className="eyebrow">Bioinformatics + AI + Precision Medicine</p>
             <h1>
@@ -407,49 +404,6 @@ function App() {
               </a>
             </div>
           </div>
-
-          <div className="hero-visual" aria-hidden="true">
-            <div className="bio-grid" />
-            <div className="bio-network">
-              {networkNodes.map(([left, top]) => (
-                <span key={`${left}-${top}`} style={{ left, top }} />
-              ))}
-            </div>
-            <div className="bio-cell bio-cell-large">
-              <span />
-            </div>
-            <div className="bio-cell bio-cell-small">
-              <span />
-            </div>
-            <div className="dna-helix">
-              {dnaDots.map((dot) => (
-                <span
-                  className="dna-dot dna-dot-a"
-                  key={`dna-a-${dot.id}`}
-                  style={{
-                    top: dot.top,
-                    left: dot.left,
-                    width: dot.size,
-                    height: dot.size,
-                    opacity: dot.opacity,
-                  }}
-                />
-              ))}
-              {dnaDots.map((dot) => (
-                <span
-                  className="dna-dot dna-dot-b"
-                  key={`dna-b-${dot.id}`}
-                  style={{
-                    top: dot.top,
-                    left: dot.right,
-                    width: dot.size,
-                    height: dot.size,
-                    opacity: dot.opacity,
-                  }}
-                />
-              ))}
-            </div>
-          </div>
         </section>
 
         <section id="about" className="section-light about about-reference">
@@ -466,7 +420,9 @@ function App() {
             <div className="about-reference-stats">
               {stats.map((item) => (
                 <article key={item.value} className="about-stat-card">
-                  <span className={`about-stat-icon about-stat-icon-${item.icon}`} aria-hidden="true" />
+                  <span className="about-stat-icon" aria-hidden="true">
+                    <TermIcon name={item.icon} />
+                  </span>
                   <strong>{item.value}</strong>
                   <span>
                     {item.caption.split("\n").map((line) => (
@@ -481,7 +437,9 @@ function App() {
           <div className="about-reference-grid">
             <article className="about-info-card about-relevance">
               <div className="about-card-title">
-                <span className="about-card-icon about-card-icon-target" aria-hidden="true" />
+                <span className="about-card-icon" aria-hidden="true">
+                  <TermIcon name="target" />
+                </span>
                 <h3>Актуальность</h3>
               </div>
               <p>
@@ -498,7 +456,9 @@ function App() {
 
             <article className="about-info-card about-goal">
               <div className="about-card-title">
-                <span className="about-card-icon about-card-icon-flag" aria-hidden="true" />
+                <span className="about-card-icon" aria-hidden="true">
+                  <TermIcon name="flag" />
+                </span>
                 <h3>Цель</h3>
               </div>
               <p>
@@ -518,7 +478,9 @@ function App() {
 
             <article className="about-info-card about-days">
               <div className="about-card-title">
-                <span className="about-card-icon about-card-icon-calendar" aria-hidden="true" />
+                <span className="about-card-icon" aria-hidden="true">
+                  <TermIcon name="calendar" />
+                </span>
                 <h3>Дни хакатона</h3>
               </div>
               <div className="about-days-list">
@@ -547,7 +509,7 @@ function App() {
                     <h3>{person.name}</h3>
                     <p>{person.role}</p>
                     <span className="lecturer-location">
-                      <span className="location-pin" aria-hidden="true" />
+                      <IconMapPin className="location-pin" aria-hidden="true" />
                       {person.location}
                     </span>
                     <div className="lecturer-tags">
@@ -577,7 +539,7 @@ function App() {
                     <h3>{moderator.name}</h3>
                     <p>{moderator.role}</p>
                     <span className="lecturer-location">
-                      <span className="location-pin" aria-hidden="true" />
+                      <IconMapPin className="location-pin" aria-hidden="true" />
                       {moderator.location}
                     </span>
                   </div>
@@ -765,7 +727,7 @@ function App() {
             <a href="#">GitHub</a>
           </div>
           <a className="btn btn-primary footer-registration" href="#registration">
-            Зарегистрироваться →
+            Зарегистрироваться <IconArrowRight aria-hidden="true" />
           </a>
         </div>
         <div className="footer-bottom">
