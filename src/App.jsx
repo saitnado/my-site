@@ -57,7 +57,6 @@ const organizerPartners = [
 ];
 
 const chips = [
-  "10-14 октября",
   "Биоинформатика",
   "Данные единичных клеток",
   "AI и ML",
@@ -399,11 +398,13 @@ function App() {
           <div className="hero-copy">
             <p className="eyebrow">Bioinformatics + AI + Precision Medicine</p>
             <h1>
-              Хакатомикс
-              <br />
-              2026
+              <span className="hero-title-main">Хакатомикс</span>
+              <span className="hero-title-year">
+                2026
+                <span className="hero-title-date">10-14 октября</span>
+              </span>
             </h1>
-            <p className="lead">10-14 октября: 72 часа, чтобы создать решения для прецизионной медицины</p>
+            <p className="lead">72 часа, чтобы создать решения для прецизионной медицины</p>
 
             <div className="chip-row">
               {chips.map((chip) => (
@@ -416,6 +417,7 @@ function App() {
             <div className="actions">
               <a className="btn btn-primary" href="#registration">
                 Участвовать
+                <IconArrowRight aria-hidden="true" />
               </a>
               <a className="btn btn-ghost" href="#about">
                 Подробнее
