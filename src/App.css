@@ -72,13 +72,14 @@ a {
   top: 0;
   z-index: 40;
   margin-top: 0;
-  padding: 0.9rem 0;
-  padding-inline: clamp(1.25rem, 2vw, 3.15rem);
+  min-height: 7.3rem;
+  padding: 1.45rem 0;
+  padding-inline: clamp(2.4rem, 4.6vw, 4.9rem);
   border-bottom: 1px solid var(--green-bright);
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  gap: clamp(0.7rem, 2vw, 1.25rem);
+  gap: clamp(1.4rem, 3vw, 2.8rem);
   background: rgba(0, 13, 9, 0.96);
   box-shadow: 0 0 20px rgba(102, 255, 143, 0.08);
   backdrop-filter: blur(14px);
@@ -87,15 +88,15 @@ a {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  font-weight: 700;
+  gap: 1rem;
+  font-weight: 800;
   letter-spacing: 0;
   color: var(--white);
 }
 
 .brand-logo {
-  width: 3.4rem;
-  height: 3.4rem;
+  width: 5.1rem;
+  height: 5.1rem;
   object-fit: contain;
 }
 
@@ -103,13 +104,13 @@ a {
   display: grid;
   gap: 0.05rem;
   line-height: 1.05;
-  font-size: 0.95rem;
+  font-size: 1.35rem;
 }
 
 .brand b {
   display: block;
   color: var(--green-bright);
-  font-size: 0.86rem;
+  font-size: 1.5rem;
   text-shadow: 0 0 14px rgba(102, 255, 143, 0.75);
 }
 
@@ -118,14 +119,20 @@ a {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  gap: clamp(0.65rem, 1.7vw, 1.35rem);
+  gap: clamp(1.25rem, 2vw, 2rem);
 }
 
 .menu a,
 .menu-link {
+  min-height: 2.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   color: var(--white);
-  font-size: clamp(0.72rem, 0.9vw, 0.86rem);
+  font-size: clamp(0.92rem, 0.96vw, 1.08rem);
   line-height: 1.2;
+  font-weight: 700;
   transition: color 0.2s ease;
 }
 
@@ -141,7 +148,6 @@ a {
 }
 
 .menu-link {
-  display: inline-flex;
   align-items: center;
   gap: 0.38rem;
 }
@@ -314,11 +320,15 @@ a {
 
 .btn-header {
   white-space: nowrap;
-  gap: 0.65rem;
+  gap: 1.05rem;
+  min-height: 4.2rem;
+  padding: 1.05rem 1.65rem;
   border: 0;
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   background: linear-gradient(135deg, #7bffa2, #32d65f);
   color: #00140c;
+  font-size: 1.08rem;
+  font-weight: 800;
   box-shadow: 0 0 22px rgba(102, 255, 143, 0.28);
 }
 
@@ -330,7 +340,7 @@ a {
 .hero {
   position: relative;
   --hero-parallax: 0px;
-  padding: 5.2rem 0 4rem;
+  padding: clamp(5.4rem, 7vw, 6.6rem) clamp(2.4rem, 4.6vw, 4.9rem) clamp(3.6rem, 5vw, 4.4rem);
   min-height: 88svh;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -346,7 +356,7 @@ a {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(90deg, rgba(0, 13, 9, 0.9) 0%, rgba(0, 17, 12, 0.72) 42%, rgba(0, 17, 12, 0.22) 100%),
+    linear-gradient(90deg, rgba(0, 13, 9, 0.92) 0%, rgba(0, 17, 12, 0.76) 42%, rgba(0, 17, 12, 0.2) 100%),
     radial-gradient(circle at 18% 44%, rgba(102, 255, 143, 0.18), transparent 32%);
   pointer-events: none;
 }
@@ -367,52 +377,120 @@ a {
 .hero-copy {
   position: relative;
   z-index: 1;
-  max-width: 42rem;
+  max-width: 54rem;
 }
 
 .eyebrow {
   margin: 0;
-  color: var(--green-soft);
+  color: var(--green-bright);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: clamp(0.98rem, 1.1vw, 1.18rem);
+  font-weight: 800;
 }
 
 .hero h1 {
-  margin: 0.75rem 0 0;
-  font-size: clamp(2.15rem, 6.4vw, 4.7rem);
-  line-height: 0.95;
+  margin: 1.45rem 0 0;
+  font-size: clamp(5.2rem, 7.8vw, 8.8rem);
+  line-height: 0.86;
+}
+
+.hero-title-main,
+.hero-title-year {
+  display: block;
+}
+
+.hero-title-year {
+  display: flex;
+  align-items: baseline;
+  gap: 1.15rem;
+  flex-wrap: wrap;
+  color: var(--green-bright);
+  text-shadow: 0 0 26px rgba(102, 255, 143, 0.32);
+}
+
+.hero-title-date {
+  color: var(--green-bright);
+  font-size: 0.24em;
+  font-weight: 800;
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
 .lead {
-  margin: 1rem 0 0;
-  max-width: 30ch;
-  color: #d8ffe8;
-  font-size: clamp(0.9rem, 1.5vw, 1.12rem);
-  line-height: 1.5;
+  margin: 1.9rem 0 0;
+  max-width: 43ch;
+  color: #ffffff;
+  font-size: clamp(1.45rem, 1.65vw, 1.8rem);
+  line-height: 1.35;
+  font-weight: 500;
 }
 
 .chip-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem;
-  margin-top: 1.5rem;
+  gap: 0.8rem 1rem;
+  max-width: 52rem;
+  margin-top: 2rem;
 }
 
 .chip {
-  padding: 0.45rem 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 3rem;
+  padding: 0.65rem 1.35rem;
   border-radius: 999px;
-  border: 1px solid var(--border-green);
-  background: rgba(57, 255, 136, 0.08);
-  color: #d6ffe6;
-  font-size: 0.76rem;
+  border: 1px solid rgba(57, 255, 136, 0.7);
+  background: rgba(0, 12, 8, 0.52);
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.chip::before {
+  content: "";
+  width: 1.05rem;
+  height: 1.05rem;
+  background: var(--green-bright);
+  box-shadow: 0 0 9px rgba(102, 255, 143, 0.58);
+  clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 56%, 79% 92%, 50% 70%, 21% 92%, 32% 56%, 2% 35%, 39% 35%);
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-top: 1.55rem;
+  align-items: center;
+  gap: 1.65rem;
+  margin-top: 2.55rem;
+}
+
+.hero .btn-primary {
+  min-width: auto;
+  min-height: 5rem;
+  padding: 1.25rem 2.2rem;
+  gap: 0.9rem;
+  border: 0;
+  border-radius: 1rem;
+  font-size: 1.35rem;
+  font-weight: 900;
+  box-shadow: 0 0 34px rgba(102, 255, 143, 0.44), 0 18px 42px rgba(34, 197, 94, 0.28);
+}
+
+.hero .btn-primary svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.hero .btn-ghost {
+  min-height: 5rem;
+  padding: 1.25rem 2.2rem;
+  border-color: rgba(255, 255, 255, 0.86);
+  border-width: 2px;
+  border-radius: 1rem;
+  background: rgba(0, 15, 10, 0.44);
+  color: #ffffff;
+  font-size: 1.25rem;
 }
 
 .bio-grid,
@@ -1188,6 +1266,10 @@ a {
   object-fit: cover;
   object-position: center top;
   background: transparent;
+}
+
+.moderator-photo-semyon {
+  object-position: right top;
 }
 
 .moderator-photo-placeholder {
@@ -2025,6 +2107,8 @@ a {
   }
 
   .site-header {
+    min-height: auto;
+    padding: 0.75rem 1rem;
     margin-top: 0.6rem;
     gap: 0.6rem;
   }
@@ -2036,6 +2120,10 @@ a {
 
   .brand-copy {
     font-size: 0.95rem;
+  }
+
+  .brand b {
+    font-size: 0.86rem;
   }
 
   .btn-header {
@@ -2137,6 +2225,33 @@ a {
   .hero {
     padding-top: 3.3rem;
     padding-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.2rem, 16vw, 5rem);
+  }
+
+  .lead {
+    font-size: 1.05rem;
+  }
+
+  .chip {
+    min-height: 2.5rem;
+    padding: 0.52rem 0.9rem;
+    font-size: 0.9rem;
+  }
+
+  .hero .btn-primary {
+    min-width: 100%;
+    min-height: 4rem;
+    padding: 1rem 1.25rem;
+    font-size: 1.45rem;
+  }
+
+  .hero .btn-ghost {
+    min-height: 3.4rem;
+    width: 100%;
+    font-size: 1rem;
   }
 
   .stats-grid,
