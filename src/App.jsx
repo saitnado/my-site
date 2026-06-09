@@ -156,6 +156,7 @@ const lecturers = [
 const moderators = [
   {
     name: "Александр Иконников",
+    image: "/partners/moderators/Alexander_Ikonnikov.jpg",
     role: "младший научный сотрудник лаборатории биологии единичных клеток НИИ молекулярной и клеточной медицины РУДН",
     location: "Москва",
     initials: "АИ",
