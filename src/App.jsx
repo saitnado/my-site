@@ -56,7 +56,13 @@ const organizerPartners = [
   },
 ];
 
-const chips = ["Биоинформатика", "Single-cell данные", "AI и ML", "Прецизионная медицина"];
+const chips = [
+  "10-14 октября",
+  "Биоинформатика",
+  "Данные единичных клеток",
+  "AI и ML",
+  "Прецизионная медицина",
+];
 
 const dnaDots = Array.from({ length: 28 }, (_, index) => {
   const progress = index / 27;
@@ -74,7 +80,7 @@ const dnaDots = Array.from({ length: 28 }, (_, index) => {
 });
 
 const stats = [
-  { value: "48", caption: "часов\nнон-стоп разработки", icon: "time" },
+  { value: "72", caption: "часа\nкомандной работы", icon: "time" },
   { value: "3-5", caption: "человек\nв команде", icon: "team" },
   { value: "25+", caption: "экспертов\nи менторов", icon: "cap" },
   { value: "6", caption: "проектных\nнаправлений", icon: "compass" },
@@ -83,19 +89,23 @@ const stats = [
 const hackathonDays = [
   {
     day: "День 1",
-    text: "открытие, две вводные лекции, приглашённый доклад, знакомство с модераторами и проектами, формирование команд, командная работа",
+    text: "Открытие, две вводные лекции, пленарный доклад, знакомство с модераторами и проектами, формирование команд, командная работа",
   },
   {
     day: "День 2",
-    text: "приглашённый доклад, продолжение командной работы",
+    text: "Пленарный доклад, продолжение командной работы",
   },
   {
     day: "День 3",
-    text: "приглашённый доклад, продолжение командной работы",
+    text: "Пленарный доклад, продолжение командной работы",
   },
   {
     day: "День 4",
-    text: "защита проектов, определение победителей, награждение, закрытие",
+    text: "Приглашённый доклад, продолжение командной работы",
+  },
+  {
+    day: "День 5",
+    text: "Защита проектов, определение победителей, награждение, закрытие",
   },
 ];
 
@@ -105,35 +115,35 @@ const lecturers = [
     image: "/partners/lectors/Evgeny_Denisov.png",
     role: "Доктор биологических наук, профессор РАН, заместитель директора по научной работе НИИ онкологии Томского НИМЦ, зав. лабораторией биологии опухолевой прогрессии НИИ онкологии Томского НИМЦ, зав. лабораторией биологии единичных клеток НИИ молекулярной и клеточной медицины Медицинского института РУДН",
     location: "Томск, Москва",
-    tags: ["Онкология", "Single-cell", "Геномика"],
+    tags: ["Онкология", "Single-cell", "Опухолевая прогрессия"],
   },
   {
     name: "Антон Поддубский",
     image: "/partners/lectors/Anton_Poddubsky.png",
     role: "Кандидат технических наук, директор Факультета искусственного интеллекта РУДН",
     location: "Москва",
-    tags: ["Искусственный интеллект", "Data Science", "Руководитель AI-направления"],
+    tags: ["Искусственный интеллект", "ФИИ РУДН", "AI-образование"],
   },
   {
     name: "Иван Тюкин",
     image: "/partners/lectors/Ivan_Tyukin.png",
     role: "Доктор технических наук, Сколковский институт науки и технологий (Сколтех), РУДН",
     location: "Москва",
-    tags: ["Искусственный интеллект", "Data Science", "Сколтех"],
+    tags: ["Искусственный интеллект", "Сколтех", "РУДН"],
   },
   {
     name: "Александр Яневски",
     image: "/partners/lectors/Alexander_Yanevsky.png",
     role: "PhD, Assistant Professor, Европейский университет Санкт-Петербурга / University of Helsinki",
     location: "Санкт-Петербург",
-    tags: ["Computational Biology", "PhD", "SPbU"],
+    tags: ["Computational Biology", "Cell diagnostics", "EUSP"],
   },
   {
     name: "Johnny Yu",
     image: "/partners/lectors/Johnny_Yu.png",
     role: "PhD, Chief Scientific Officer & сооснователь, Tahoe Therapeutics",
     location: "San Francisco, USA",
-    tags: ["Precision Medicine", "Biotech", "PhD"],
+    tags: ["Precision Medicine", "Biotech", "Drug discovery"],
   },
   {
     name: "Weidi Xie",
@@ -150,48 +160,56 @@ const moderators = [
     role: "младший научный сотрудник лаборатории биологии единичных клеток НИИ молекулярной и клеточной медицины РУДН",
     location: "Москва",
     initials: "АИ",
+    tags: ["Редкие заболевания", "Терапевтические мишени", "Single-cell"],
   },
   {
     name: "Артем Торопов",
     image: "/partners/moderators/Artem_Tropov.jpg",
     role: "стажёр-исследователь лаборатории биологии единичных клеток НИИ молекулярной и клеточной медицины РУДН",
     location: "Москва",
+    tags: ["Саркомы", "Персонализация терапии", "Single-cell"],
   },
   {
     name: "Павел Ямщиков",
     image: "/partners/moderators/Pavel_Yamshchikov.png",
     role: "специалист в области биоинформатики лаборатории биологии опухолевой прогрессии НИИ онкологии Томского НИМЦ",
     location: "Томск",
+    tags: ["Биоинформатика", "Онкология", "Прогностические факторы"],
   },
   {
     name: "Александр Яневски",
     image: "/partners/moderators/Alexander_Yanevsky.png",
     role: "PhD, Assistant Professor, Европейский университет Санкт-Петербурга / University of Helsinki",
     location: "Санкт-Петербург",
+    tags: ["Computational Biology", "Differential diagnostics", "EUSP"],
   },
   {
     name: "Вера Субракова",
     image: "/partners/moderators/Vera_Subrakova.jpg",
     role: "специалист в области биоинформатики лаборатории биологии опухолевой прогрессии НИИ онкологии Томского НИМЦ",
     location: "Томск",
+    tags: ["Биоинформатика", "Клеточная пластичность", "Онкология"],
   },
   {
     name: "Полина Козлова",
     image: "/partners/moderators/Polina_Kozlova.jpg",
     role: "специалист в области биоинформатики лаборатории биологии опухолевой прогрессии НИИ онкологии Томского НИМЦ",
     location: "Томск",
+    tags: ["Биоинформатика", "Клеточная пластичность", "Терапевтический ответ"],
   },
   {
     name: "Кирилл Кириленко",
     image: "/partners/moderators/Kirill_Kirilenko.jpg",
     role: "специалист в области биоинформатики лаборатории биологии опухолевой прогрессии НИИ онкологии Томского НИМЦ",
     location: "Томск",
+    tags: ["Биоинформатика", "Иммунное профилирование", "Эпитопы"],
   },
   {
     name: "Семён Куприянов",
     image: "/partners/moderators/Semyon_Kupriyanov.jpg",
     role: "специалист в области биоинформатики лаборатории биологии опухолевой прогрессии НИИ онкологии Томского НИМЦ",
     location: "Томск",
+    tags: ["Биоинформатика", "Иммунология", "Патологии человека"],
   },
 ];
 
@@ -381,11 +399,11 @@ function App() {
           <div className="hero-copy">
             <p className="eyebrow">Bioinformatics + AI + Precision Medicine</p>
             <h1>
-              BioHakaton
+              Хакатомикс
               <br />
               2026
             </h1>
-            <p className="lead">48 часов, чтобы создать решения для прецизионной медицины</p>
+            <p className="lead">10-14 октября: 72 часа, чтобы создать решения для прецизионной медицины</p>
 
             <div className="chip-row">
               {chips.map((chip) => (
@@ -411,7 +429,7 @@ function App() {
             <div className="about-reference-copy">
               <h2>О хакатоне</h2>
               <p>
-                Омиксные технологии на уровне единичных клеток (single-cell) вместе с искусственным
+                Омиксные технологии на уровне единичных клеток вместе с искусственным
                 интеллектом открывают новые возможности для изучения молекулярного ландшафта тканей
                 и органов. Хакатон объединяет специалистов для поиска инновационных решений в
                 прецизионной медицине.
@@ -443,8 +461,8 @@ function App() {
                 <h3>Актуальность</h3>
               </div>
               <p>
-                Омиксные технологии на уровне single-cell позволяют исследовать геном, транскриптом,
-                протеом и метаболом каждой клетки с высокой точностью.
+                Омиксные технологии на уровне единичных клеток позволяют исследовать геном,
+                транскриптом, протеом и метаболом каждой клетки с высокой точностью.
               </p>
               <p className="about-bold">Применение ИИ для анализа этих данных помогает выявлять:</p>
               <ul>
@@ -463,7 +481,7 @@ function App() {
               </div>
               <p>
                 Объединить усилия исследователей, биоинформатиков и специалистов ИИ для создания
-                инновационных подходов в прецизионной медицине на основе данных single-cell.
+                инновационных подходов в прецизионной медицине на основе данных единичных клеток.
               </p>
               <div className="about-cells" aria-hidden="true">
                 <span />
@@ -529,7 +547,13 @@ function App() {
               {moderators.map((moderator) => (
                 <article key={moderator.name} className="moderator-card">
                   {moderator.image ? (
-                    <img className="moderator-photo" src={moderator.image} alt={moderator.name} />
+                    <img
+                      className={`moderator-photo ${
+                        moderator.name === "Семён Куприянов" ? "moderator-photo-semyon" : ""
+                      }`}
+                      src={moderator.image}
+                      alt={moderator.name}
+                    />
                   ) : (
                     <div className="moderator-photo-placeholder" aria-hidden="true">
                       {moderator.initials}
@@ -542,6 +566,11 @@ function App() {
                       <IconMapPin className="location-pin" aria-hidden="true" />
                       {moderator.location}
                     </span>
+                    <div className="lecturer-tags">
+                      {moderator.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </div>
                   </div>
                 </article>
               ))}
@@ -599,7 +628,7 @@ function App() {
               <h3>Будет преимуществом:</h3>
               <span className="terms-card-line" aria-hidden="true" />
               <p>
-                Опыт анализа данных single-cell RNA-seq. Продвинутые знания в ML/AI: опыт
+                Опыт анализа RNA-seq данных на уровне единичных клеток. Продвинутые знания в ML/AI: опыт
                 создания и обучения deep learning моделей (autoencoders, VAEs, transformers) для
                 работы с биологическими данными.
               </p>
@@ -625,8 +654,8 @@ function App() {
               <h3>Информация о призах</h3>
               <span className="terms-card-line" aria-hidden="true" />
               <p>
-                Команды-победители будут отмечены денежными призами. Каждый участник получит
-                сертификат и памятный подарок.
+                Призовой фонд хакатона — 450 000 рублей. Команды-победители будут отмечены
+                денежными призами, а каждый участник получит сертификат и памятный подарок.
               </p>
             </article>
 
@@ -683,7 +712,7 @@ function App() {
           <div className="map-card">
             <iframe
               className="map-frame"
-              src="https://yandex.ru/map-widget/v1/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%9F%D0%BE%D0%B4%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B5%20%D1%88%D0%BE%D1%81%D1%81%D0%B5%2C%208&z=16"
+              src="https://yandex.ru/map-widget/v1/?ll=37.624007%2C55.713864&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgg1NjY4NTU1MRJH0KDQvtGB0YHQuNGPLCDQnNC-0YHQutCy0LAsINCf0L7QtNC-0LvRjNGB0YHQutC-0LUg0YjQvtGB0YHQtSwgOCI%2C&z=18"
               title="Место проведения на Яндекс.Картах"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -699,7 +728,7 @@ function App() {
               </a>
               <a
                 className="map-btn map-btn-primary"
-                href="https://yandex.ru/maps/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%9F%D0%BE%D0%B4%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B5%20%D1%88%D0%BE%D1%81%D1%81%D0%B5%2C%208"
+                href="https://yandex.ru/maps/-/CPhUEKYD"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -719,8 +748,8 @@ function App() {
 
       <footer id="contacts" className="site-footer section-dark">
         <div className="footer-top">
-          <p className="footer-brand">BioHakaton 2026</p>
-          <p>48 часов для идей, которые меняют медицину.</p>
+          <p className="footer-brand">Хакатомикс 2026</p>
+          <p>10-14 октября, 72 часа для идей, которые меняют медицину.</p>
           <div className="socials">
             <a href="#">Telegram</a>
             <a href="#">VK</a>
@@ -731,7 +760,7 @@ function App() {
           </a>
         </div>
         <div className="footer-bottom">
-          <span>© BioHakaton 2026</span>
+          <span>© Хакатомикс 2026</span>
           <a href="#">Контакты</a>
           <a href="#">Политика конфиденциальности</a>
         </div>

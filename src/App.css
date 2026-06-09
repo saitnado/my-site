@@ -21,6 +21,11 @@ html {
   scroll-behavior: smooth;
 }
 
+section[id],
+footer[id] {
+  scroll-margin-top: 6.5rem;
+}
+
 body {
   margin: 0;
   color: var(--white);
