@@ -63,6 +63,93 @@ const chips = [
   "Прецизионная медицина",
 ];
 
+const projects = [
+  {
+    number: "1",
+    title: "Предсказание мишеней для терапии редких агрессивных заболеваний",
+    leader: "Александр Иконников, РУДН",
+    goalShort:
+      "Выявление и валидация новых молекулярных мишеней для терапии редких агрессивных заболеваний.",
+    image: "/partners/project/tema_1.png",
+    goal:
+      "Выявление и валидация новых молекулярных мишеней для терапии редких агрессивных заболеваний.",
+    tasks:
+      "Участникам предстоит проанализировать биомедицинские данные, выделить потенциальные терапевтические мишени и подготовить обоснование выбранного подхода.",
+    results:
+      "Список приоритетных мишеней, краткая аналитическая интерпретация и прототип решения для дальнейшей валидации.",
+  },
+  {
+    number: "2",
+    title: "Разработка новых алгоритмов персонализации терапии сарком мягких тканей",
+    leader: "Артем Торопов, РУДН",
+    goalShort:
+      "Разработка и анализ подходов на основе ML и ИИ для персонализации терапии сарком мягких тканей.",
+    image: "/partners/project/tema_2.png",
+    goal:
+      "Разработка и анализ подходов на основе ML и ИИ для персонализации терапии сарком мягких тканей.",
+    tasks:
+      "Участникам предстоит изучить клинические и молекулярные признаки, подобрать признаки для модели и предложить алгоритм поддержки терапевтических решений.",
+    results:
+      "Прототип ML-подхода, описание ключевых признаков и ожидаемая схема применения для персонализированной терапии.",
+  },
+  {
+    number: "3",
+    title: "Поиск прогностических факторов рака в молодом возрасте",
+    leader: "Павел Ямщиков, Томский НИМЦ",
+    goalShort:
+      "Поиск и валидация прогностических факторов рака в молодом возрасте на основе интеграции пространственной, одноклеточной и тотальной транскриптомики.",
+    image: "/partners/project/tema_3.png",
+    goal:
+      "Поиск и валидация прогностических факторов рака в молодом возрасте на основе интеграции пространственной, одноклеточной и тотальной транскриптомики.",
+    tasks:
+      "Участникам предстоит сопоставить разные типы омиксных данных, найти устойчивые прогностические признаки и оценить их биологическую значимость.",
+    results:
+      "Набор прогностических факторов, визуализация результатов и интерпретация потенциальной клинической значимости.",
+  },
+  {
+    number: "4",
+    title: "Дифференциальная диагностика злокачественных и нормальных состояний клеток",
+    leader: "Александр Яневски, ЕУСПб",
+    goalShort:
+      "Разработка методов для точного разделения злокачественных клонов и реконструкции их эволюционных связей на основе scRNA-seq и scDNA-seq данных.",
+    image: "/partners/project/tema_4.png",
+    goal:
+      "Разработка методов для точного разделения злокачественных клонов и реконструкции их эволюционных связей на основе scRNA-seq и scDNA-seq данных.",
+    tasks:
+      "Участникам предстоит обработать одноклеточные данные, выделить признаки клеточных состояний и предложить метод различения нормальных и злокачественных клеток.",
+    results:
+      "Методическая схема анализа, критерии разделения клеточных состояний и демонстрация работы подхода на данных.",
+  },
+  {
+    number: "5",
+    title: "Регуляция клеточной пластичности как стратегия лечения рака",
+    leader: "Вера Субракова, Полина Козлова, Томский НИМЦ",
+    goalShort:
+      "Поиск и интерпретация программ клеточной пластичности, связанных с прогрессией опухоли и устойчивостью к терапии.",
+    image: "/partners/project/tema_5.png",
+    goal:
+      "Поиск и интерпретация программ клеточной пластичности, связанных с прогрессией опухоли и устойчивостью к терапии.",
+    tasks:
+      "Участникам предстоит выявить программы клеточной пластичности, связать их с терапевтической устойчивостью и предложить возможные точки воздействия.",
+    results:
+      "Описание ключевых программ пластичности, список потенциальных регуляторов и интерпретация их роли в лечении рака.",
+  },
+  {
+    number: "6",
+    title: "Эпитоп-специфическое иммунное профилирование при патологиях человека",
+    leader: "Кирилл Кириленко, Семён Куприянов, Томский НИМЦ",
+    goalShort:
+      "Разработка ML-подходов для анализа иммунных репертуаров и выявления эпитоп-специфических иммунных паттернов, связанных с патологиями.",
+    image: "/partners/project/tema_6.png",
+    goal:
+      "Разработка ML-подходов для анализа иммунных репертуаров и выявления эпитоп-специфических иммунных паттернов, связанных с патологиями.",
+    tasks:
+      "Участникам предстоит проанализировать иммунные репертуары, выделить эпитоп-специфические паттерны и оценить применимость ML-моделей.",
+    results:
+      "Прототип аналитического пайплайна, набор найденных иммунных паттернов и рекомендации для дальнейшей проверки.",
+  },
+];
+
 const dnaDots = Array.from({ length: 28 }, (_, index) => {
   const progress = index / 27;
   const wave = Math.sin(progress * Math.PI * 4);
@@ -100,7 +187,7 @@ const hackathonDays = [
   },
   {
     day: "День 4",
-    text: "Приглашённый доклад, продолжение командной работы",
+    text: "Пленарный доклад, продолжение командной работы",
   },
   {
     day: "День 5",
@@ -270,6 +357,7 @@ function TermIcon({ name }) {
 function App() {
   const heroRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeProject, setActiveProject] = useState(null);
 
   useEffect(() => {
     const hero = heroRef.current;
@@ -300,6 +388,25 @@ function App() {
       window.removeEventListener("resize", requestUpdate);
     };
   }, []);
+
+  useEffect(() => {
+    if (!activeProject) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setActiveProject(null);
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeProject]);
 
   return (
     <div className="landing">
@@ -585,7 +692,70 @@ function App() {
           <div className="section-head compact on-dark">
             <h2>Проекты</h2>
           </div>
+
+          <div className="projects-grid">
+            {projects.map((project) => (
+              <article className="project-card" key={project.number}>
+                <div className="project-card-copy">
+                  <h3>
+                    <span>{project.number}.</span> {project.title}
+                  </h3>
+                  <p className="project-leader">{project.leader}</p>
+                  <div className="project-goal">
+                    <strong>Цель проекта:</strong>
+                    <p>{project.goalShort}</p>
+                  </div>
+                  <button className="project-more" type="button" onClick={() => setActiveProject(project)}>
+                    Подробнее
+                    <IconArrowRight aria-hidden="true" />
+                  </button>
+                </div>
+                <img className="project-image" src={project.image} alt="" />
+              </article>
+            ))}
+          </div>
         </section>
+
+        {activeProject ? (
+          <div className="project-modal-backdrop" role="presentation" onMouseDown={() => setActiveProject(null)}>
+            <div
+              className="project-modal"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="project-modal-title"
+              onMouseDown={(event) => event.stopPropagation()}
+            >
+              <button
+                className="project-modal-close"
+                type="button"
+                aria-label="Закрыть окно"
+                onClick={() => setActiveProject(null)}
+              >
+                ×
+              </button>
+              <p className="project-modal-kicker">Проект {activeProject.number}</p>
+              <h3 id="project-modal-title">{activeProject.title}</h3>
+              <dl className="project-modal-details">
+                <div>
+                  <dt>Руководитель</dt>
+                  <dd>{activeProject.leader}</dd>
+                </div>
+                <div>
+                  <dt>Цель проекта</dt>
+                  <dd>{activeProject.goal}</dd>
+                </div>
+                <div>
+                  <dt>Что предстоит сделать участникам</dt>
+                  <dd>{activeProject.tasks}</dd>
+                </div>
+                <div>
+                  <dt>Ожидаемые результаты</dt>
+                  <dd>{activeProject.results}</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        ) : null}
 
         <section id="terms" className="section-light terms-section">
           <div className="terms-orbit" aria-hidden="true" />
