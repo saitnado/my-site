@@ -114,14 +114,14 @@ const lecturers = [
     image: "/partners/lectors/Evgeny_Denisov.png",
     role: "Доктор биологических наук, профессор РАН, заместитель директора по научной работе НИИ онкологии Томского НИМЦ, зав. лабораторией биологии опухолевой прогрессии НИИ онкологии Томского НИМЦ, зав. лабораторией биологии единичных клеток НИИ молекулярной и клеточной медицины Медицинского института РУДН",
     location: "Томск, Москва",
-    tags: ["Онкология", "Single-cell", "Опухолевая прогрессия"],
+    tags: ["Онкология", "Данные единичных клеток", "Опухолевая прогрессия"],
   },
   {
     name: "Антон Поддубский",
     image: "/partners/lectors/Anton_Poddubsky.png",
     role: "Кандидат технических наук, директор Факультета искусственного интеллекта РУДН",
     location: "Москва",
-    tags: ["Искусственный интеллект", "ФИИ РУДН", "AI-образование"],
+    tags: ["Искусственный интеллект", "ФИИ РУДН", "Подготовка AI-кадров"],
   },
   {
     name: "Иван Тюкин",
@@ -135,21 +135,21 @@ const lecturers = [
     image: "/partners/lectors/Alexander_Yanevsky.png",
     role: "PhD, Assistant Professor, Европейский университет Санкт-Петербурга / University of Helsinki",
     location: "Санкт-Петербург",
-    tags: ["Computational Biology", "Cell diagnostics", "EUSP"],
+    tags: ["Вычислительная биология", "Клеточная диагностика", "ЕУСПб"],
   },
   {
     name: "Johnny Yu",
     image: "/partners/lectors/Johnny_Yu.png",
     role: "PhD, Chief Scientific Officer & сооснователь, Tahoe Therapeutics",
     location: "San Francisco, USA",
-    tags: ["Precision Medicine", "Biotech", "Drug discovery"],
+    tags: ["Прецизионная медицина", "Биотех", "Разработка лекарств"],
   },
   {
     name: "Weidi Xie",
     image: "/partners/lectors/Weidi Xie.jpg",
     role: "Associate Professor, Shanghai Jiao Tong University; visitor researcher, University of Oxford",
     location: "Shanghai, China",
-    tags: ["AI Research", "Computational Biology", "Oxford"],
+    tags: ["ИИ в биомедицине", "Вычислительная биология", "Oxford"],
   },
 ];
 
@@ -160,14 +160,14 @@ const moderators = [
     role: "младший научный сотрудник лаборатории биологии единичных клеток НИИ молекулярной и клеточной медицины РУДН",
     location: "Москва",
     initials: "АИ",
-    tags: ["Редкие заболевания", "Терапевтические мишени", "Single-cell"],
+    tags: ["Редкие заболевания", "Терапевтические мишени", "Данные единичных клеток"],
   },
   {
     name: "Артем Торопов",
     image: "/partners/moderators/Artem_Tropov.jpg",
     role: "стажёр-исследователь лаборатории биологии единичных клеток НИИ молекулярной и клеточной медицины РУДН",
     location: "Москва",
-    tags: ["Саркомы", "Персонализация терапии", "Single-cell"],
+    tags: ["Саркомы", "Персонализация терапии", "Данные единичных клеток"],
   },
   {
     name: "Павел Ямщиков",
@@ -181,7 +181,7 @@ const moderators = [
     image: "/partners/moderators/Alexander_Yanevsky.png",
     role: "PhD, Assistant Professor, Европейский университет Санкт-Петербурга / University of Helsinki",
     location: "Санкт-Петербург",
-    tags: ["Computational Biology", "Differential diagnostics", "EUSP"],
+    tags: ["Вычислительная биология", "Дифференциальная диагностика", "ЕУСПб"],
   },
   {
     name: "Вера Субракова",
@@ -721,6 +721,15 @@ function App() {
               referrerPolicy="no-referrer-when-downgrade"
             />
             <div className="map-actions">
+              <a
+                className="map-btn"
+                href="https://yandex.ru/maps/-/CPhUEKYD"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <IconMapPin aria-hidden="true" />
+                Вход в НИИ
+              </a>
               <a
                 className="map-btn map-btn-primary"
                 href="https://2gis.ru/moscow/search/%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D0%9F%D0%BE%D0%B4%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%BE%D0%B5%20%D1%88%D0%BE%D1%81%D1%81%D0%B5%2C%208"
