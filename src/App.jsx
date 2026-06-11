@@ -27,6 +27,7 @@ import {
   IconUserStar,
 } from "@tabler/icons-react";
 import heroGifVideo from "./assets/gif.MP4";
+import RegistrationModal from "./RegistrationForm";
 import "./App.css";
 
 const navItems = [
@@ -405,6 +406,7 @@ function App() {
   const heroRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeProject, setActiveProject] = useState(null);
+  const [regOpen, setRegOpen] = useState(false);
 
   useEffect(() => {
     const hero = heroRef.current;
@@ -441,7 +443,7 @@ function App() {
 
     const elements = Array.from(
       document.querySelectorAll(
-        ".about-stat-card, .about-info-card, .lecturer-card, .moderator-card, .project-card, .terms-card, .terms-info-card, .terms-alert, .map-card, .registration-form, .section-head, .about-reference-copy"
+        ".about-stat-card, .about-info-card, .lecturer-card, .moderator-card, .project-card, .terms-card, .terms-info-card, .terms-alert, .map-card, .section-head, .about-reference-copy"
       )
     );
     if (!elements.length) return undefined;
@@ -562,10 +564,17 @@ function App() {
           ))}
         </nav>
 
-        <a className="btn btn-header" href="#registration">
+        <button
+          type="button"
+          className="btn btn-header"
+          onClick={() => {
+            setMenuOpen(false);
+            setRegOpen(true);
+          }}
+        >
           Регистрация
           <IconArrowRight aria-hidden="true" />
-        </a>
+        </button>
       </header>
 
       <main id="top">
@@ -582,7 +591,7 @@ function App() {
           <div className="hero-copy">
             <p className="eyebrow">Bioinformatics + AI + Precision Medicine</p>
             <h1>
-              <span className="hero-title-main">Хакатомикс</span>
+              <span className="hero-title-main">Hacatomics</span>
               <span className="hero-title-year">
                 2026
                 <span className="hero-title-date">10-14 октября</span>
@@ -599,10 +608,10 @@ function App() {
             </div>
 
             <div className="actions">
-              <a className="btn btn-primary" href="#registration">
+              <button type="button" className="btn btn-primary" onClick={() => setRegOpen(true)}>
                 Участвовать
                 <IconArrowRight aria-hidden="true" />
-              </a>
+              </button>
               <a className="btn btn-ghost" href="#about">
                 Подробнее
               </a>
@@ -942,13 +951,13 @@ function App() {
               <h3>Регистрация</h3>
               <span className="terms-card-line" aria-hidden="true" />
               <p>
-                Регистрация на хакатон откроется в июне 2026 года. Чтобы не пропустить старт
-                открытия, оставьте свой email в форме ниже.
+                Регистрация на хакатон открыта. Заполните анкету участника — это займёт несколько
+                минут.
               </p>
-              <a className="terms-email-btn" href="#registration">
+              <button type="button" className="terms-email-btn" onClick={() => setRegOpen(true)}>
                 <TermIcon name="mail" />
-                Оставить email
-              </a>
+                Зарегистрироваться
+              </button>
             </article>
           </div>
         </section>
@@ -959,20 +968,21 @@ function App() {
               <TermIcon name="mail" />
             </span>
             <div>
-              <h2>Не пропустите старт регистрации</h2>
+              <h2>Регистрация на хакатон</h2>
               <p>
-                Оставьте email, и мы напомним, когда откроется регистрация на хакатон в июне 2026
-                года.
+                Заполните анкету участника хакатона по омиксным технологиям и ИИ. Поля, отмеченные
+                звёздочкой, обязательны.
               </p>
+              <button
+                type="button"
+                className="btn btn-primary registration-cta"
+                onClick={() => setRegOpen(true)}
+              >
+                Заполнить анкету
+                <IconArrowRight aria-hidden="true" />
+              </button>
             </div>
           </div>
-          <form className="registration-form" onSubmit={(event) => event.preventDefault()}>
-            <label className="sr-only" htmlFor="registration-email">
-              Email
-            </label>
-            <input id="registration-email" type="email" placeholder="Ваш email" required />
-            <button type="submit">Оставить email</button>
-          </form>
         </section>
 
         <section id="venue" className="section-light venue">
@@ -1027,23 +1037,29 @@ function App() {
 
       <footer id="contacts" className="site-footer section-dark">
         <div className="footer-top">
-          <p className="footer-brand">Хакатомикс 2026</p>
+          <p className="footer-brand">Hacatomics 2026</p>
           <p>10-14 октября, 72 часа для идей, которые меняют медицину.</p>
           <div className="socials">
             <a href="#">Telegram</a>
             <a href="#">VK</a>
             <a href="#">GitHub</a>
           </div>
-          <a className="btn btn-primary footer-registration" href="#registration">
+          <button
+            type="button"
+            className="btn btn-primary footer-registration"
+            onClick={() => setRegOpen(true)}
+          >
             Зарегистрироваться <IconArrowRight aria-hidden="true" />
-          </a>
+          </button>
         </div>
         <div className="footer-bottom">
-          <span>© Хакатомикс 2026</span>
+          <span>© Hacatomics 2026</span>
           <a href="#">Контакты</a>
           <a href="#">Политика конфиденциальности</a>
         </div>
       </footer>
+
+      <RegistrationModal open={regOpen} onClose={() => setRegOpen(false)} />
     </div>
   );
 }
