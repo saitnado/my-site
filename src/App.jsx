@@ -34,7 +34,6 @@ const navItems = [
   { id: "projects", label: "Проекты" },
   { id: "terms", label: "Условия проведения" },
   { id: "venue", label: "Место проведения" },
-  { id: "news", label: "Новости" },
   { id: "contacts", label: "Контактная информация" },
 ];
 
@@ -438,6 +437,35 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") return undefined;
+
+    const elements = Array.from(
+      document.querySelectorAll(
+        ".about-stat-card, .about-info-card, .lecturer-card, .moderator-card, .project-card, .terms-card, .terms-info-card, .terms-alert, .map-card, .registration-form, .section-head, .about-reference-copy"
+      )
+    );
+    if (!elements.length) return undefined;
+
+    elements.forEach((el) => el.classList.add("reveal"));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     if (!activeProject) return undefined;
 
     const handleKeyDown = (event) => {
@@ -459,10 +487,10 @@ function App() {
   return (
     <div className="landing">
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Хакатомикс 2026">
+        <a className="brand" href="#top" aria-label="Hackatomics 2026">
           <img className="brand-logo" src={logo} alt="" />
           <span className="brand-copy">
-            Хакатомикс
+            Hackatomics
             <b>2026</b>
           </span>
         </a>
@@ -641,15 +669,6 @@ function App() {
                 Объединить усилия исследователей, биоинформатиков и специалистов ИИ для создания
                 инновационных подходов в прецизионной медицине на основе данных единичных клеток.
               </p>
-              <div className="about-cells" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-              </div>
             </article>
 
             <article className="about-info-card about-days">
@@ -1001,12 +1020,6 @@ function App() {
                 Я.Карты
               </a>
             </div>
-          </div>
-        </section>
-
-        <section id="news" className="section-light news-section">
-          <div className="section-head compact">
-            <h2>Новости</h2>
           </div>
         </section>
 
