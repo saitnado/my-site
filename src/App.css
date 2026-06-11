@@ -1570,6 +1570,40 @@ a {
   line-height: 1.65;
 }
 
+.project-modal-paragraphs {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.project-modal-paragraphs p {
+  margin: 0;
+}
+
+.project-modal-list {
+  margin: 0.45rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+  list-style: none;
+}
+
+.project-modal-list li {
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.project-modal-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--green-bright);
+  box-shadow: 0 0 10px rgba(102, 255, 143, 0.55);
+}
+
 .terms-section {
   position: relative;
   overflow: hidden;
