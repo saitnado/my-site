@@ -1379,9 +1379,6 @@ a {
   position: relative;
   min-height: 20.5rem;
   padding: 1.5rem;
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(10rem, 0.95fr);
-  gap: 0.75rem;
   overflow: hidden;
   border: 1px solid rgba(57, 255, 136, 0.28);
   border-radius: 0.5rem;
@@ -1401,9 +1398,11 @@ a {
 
 .project-card-copy {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   min-width: 0;
+  max-width: 58%;
+  min-height: 100%;
   flex-direction: column;
   align-items: flex-start;
 }
@@ -1445,13 +1444,14 @@ a {
 }
 
 .project-image {
-  position: relative;
+  position: absolute;
   z-index: 1;
-  align-self: center;
-  justify-self: end;
-  width: min(100%, 18rem);
-  max-height: 15rem;
+  top: 50%;
+  right: -1.4rem;
+  width: min(58%, 34rem);
+  max-height: 30rem;
   object-fit: contain;
+  transform: translateY(-50%) scale(1.18);
   filter: drop-shadow(0 0 20px rgba(102, 255, 143, 0.22));
 }
 
@@ -2392,11 +2392,18 @@ a {
   }
 
   .project-card {
-    grid-template-columns: minmax(0, 1fr) minmax(8rem, 0.72fr);
+    min-height: 19rem;
+  }
+
+  .project-card-copy {
+    max-width: 60%;
   }
 
   .project-image {
-    width: min(100%, 14rem);
+    right: -1.2rem;
+    width: min(58%, 25rem);
+    max-height: 24rem;
+    transform: translateY(-50%) scale(1.08);
   }
 }
 
@@ -2609,15 +2616,23 @@ a {
 
   .project-card {
     min-height: auto;
-    grid-template-columns: minmax(0, 1fr);
     padding: 1.15rem;
   }
 
+  .project-card-copy {
+    max-width: 100%;
+  }
+
   .project-image {
+    position: relative;
+    top: auto;
+    right: auto;
     order: -1;
     justify-self: center;
-    width: min(16rem, 100%);
-    max-height: 11rem;
+    width: min(22rem, 100%);
+    max-height: 16rem;
+    margin: -0.6rem auto 0.3rem;
+    transform: none;
   }
 
   .project-goal {
