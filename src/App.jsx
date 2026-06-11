@@ -39,19 +39,19 @@ const navItems = [
 
 const organizerPartners = [
   {
-    name: "АСКА",
-    text: "Ассоциация специалистов по вычислительной биологии",
-    image: "/partners/asca.png",
-  },
-  {
-    name: "РУДН",
-    text: "Российский университет дружбы народов",
-    image: "/partners/biomedhub-rudn.png",
-  },
-  {
-    name: "Партнер",
-    text: "Научные технологии во благо будущего",
+    name: "Факультет искусственного интеллекта РУДН",
+    text: "Факультет искусственного интеллекта РУДН",
     image: "/partners/rudn-ai-faculty.png",
+  },
+  {
+    name: "АСКА",
+    text: "Association for Single Cell Analysis",
+    image: "/partners/org/ASCA_black .png",
+  },
+  {
+    name: "biomedhub / RUDN",
+    text: "biomedhub / RUDN",
+    image: "/partners/org/biomed_hub.png",
   },
 ];
 
