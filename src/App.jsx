@@ -983,7 +983,7 @@ function App() {
               </button>
             </div>
           </div>
-          <img className="registration-door" src="/partners/project/door.png" alt="" aria-hidden="true" />
+          <div className="registration-door" aria-hidden="true" />
         </section>
 
         <section id="venue" className="section-light venue">
