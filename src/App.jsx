@@ -591,7 +591,7 @@ function App() {
           <div className="hero-copy">
             <p className="eyebrow">Bioinformatics + AI + Precision Medicine</p>
             <h1>
-              <span className="hero-title-main">Hacatomics</span>
+              <span className="hero-title-main">Hackatomics</span>
               <span className="hero-title-year">
                 2026
                 <span className="hero-title-date">10-14 октября</span>
@@ -983,6 +983,7 @@ function App() {
               </button>
             </div>
           </div>
+          <img className="registration-door" src="/partners/project/door.png" alt="" aria-hidden="true" />
         </section>
 
         <section id="venue" className="section-light venue">
@@ -1037,7 +1038,7 @@ function App() {
 
       <footer id="contacts" className="site-footer section-dark">
         <div className="footer-top">
-          <p className="footer-brand">Hacatomics 2026</p>
+          <p className="footer-brand">Hackatomics 2026</p>
           <p>10-14 октября, 72 часа для идей, которые меняют медицину.</p>
           <div className="socials">
             <a href="#">Telegram</a>
@@ -1053,7 +1054,7 @@ function App() {
           </button>
         </div>
         <div className="footer-bottom">
-          <span>© Hacatomics 2026</span>
+          <span>© Hackatomics 2026</span>
           <a href="#">Контакты</a>
           <a href="#">Политика конфиденциальности</a>
         </div>
