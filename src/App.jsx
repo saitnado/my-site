@@ -48,6 +48,7 @@ const organizerPartners = [
     name: "АСКА",
     text: "Association for Single Cell Analysis",
     image: "/partners/org/ASCA_black .png",
+    logoClassName: "partner-menu-card--dark-logo",
   },
   {
     name: "biomedhub / RUDN",
@@ -459,10 +460,10 @@ function App() {
   return (
     <div className="landing">
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Хакатомикс 2026">
+        <a className="brand" href="#top" aria-label="Hackatomics 2026">
           <img className="brand-logo" src={logo} alt="" />
           <span className="brand-copy">
-            Хакатомикс
+            Hackatomics
             <b>2026</b>
           </span>
         </a>
@@ -514,7 +515,7 @@ function App() {
                 <div className="partner-menu-grid">
                   {organizerPartners.map((partner) => (
                     <a
-                      className="partner-menu-card"
+                      className={["partner-menu-card", partner.logoClassName].filter(Boolean).join(" ")}
                       href="#organizers"
                       key={partner.name}
                       onClick={() => setMenuOpen(false)}
@@ -554,7 +555,7 @@ function App() {
           <div className="hero-copy">
             <p className="eyebrow">Bioinformatics + AI + Precision Medicine</p>
             <h1>
-              <span className="hero-title-main">Хакатомикс</span>
+              <span className="hero-title-main">Hackatomics</span>
               <span className="hero-title-year">
                 2026
                 <span className="hero-title-date">10-14 октября</span>
@@ -578,6 +579,19 @@ function App() {
               <a className="btn btn-ghost" href="#about">
                 Подробнее
               </a>
+            </div>
+          </div>
+          <div className="organizer-group organizer-partners">
+            <h3 className="organizer-subhead">Организаторы</h3>
+            <div className="organizer-partners-grid">
+              {organizerPartners.map((partner) => (
+                <article
+                  className={["organizer-partner-card", partner.logoClassName].filter(Boolean).join(" ")}
+                  key={partner.name}
+                >
+                  <img src={partner.image} alt={partner.name} />
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -954,6 +968,12 @@ function App() {
             <input id="registration-email" type="email" placeholder="Ваш email" required />
             <button type="submit">Оставить email</button>
           </form>
+          <img
+            className="registration-door"
+            src="/partners/project/door.png"
+            alt=""
+            aria-hidden="true"
+          />
         </section>
 
         <section id="venue" className="section-light venue">
@@ -1014,7 +1034,7 @@ function App() {
 
       <footer id="contacts" className="site-footer section-dark">
         <div className="footer-top">
-          <p className="footer-brand">Хакатомикс 2026</p>
+          <p className="footer-brand">Hackatomics 2026</p>
           <p>10-14 октября, 72 часа для идей, которые меняют медицину.</p>
           <div className="socials">
             <a href="#">Telegram</a>
@@ -1026,7 +1046,7 @@ function App() {
           </a>
         </div>
         <div className="footer-bottom">
-          <span>© Хакатомикс 2026</span>
+          <span>© Hackatomics 2026</span>
           <a href="#">Контакты</a>
           <a href="#">Политика конфиденциальности</a>
         </div>
