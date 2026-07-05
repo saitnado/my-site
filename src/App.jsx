@@ -223,8 +223,8 @@ const dnaDots = Array.from({ length: 28 }, (_, index) => {
 
 const stats = [
   { value: "72", caption: "часа\nкомандной работы", icon: "time" },
-  { value: "3-5", caption: "человек\nв команде", icon: "team" },
-  { value: "25+", caption: "экспертов\nи менторов", icon: "cap" },
+  { value: "5", caption: "человек\nв команде", icon: "team" },
+  { value: "15+", caption: "экспертов\nи менторов", icon: "cap" },
   { value: "6", caption: "проектных\nнаправлений", icon: "compass" },
 ];
 
@@ -744,6 +744,8 @@ function App() {
                     <img
                       className={`moderator-photo ${
                         moderator.name === "Семён Куприянов" ? "moderator-photo-semyon" : ""
+                      } ${
+                        moderator.name === "Артем Торопов" ? "moderator-photo-artem" : ""
                       }`}
                       src={moderator.image}
                       alt={moderator.name}

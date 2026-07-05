@@ -921,6 +921,10 @@ main > section + section,
   object-position: right top;
 }
 
+.moderator-photo-artem {
+  object-position: center 18%;
+}
+
 .moderator-photo-placeholder {
   display: grid;
   place-items: center;
