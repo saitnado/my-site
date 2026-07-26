@@ -1347,8 +1347,7 @@ main > section + section,
 
 .terms-subhead-icon svg,
 .terms-icon svg,
-.terms-alert-icon svg,
-.terms-email-btn svg {
+.terms-alert-icon svg {
   width: 1.7rem;
   height: 1.7rem;
   fill: none;
@@ -1479,29 +1478,12 @@ main > section + section,
   align-items: flex-start;
 }
 
-.terms-email-btn {
-  margin-top: auto;
-  padding-top: 1.3rem;
-}
 
 .terms-email-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  color: var(--accent);
-  font-weight: 700;
+  margin-top: 1.3rem;
+  min-height: auto;
+  padding: 0.55rem 1rem;
   font-size: 0.95rem;
-  transition: gap 0.2s ease, color 0.2s ease;
-}
-
-.terms-email-btn svg {
-  width: 1.2rem;
-  height: 1.2rem;
-}
-
-.terms-email-btn:hover {
-  gap: 0.9rem;
-  color: var(--accent-bright);
 }
 
 /* ------------------------------------------------------------
@@ -2522,11 +2504,7 @@ main > section + section,
   }
 
   .terms-email-btn {
-    min-height: 3rem;
-    padding: 0.7rem 1rem;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
+    width: 100%;
   }
 
   .registration-copy {
