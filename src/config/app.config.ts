@@ -18,12 +18,14 @@ import {
   IconUsersGroup,
 } from "@tabler/icons-react";
 
+export const contactEmail = "hackatomics@yandex.com";
+
 export const navItems = [
   { id: "about", label: "О хакатоне" },
   { id: "projects", label: "Проекты" },
   { id: "terms", label: "Условия проведения" },
   { id: "venue", label: "Место проведения" },
-  { id: "contacts", label: "Контактная информация" },
+  { id: "contacts", label: "Контактная информация", href: `mailto:${contactEmail}` },
 ];
 
 export const organizerPartners = [

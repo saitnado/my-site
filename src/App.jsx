@@ -12,6 +12,7 @@ import heroGifVideo from "./assets/gif.MP4";
 import RegistrationModal from "./RegistrationForm";
 import {
   chips,
+  contactEmail,
   dnaDots,
   hackathonDays,
   iconMap,
@@ -187,7 +188,11 @@ function App() {
           </div>
 
           {navItems.slice(1).map((item) => (
-            <a key={item.id} href={`#${item.id}`} onClick={() => setMenuOpen(false)}>
+            <a
+              key={item.id}
+              href={item.href ?? `#${item.id}`}
+              onClick={() => setMenuOpen(false)}
+            >
               {item.label}
             </a>
           ))}
@@ -683,11 +688,9 @@ function App() {
         <div className="footer-top">
           <p className="footer-brand">Hackatomics 2026</p>
           <p>10-14 октября, 72 часа для идей, которые меняют медицину.</p>
-          <div className="socials">
-            <a href="#">Telegram</a>
-            <a href="#">VK</a>
-            <a href="#">GitHub</a>
-          </div>
+          <a className="footer-email" href={`mailto:${contactEmail}`}>
+            {contactEmail}
+          </a>
           <button
             type="button"
             className="btn btn-primary footer-registration"
@@ -698,7 +701,7 @@ function App() {
         </div>
         <div className="footer-bottom">
           <span>© Hackatomics 2026</span>
-          <a href="#">Контакты</a>
+          <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
           <a
             href="https://www.rudn.ru/personal-data-processing-and-protection-policy"
             target="_blank"
