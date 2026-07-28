@@ -162,14 +162,12 @@ export default function RegistrationModal({ open, onClose }) {
 
     setStatus("submitting");
     try {
-      const response = await fetch(FORM_ACTION, {
+      await fetch(FORM_ACTION, {
         method: "POST",
+        mode: "no-cors",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: params.toString(),
       });
-      if (response.status >= 400) {
-        throw new Error(`Form submit failed with status ${response.status}`);
-      }
       setStatus("success");
     } catch (error) {
       console.error(error);

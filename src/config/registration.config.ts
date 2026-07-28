@@ -10,7 +10,8 @@ import {
   IconUser,
 } from "@tabler/icons-react";
 
-export const FORM_ACTION = "/api/form-response";
+export const FORM_ACTION =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeaLT2MPWF883OFgpove-XBnF7Nur2BCvV9gqNXtW4h1-5EAA/formResponse";
 
 export const OTHER_VALUE = "__other_option__";
 export const EVENT_SUBTITLE = "10–14 октября 2026 • НИИ МКМ и ФИИ РУДН";
