@@ -46,6 +46,20 @@ export const organizerPartners = [
   },
 ];
 
+export const sponsorPartners = [
+  {
+    name: "X5 Tech",
+    image: "/partners/project/X5Tech3.png",
+    href: "https://x5.tech/",
+  },
+  {
+    name: "Cloud.ru",
+    image: "/partners/project/кл.png",
+    href: "https://cloud.ru/",
+    className: "sponsor-logo-cloud",
+  },
+];
+
 export const chips = [
   "Биоинформатика",
   "Данные единичных клеток",
