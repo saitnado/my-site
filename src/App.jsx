@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   IconArrowRight,
+  IconBuildingCommunity,
   IconChevronDown,
   IconMapPin,
   IconMenu2,
@@ -22,6 +23,7 @@ import {
   organizerPartners,
   projects,
   requirementCards,
+  sponsorPartners,
   stats,
 } from "./config/app.config";
 import "./App.css";
@@ -73,7 +75,7 @@ function App() {
 
     const elements = Array.from(
       document.querySelectorAll(
-        ".about-stat-card, .about-info-card, .lecturer-card, .moderator-card, .project-card, .terms-card, .terms-info-card, .terms-alert, .map-card, .section-head, .about-reference-copy"
+        ".about-stat-card, .about-info-card, .lecturer-card, .moderator-card, .sponsor-card, .project-card, .terms-card, .terms-info-card, .terms-alert, .map-card, .section-head, .about-reference-copy"
       )
     );
     if (!elements.length) return undefined;
@@ -165,6 +167,15 @@ function App() {
                   <span>
                     <strong>Менторы</strong>
                     <small>Практики и исследователи, готовые помочь командам</small>
+                  </span>
+                </a>
+                <a href="#organizers" onClick={() => setMenuOpen(false)}>
+                  <span className="role-icon" aria-hidden="true">
+                    <IconBuildingCommunity />
+                  </span>
+                  <span>
+                    <strong>Спонсоры</strong>
+                    <small>Партнёры, поддерживающие проведение хакатона</small>
                   </span>
                 </a>
               </div>
@@ -395,6 +406,23 @@ function App() {
                     </div>
                   </div>
                 </article>
+              ))}
+            </div>
+          </div>
+          <div className="organizer-group">
+            <h3 className="organizer-subhead">Спонсоры</h3>
+            <div className="sponsors-grid">
+              {sponsorPartners.map((sponsor) => (
+                <a
+                  className="sponsor-card"
+                  href={sponsor.href}
+                  key={sponsor.name}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={sponsor.name}
+                >
+                  <img className={sponsor.className ?? ""} src={sponsor.image} alt={sponsor.name} />
+                </a>
               ))}
             </div>
           </div>

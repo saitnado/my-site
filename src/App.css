@@ -328,11 +328,17 @@ main > section + section,
 }
 
 .dropdown-partners p {
-  margin: 0 0 0.8rem;
-  color: var(--muted);
-  font-size: 0.82rem;
+  margin: 0 0 1rem;
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-align: center;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
+}
+
+.dropdown-partners {
+  align-self: center;
 }
 
 .partner-menu-grid {
@@ -652,6 +658,7 @@ main > section + section,
 .about-info-card,
 .lecturer-card,
 .moderator-card,
+.sponsor-card,
 .project-card,
 .terms-card,
 .terms-info-card,
@@ -856,7 +863,7 @@ main > section + section,
 }
 
 /* ------------------------------------------------------------
-   Organizers (lecturers + moderators)
+   Organizers (lecturers + moderators + sponsors)
    ------------------------------------------------------------ */
 
 .organizer-group + .organizer-group {
@@ -881,25 +888,54 @@ main > section + section,
 }
 
 .lecturers-grid,
-.moderators-grid {
+.moderators-grid,
+.sponsors-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.1rem;
 }
 
 .lecturer-card,
-.moderator-card {
+.moderator-card,
+.sponsor-card {
   padding: 0.9rem;
+}
+
+.lecturer-card,
+.moderator-card {
   display: grid;
   grid-template-columns: minmax(7.5rem, 0.85fr) minmax(0, 1.4fr);
   gap: 1rem;
 }
 
 .lecturer-card:hover,
-.moderator-card:hover {
+.moderator-card:hover,
+.sponsor-card:hover {
   transform: translateY(-4px);
   border-color: var(--border-strong);
   box-shadow: var(--shadow);
+}
+
+.sponsor-card {
+  min-height: 13.5rem;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(75% 85% at 50% 50%, rgba(61, 220, 132, 0.08), transparent 62%),
+    var(--panel);
+}
+
+.sponsor-card img {
+  width: min(72%, 22rem);
+  height: auto;
+  max-height: 7.5rem;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(61, 220, 132, 0.22));
+}
+
+.sponsor-card img.sponsor-logo-cloud {
+  width: min(78%, 24rem);
+  filter: drop-shadow(0 0 12px rgba(61, 220, 132, 0.28));
 }
 
 .lecturer-photo,
@@ -2403,6 +2439,7 @@ main > section + section,
 
   .lecturers-grid,
   .moderators-grid,
+  .sponsors-grid,
   .projects-grid,
   .terms-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2432,6 +2469,7 @@ main > section + section,
 
   .lecturers-grid,
   .moderators-grid,
+  .sponsors-grid,
   .projects-grid,
   .terms-grid,
   .terms-info-grid {
