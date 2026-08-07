@@ -454,6 +454,11 @@ function App() {
               </article>
             ))}
           </div>
+
+          <div className="projects-note">
+            <p className="projects-note-title">Список проектов пополняется</p>
+            <p>Остальные проекты будут опубликованы в ближайшее время</p>
+          </div>
         </section>
 
         {activeProject ? (
