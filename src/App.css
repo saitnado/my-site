@@ -1045,6 +1045,32 @@ main > section + section,
   gap: 1.15rem;
 }
 
+.projects-note {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--text);
+}
+
+.projects-note p {
+  margin: 0;
+  color: var(--text);
+}
+
+.projects-note-title {
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.projects-note-title + p {
+  margin-top: 0.65rem;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
 .project-card {
   position: relative;
   min-height: 21rem;
